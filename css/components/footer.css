@@ -1,0 +1,119 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: #050510;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--spacing-md) 0;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-copy {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-brand-name {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.footer-made {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-heart {
+  color: #ff4757;
+  animation: heartbeat 1.5s ease infinite;
+  font-size: 0.8rem;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.footer-center {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.footer-link {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: gold;
+}
+
+.footer-divider {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: var(--font-size-sm);
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-top-btn,
+.footer-top-btn:visited,
+.footer-top-btn:focus,
+.footer-top-btn:active {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  outline: none;
+}
+
+.footer-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.footer-top-btn:hover {
+  color: var(--white);
+  border-color: gold;
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.footer-top-btn i {
+  transition: transform var(--transition-fast);
+}
+
+.footer-top-btn:hover i {
+  transform: translateY(-3px);
+}

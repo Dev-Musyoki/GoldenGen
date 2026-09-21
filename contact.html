@@ -19,6 +19,366 @@
     />
   </head>
   <body>
-    <script src="js/main.js"></script>
+    <style>
+      /* ======== Products Page Styles ======== */
+      /* ======== SEARCH BAR & TOOLBAR ======== */
+      .products-controls {
+        background-color: var(--bg-primary);
+        padding-bottom: var(--spacing-lg);
+      }
+
+      .products-search-bar {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        background: var(--gray-light);
+        border: 2px solid rgba(255, 215, 0, 0.6);
+        border-radius: var(--radius-full);
+        padding: 14px 22px;
+        margin-bottom: var(--spacing-md);
+        transition:
+          border-color var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .products-search-bar:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: var(--blue-glow);
+      }
+
+      .products-search-bar i {
+        color: var(--text-light);
+        font-size: 1rem;
+      }
+
+      .products-search-bar input {
+        flex: 1;
+        background: none;
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+      }
+
+      .products-search-bar input::placeholder {
+        color: var(--text-light);
+      }
+
+      .products-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        background: var(--bg-secondary);
+        border: 1px solid var(--gray-mid);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+      }
+
+      .products-toolbar-count {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+      }
+
+      .products-toolbar-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .products-sort select {
+        font-size: var(--font-size-sm);
+        color: var(--text-primary);
+        background: var(--white);
+        border: 1px solid var(--gray-mid);
+        border-radius: var(--radius-sm);
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+
+      .products-view-toggle {
+        display: flex;
+        border: 1px solid var(--gray-mid);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+      }
+
+      .view-btn {
+        padding: 7px 12px;
+        color: var(--text-secondary);
+        background: var(--white);
+        font-size: 0.9rem;
+        transition: all var(--transition-fast);
+      }
+
+      .view-btn:hover {
+        color: var(--primary-color);
+      }
+
+      .view-btn.active {
+        background: var(--primary-color);
+        color: var(--white);
+      }
+
+      @media (max-width: 600px) {
+        .products-toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .products-toolbar-actions {
+          justify-content: space-between;
+        }
+      }
+
+      .products-controls ~ .featured-products {
+        opacity: 1;
+        transform: none;
+      }
+      .page-header .section-container,
+      .products-controls .section-container {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      /* ===== LOADING DOTS ===== */
+      .loading-dots::after {
+        content: "";
+        animation: loadingDots 1.4s infinite;
+      }
+
+      @keyframes loadingDots {
+        0% {
+          content: "";
+        }
+        25% {
+          content: ".";
+        }
+        50% {
+          content: "..";
+        }
+        75% {
+          content: "...";
+        }
+        100% {
+          content: "";
+        }
+      }
+    </style>
+    <script src="js/main.js">
+            // ===== GOLDENGEN — PRODUCTS PAGE ONLY =====
+      // Loaded after shared.js.
+
+      const KSH_RATE = 130; // rough USD → Ksh multiplier
+
+      // ===== CURATED GAMING PRODUCTS (DummyJSON has no gaming category) =====
+      const gamingProducts = [
+        {
+          id: "gaming-1",
+          name: "ASUS ROG Zephyrus",
+          category: "gaming",
+          price: 245000,
+          oldPrice: null,
+          rating: 4.7,
+          ratingCount: 187,
+          image: "images/product4.jpg",
+          badge: { text: "Hot", type: "hot" },
+        },
+        {
+          id: "gaming-2",
+          name: "Razer BlackWidow V4",
+          category: "gaming",
+          price: 18000,
+          oldPrice: 24000,
+          rating: 4.5,
+          ratingCount: 201,
+          image: "images/product8.jpg",
+          badge: { text: "-25%", type: "sale" },
+        },
+        {
+          id: "gaming-3",
+          name: "Logitech G Pro X",
+          category: "gaming",
+          price: 14500,
+          oldPrice: null,
+          rating: 4.7,
+          ratingCount: 334,
+          image: "images/product11.jpg",
+          badge: { text: "New", type: "new" },
+        },
+        {
+          id: "gaming-4",
+          name: "SteelSeries Arctis 7",
+          category: "gaming",
+          price: 16500,
+          oldPrice: 20000,
+          rating: 4.5,
+          ratingCount: 278,
+          image: "images/product12.jpg",
+          badge: { text: "-18%", type: "sale" },
+        },
+      ];
+
+      // ===== FETCH + NORMALIZE DUMMYJSON PRODUCTS =====
+      async function fetchProducts() {
+        try {
+          const response = await fetch("https://dummyjson.com/products?limit=0");
+          const data = await response.json();
+
+          const relevant = data.products.filter((p) =>
+            ["laptops", "smartphones", "tablets", "mobile-accessories"].includes(
+              p.category,
+            ),
+          );
+
+          const normalized = relevant.map((p) => ({
+            id: p.id,
+            name: p.title,
+            category: p.category === "laptops" ? "laptops" : "accessories",
+            price: Math.round(p.price * KSH_RATE),
+            oldPrice:
+              p.discountPercentage > 0
+                ? Math.round(p.price * KSH_RATE * (1 + p.discountPercentage / 100))
+                : null,
+            rating: p.rating,
+            ratingCount: Math.floor(p.rating * 40), // DummyJSON has no real count
+            image: p.thumbnail,
+            badge:
+              p.discountPercentage > 15
+                ? { text: `-${Math.round(p.discountPercentage)}%`, type: "sale" }
+                : null,
+          }));
+
+          return normalized;
+        } catch (error) {
+          console.error("Failed to fetch products:", error);
+          return [];
+        }
+      }
+
+      // ===== BUILD ONE PRODUCT CARD =====
+      function createProductCard(product) {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.dataset.category = product.category;
+
+        const badgeHTML = product.badge
+          ? `<span class="product-badge product-badge-${product.badge.type}">${product.badge.text}</span>`
+          : "";
+
+        const oldPriceHTML = product.oldPrice
+          ? `<span class="product-price-old">Ksh ${product.oldPrice.toLocaleString()}</span>`
+          : "";
+
+        const fullStars = Math.floor(product.rating);
+        const hasHalfStar = product.rating % 1 >= 0.5;
+        let starsHTML = "";
+        for (let i = 0; i < fullStars; i++) {
+          starsHTML += `<i class="fa-solid fa-star"></i>`;
+        }
+        if (hasHalfStar) {
+          starsHTML += `<i class="fa-solid fa-star-half-stroke"></i>`;
+        }
+
+        card.innerHTML = `
+          <div class="product-image-wrapper">
+            ${badgeHTML}
+            <img src="${product.image}" alt="${product.name}" class="product-image" />
+            <div class="product-overlay">
+              <button class="product-quick-view">Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">${product.category}</span>
+            <h3 class="product-name">${product.name}</h3>
+            <div class="product-rating">
+              ${starsHTML}
+              <span class="product-rating-count">(${product.ratingCount})</span>
+            </div>
+            <div class="product-price-row">
+              <div class="product-prices">
+                <span class="product-price">Ksh ${product.price.toLocaleString()}</span>
+                ${oldPriceHTML}
+              </div>
+              <button class="product-cart-btn" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        `;
+
+        return card;
+      }
+
+      // ===== RENDER GRID =====
+      function renderProducts(products) {
+        const grid = document.getElementById("productsGrid");
+        if (!grid) return;
+
+        grid.innerHTML = "";
+        products.forEach((product) => {
+          grid.appendChild(createProductCard(product));
+        });
+
+        // Reuse the same slide-up-on-scroll effect as the homepage
+        const cardObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add("visible"), index * 60);
+                cardObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        grid
+          .querySelectorAll(".product-card")
+          .forEach((card) => cardObserver.observe(card));
+      }
+
+      // ===== INIT =====
+      let allProducts = [];
+
+      async function initProducts() {
+        const fetched = await fetchProducts();
+        allProducts = [...fetched, ...gamingProducts];
+        renderProducts(allProducts);
+
+        // Update counts now that real data is in
+        const productCount = document.getElementById("productCount");
+        const toolbarCount = document.getElementById("toolbarCount");
+
+        if (productCount) {
+          productCount.classList.remove("loading-dots");
+          productCount.textContent = `${allProducts.length} products available`;
+        }
+
+        if (toolbarCount) {
+          toolbarCount.textContent = `Showing all ${allProducts.length} products`;
+        }
+      }
+
+      initProducts();
+
+      // ===== VIEW TOGGLE (grid / list) =====
+      const gridViewBtn = document.getElementById("gridViewBtn");
+      const listViewBtn = document.getElementById("listViewBtn");
+
+      if (gridViewBtn && listViewBtn) {
+        gridViewBtn.addEventListener("click", () => {
+          gridViewBtn.classList.add("active");
+          gridViewBtn.setAttribute("aria-pressed", "true");
+          listViewBtn.classList.remove("active");
+          listViewBtn.setAttribute("aria-pressed", "false");
+        });
+
+        listViewBtn.addEventListener("click", () => {
+          listViewBtn.classList.add("active");
+          listViewBtn.setAttribute("aria-pressed", "true");
+          gridViewBtn.classList.remove("active");
+          gridViewBtn.setAttribute("aria-pressed", "false");
+        });
+      }
+    </script>
   </body>
 </html>

@@ -3,22 +3,871 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GoldenGen Technologies</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <!--Google Fonts-->
+    <meta
+      name="description"
+      content="Shop laptops, monitors, gaming gear and computer accessories from GoldenGen Technologies."
+    />
+
+    <title>Products | GoldenGen Technologies</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!--Font Awesome For icons-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+
   <body>
-    <script src="js/main.js"></script>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loader-content">
+        <div class="loader-logo">
+          <div class="logo-icon">
+            <div class="logo-diamond">
+              <span class="logo-letters">GG</span>
+            </div>
+          </div>
+
+          <span class="loader-logo-text">
+            <span class="loader-logo-golden">Golden</span>Gen
+          </span>
+        </div>
+
+        <div class="loader-spinner" aria-hidden="true">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+
+        <p class="loader-text" id="loaderText">Loading amazing products...</p>
+
+        <div class="loader-progress" aria-hidden="true">
+          <div class="loader-progress-fill" id="loaderProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Announcement bar -->
+    <div class="announcement-bar">
+      <div class="announcement-wrapper">
+        <p class="announcement-text" id="announcementText">
+          🇰🇪 Delivery countrywide — We deliver across Kenya
+        </p>
+
+        <div class="announcement-progress"></div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="main-nav" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand" aria-label="GoldenGen home">
+          <div class="logo-icon">
+            <div class="logo-diamond">
+              <span class="logo-letters">GG</span>
+            </div>
+          </div>
+
+          <div class="logo-text">
+            <span class="logo-name">
+              <span class="logo-golden">Golden</span>Gen
+            </span>
+
+            <span class="logo-tagline">Technologies</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+
+          <a href="products.html" class="nav-link active" aria-current="page">
+            Products
+          </a>
+
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-icons">
+          <div class="nav-search" id="navSearch">
+            <input
+              type="search"
+              placeholder="Search products, brands, accessories..."
+              class="search-input"
+              id="searchInput"
+              aria-label="Search products"
+            />
+
+            <button
+              type="button"
+              class="search-btn"
+              id="searchBtn"
+              aria-label="Search products"
+            >
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <a href="#" class="account-icon" aria-label="Your account">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </a>
+
+          <div class="cart-widget">
+            <a
+              href="#"
+              class="cart-icon"
+              aria-label="Shopping cart"
+              id="cartToggle"
+            >
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
+
+            <div class="cart-dropdown" id="cartDropdown">
+              <div class="cart-dropdown-header">
+                <h3>Your Cart</h3>
+                <button
+                  type="button"
+                  class="cart-dropdown-close"
+                  id="cartDropdownClose"
+                  aria-label="Close cart"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <div class="cart-dropdown-items" id="cartDropdownItems">
+                <!-- Populated by JS -->
+              </div>
+
+              <div class="cart-dropdown-footer" id="cartDropdownFooter">
+                <div class="cart-dropdown-total">
+                  <span>Total</span>
+                  <span id="cartDropdownTotal">KSh 0</span>
+                </div>
+                <button type="button" class="cart-dropdown-checkout">
+                  View cart (coming soon)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="dark-mode-toggle"
+            id="darkModeToggle"
+            aria-label="Toggle dark mode"
+          >
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+
+          <button
+            type="button"
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Page header -->
+      <section class="page-header">
+        <div class="section-container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+
+            <span aria-current="page">Products</span>
+          </nav>
+
+          <div class="page-header-row">
+            <h1 class="page-title-compact">All Products</h1>
+            <p class="page-count" id="productCount" aria-live="polite">
+              Loading products…
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search, toolbar and active filters -->
+      <section
+        class="products-controls"
+        aria-label="Product catalogue controls"
+      >
+        <div class="section-container">
+          <div class="products-toolbar">
+            <div class="products-toolbar-left">
+              <button
+                type="button"
+                class="products-filter-toggle"
+                id="filterToggleBtn"
+                aria-expanded="false"
+                aria-controls="productsFilters"
+              >
+                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+
+                Filters
+
+                <span
+                  class="products-filter-count hidden"
+                  id="activeFilterCount"
+                >
+                  0
+                </span>
+              </button>
+
+              <span
+                class="products-toolbar-count"
+                id="toolbarCount"
+                aria-live="polite"
+              >
+                Loading products…
+              </span>
+            </div>
+
+            <div class="products-toolbar-actions">
+              <div class="products-sort">
+                <label for="sortSelect">Sort by</label>
+
+                <select id="sortSelect">
+                  <option value="featured">Featured</option>
+                  <option value="newest">Newest arrivals</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating">Top rated</option>
+                  <option value="reviews">Most reviewed</option>
+                  <option value="discount">Biggest discount</option>
+                </select>
+              </div>
+
+              <div
+                class="products-view-toggle"
+                role="group"
+                aria-label="Product view layout"
+              >
+                <button
+                  type="button"
+                  class="view-btn active"
+                  id="gridViewBtn"
+                  aria-label="Grid view"
+                  aria-pressed="true"
+                  title="Grid view"
+                >
+                  <i
+                    class="fa-solid fa-table-cells-large"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="view-btn"
+                  id="listViewBtn"
+                  aria-label="List view"
+                  aria-pressed="false"
+                  title="List view"
+                >
+                  <i class="fa-solid fa-list" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="active-filters hidden"
+            id="activeFilters"
+            aria-label="Active product filters"
+          >
+            <div class="active-filter-chips" id="activeFilterChips"></div>
+
+            <button
+              type="button"
+              class="active-filters-clear"
+              id="clearAllFiltersBtn"
+            >
+              Clear all
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product catalogue -->
+      <section class="products-listing">
+        <div class="section-container">
+          <div class="products-catalog-layout">
+            <!-- Sidebar / mobile filter drawer -->
+            <aside
+              class="products-filters"
+              id="productsFilters"
+              aria-label="Product filters"
+            >
+              <div class="products-filters-header">
+                <div>
+                  <p class="products-filters-kicker">Refine results</p>
+
+                  <h2>Filters</h2>
+                </div>
+
+                <button
+                  type="button"
+                  class="products-filters-close"
+                  id="filtersCloseBtn"
+                  aria-label="Close filters"
+                >
+                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <!-- Category -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Category</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content" id="categoryFilterList"></div>
+              </div>
+
+              <!-- Price -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Price range</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content">
+                  <div class="price-filter-inputs">
+                    <label>
+                      <span>Minimum</span>
+
+                      <div class="price-input-wrap">
+                        <span>KSh</span>
+
+                        <input
+                          type="number"
+                          id="minPriceInput"
+                          min="0"
+                          step="500"
+                          inputmode="numeric"
+                        />
+                      </div>
+                    </label>
+
+                    <span class="price-filter-separator" aria-hidden="true">
+                      —
+                    </span>
+
+                    <label>
+                      <span>Maximum</span>
+
+                      <div class="price-input-wrap">
+                        <span>KSh</span>
+
+                        <input
+                          type="number"
+                          id="maxPriceInput"
+                          min="0"
+                          step="500"
+                          inputmode="numeric"
+                        />
+                      </div>
+                    </label>
+                  </div>
+
+                  <label class="price-slider-label" for="maxPriceRange">
+                    Maximum price
+                  </label>
+
+                  <input
+                    type="range"
+                    class="price-range"
+                    id="maxPriceRange"
+                    min="0"
+                    max="300000"
+                    step="5000"
+                    value="300000"
+                  />
+
+                  <p class="price-range-output" id="priceRangeOutput">
+                    Up to KSh 300,000
+                  </p>
+                </div>
+              </div>
+
+              <!-- Brand -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Brand</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content">
+                  <label class="brand-filter-search">
+                    <span class="sr-only">Search brands</span>
+
+                    <i
+                      class="fa-solid fa-magnifying-glass"
+                      aria-hidden="true"
+                    ></i>
+
+                    <input
+                      type="search"
+                      id="brandSearchInput"
+                      placeholder="Search brands"
+                      autocomplete="off"
+                    />
+                  </label>
+
+                  <div
+                    class="brand-filter-list"
+                    id="brandFilterList"
+                    aria-live="polite"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Condition -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Condition</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content">
+                  <label class="filter-option">
+                    <input
+                      type="checkbox"
+                      value="new"
+                      data-filter-type="condition"
+                    />
+
+                    <span class="filter-option-box" aria-hidden="true"></span>
+
+                    <span class="filter-option-label">New</span>
+                  </label>
+
+                  <label class="filter-option">
+                    <input
+                      type="checkbox"
+                      value="refurbished"
+                      data-filter-type="condition"
+                    />
+
+                    <span class="filter-option-box" aria-hidden="true"></span>
+
+                    <span class="filter-option-label"> Refurbished </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Rating -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Customer rating</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content">
+                  <label class="filter-select-label" for="ratingFilter">
+                    Minimum rating
+                  </label>
+
+                  <select class="filter-select" id="ratingFilter">
+                    <option value="0">Any rating</option>
+                    <option value="4.5">4.5 stars and above</option>
+                    <option value="4">4 stars and above</option>
+                    <option value="3">3 stars and above</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Stock -->
+              <div class="filter-group filter-group-last">
+                <label class="filter-option filter-option-strong">
+                  <input type="checkbox" id="inStockFilter" />
+
+                  <span class="filter-option-box" aria-hidden="true"></span>
+
+                  <span class="filter-option-label"> In stock only </span>
+                </label>
+              </div>
+
+              <div class="products-filters-actions">
+                <button
+                  type="button"
+                  class="filters-reset-btn"
+                  id="filtersResetBtn"
+                >
+                  Clear filters
+                </button>
+
+                <button
+                  type="button"
+                  class="filters-apply-btn"
+                  id="filtersApplyBtn"
+                >
+                  Show products
+                </button>
+              </div>
+            </aside>
+
+            <!-- Product results -->
+            <div class="products-results">
+              <div class="products-grid" id="productsGrid"></div>
+
+              <div class="products-empty hidden" id="productsEmpty">
+                <div class="products-empty-icon">
+                  <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+                </div>
+
+                <h2>No products found</h2>
+
+                <p>
+                  Try changing your search, price range or selected filters.
+                </p>
+
+                <button type="button" id="emptyResetBtn">
+                  Reset all filters
+                </button>
+              </div>
+
+              <div class="products-load-more hidden" id="loadMoreSection">
+                <p id="loadMoreCount">Showing 12 of 24 products</p>
+
+                <div
+                  class="products-progress"
+                  role="progressbar"
+                  aria-label="Products displayed"
+                  aria-valuemin="0"
+                  aria-valuemax="24"
+                  aria-valuenow="12"
+                  id="productsProgress"
+                >
+                  <span id="productsProgressFill"></span>
+                </div>
+
+                <button type="button" class="load-more-btn" id="loadMoreBtn">
+                  Load more products
+
+                  <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust strip -->
+      <section class="catalogue-trust" aria-label="GoldenGen shopping benefits">
+        <div class="section-container">
+          <div class="catalogue-trust-grid">
+            <article class="catalogue-trust-item">
+              <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+
+              <div>
+                <h2>Countrywide delivery</h2>
+                <p>Reliable delivery across all 47 counties.</p>
+              </div>
+            </article>
+
+            <article class="catalogue-trust-item">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+
+              <div>
+                <h2>Warranty included</h2>
+                <p>Clear warranty coverage on eligible products.</p>
+              </div>
+            </article>
+
+            <article class="catalogue-trust-item">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+
+              <div>
+                <h2>Quality checked</h2>
+                <p>Every listed device is inspected before dispatch.</p>
+              </div>
+            </article>
+
+            <article class="catalogue-trust-item">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+
+              <div>
+                <h2>Human support</h2>
+                <p>Talk to GoldenGen before or after purchase.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Quick links -->
+    <section class="quick-links" id="quick-links">
+      <div class="section-container">
+        <div class="quick-links-grid">
+          <div class="quick-links-brand">
+            <a href="index.html" class="nav-brand quick-links-logo">
+              <div class="logo-icon">
+                <div class="logo-diamond">
+                  <span class="logo-letters">GG</span>
+                </div>
+              </div>
+
+              <div class="logo-text">
+                <span class="logo-name">
+                  <span class="logo-golden">Golden</span>Gen
+                </span>
+
+                <span class="logo-tagline">Technologies</span>
+              </div>
+            </a>
+
+            <p class="quick-links-brand-desc">
+              Premium laptops, monitors, gaming gear and computer accessories
+              delivered across Kenya.
+            </p>
+
+            <div class="quick-links-social">
+              <a href="#" class="social-icon" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#" class="social-icon" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#" class="social-icon" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+
+              <a href="#" class="social-icon" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Quick Links</h2>
+
+            <ul class="quick-links-list">
+              <li>
+                <a href="index.html" class="quick-link-item">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a href="products.html" class="quick-link-item">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Products
+                </a>
+              </li>
+
+              <li>
+                <a href="about.html" class="quick-link-item">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  About Us
+                </a>
+              </li>
+
+              <li>
+                <a href="contact.html" class="quick-link-item">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Categories</h2>
+
+            <ul class="quick-links-list">
+              <li>
+                <a
+                  href="products.html?category=laptops"
+                  class="quick-link-item"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Laptops
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="products.html?category=monitors"
+                  class="quick-link-item"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Monitors
+                </a>
+              </li>
+
+              <li>
+                <a href="products.html?category=gaming" class="quick-link-item">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Gaming Gear
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="products.html?category=accessories"
+                  class="quick-link-item"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                  Accessories
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Contact Us</h2>
+
+            <ul class="quick-links-list">
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Nairobi, Kenya</span>
+              </li>
+
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-phone"></i>
+                <span>0795 044 498</span>
+              </li>
+
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-envelope"></i>
+                <span>sales@GoldenGen.co.ke</span>
+              </li>
+
+              <li class="quick-link-contact">
+                <i class="fa-regular fa-clock"></i>
+                <span>Mon — Sat: 8am — 8pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <p class="footer-copy">
+            &copy; 2026
+
+            <span class="footer-brand-name"> GoldenGen Technologies </span>. All
+            rights reserved.
+          </p>
+
+          <p class="footer-made">
+            Built in Kenya
+
+            <img
+              src="https://flagcdn.com/16x12/ke.png"
+              alt="Kenya flag"
+              width="16"
+              height="12"
+            />
+          </p>
+        </div>
+
+        <div class="footer-center">
+          <a href="#" class="footer-link">Privacy Policy</a>
+
+          <span class="footer-divider">|</span>
+
+          <a href="#" class="footer-link">Terms of Service</a>
+
+          <span class="footer-divider">|</span>
+
+          <a href="#" class="footer-link">Returns Policy</a>
+        </div>
+
+        <div class="footer-right">
+          <a href="#" class="footer-top-btn" id="backToTop">
+            Back to top
+
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile filters backdrop -->
+    <button
+      type="button"
+      class="products-filter-backdrop"
+      id="filtersBackdrop"
+      aria-label="Close filters"
+      tabindex="-1"
+    ></button>
+
+    <!-- Quick-view dialog -->
+    <dialog class="quick-view-dialog" id="quickViewDialog">
+      <button
+        type="button"
+        class="quick-view-close"
+        id="quickViewCloseBtn"
+        aria-label="Close quick view"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="quickViewContent"></div>
+    </dialog>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast" role="status">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <span id="toastMessage"></span>
+    </div>
+
+    <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/products.js"></script>
   </body>
 </html>

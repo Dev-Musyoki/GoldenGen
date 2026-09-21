@@ -1,0 +1,71 @@
+/* ============================================
+
+   ANNOUNCEMENT BAR
+   ============================================ */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: var(--white);
+  height: var(--announcement-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1001;
+  box-shadow: var(--shadow-sm);
+}
+
+.announcement-wrapper {
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.announcement-text {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  transition:
+    transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.announcement-text.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.announcement-text .fa-whatsapp {
+  color: #25d366;
+  font-size: 1rem;
+  margin-right: 4px;
+}
+
+.announcement-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary-color);
+  width: 0%;
+  animation: progress 4s linear infinite;
+}
+
+.announcement-bar:hover .announcement-progress {
+  animation-play-state: paused;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

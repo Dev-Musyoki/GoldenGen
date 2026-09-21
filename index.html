@@ -5,30 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoldenGen Technologies | Laptops & Computer Accessories</title>
 
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      .loading-overlay {
+        display: flex;
+      }
+      body {
+        overflow: hidden;
+      }
+    </style>
+
     <link rel="stylesheet" href="css/styles.css" />
+
     <!--Google Fonts-->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!--Font Awesome For icons-->
+    <!--Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
   <body>
-    <!--Loading overlay
+    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loader-content">
-        <h2 class="loader-logo">
-          <span class="loader-logo-golden">Golden</span>Gen Technologies
-        </h2>
-        <div class="loader-spinner"></div>
+        <!-- Logo -->
+        <div class="loader-logo">
+          <div class="logo-icon">
+            <div class="logo-diamond">
+              <span class="logo-letters">GG</span>
+            </div>
+          </div>
+          <span class="loader-logo-text">
+            <span class="loader-logo-golden">Golden</span>Gen
+          </span>
+        </div>
+
+        <!-- Spinner -->
+        <div class="loader-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+
+        <!-- Loading text -->
+        <p class="loader-text" id="loaderText">Loading amazing products...</p>
+
+        <!-- Progress bar -->
+        <div class="loader-progress">
+          <div class="loader-progress-fill" id="loaderProgress"></div>
+        </div>
       </div>
     </div>
-  -->
 
     <!--Announcement Bar-->
     <div class="announcement-bar">
@@ -199,7 +231,7 @@
             <!-- Floating badges -->
             <div class="hero-badge hero-badge-1">
               <i class="fa-solid fa-shield-halved"></i>
-              <span>1 Year Warranty</span>
+              <span>Warranty Included</span>
             </div>
             <div class="hero-badge hero-badge-2">
               <i class="fa-solid fa-truck-fast"></i>
@@ -221,7 +253,7 @@
     </section>
 
     <!-- FEATURED PRODUCTS -->
-    <section class="featured-products" id="featured-products">
+    <section class="featured-products reveal" id="featured-products">
       <div class="section-container">
         <!-- Section Header -->
         <div class="section-header">
@@ -249,14 +281,14 @@
 
         <!-- Products Grid -->
         <div class="products-grid" id="productsGrid">
-          <!-- ===== LAPTOPS (4 cards) ===== -->
+          <!-- LAPTOPS x-->
 
           <!-- Laptop 1 -->
           <div class="product-card" data-category="laptops">
             <div class="product-image-wrapper">
               <span class="product-badge product-badge-sale">-15%</span>
               <img
-                src="images/product1.jpg"
+                src="images/macbook-pro-M3.jpg"
                 alt="MacBook Pro M3"
                 class="product-image"
               />
@@ -292,7 +324,7 @@
             <div class="product-image-wrapper">
               <span class="product-badge product-badge-new">New</span>
               <img
-                src="images/product2.jpg"
+                src="images/dell-xps-15-9530.jpg"
                 alt="Dell XPS 15"
                 class="product-image"
               />
@@ -327,7 +359,7 @@
             <div class="product-image-wrapper">
               <span class="product-badge product-badge-hot">Hot</span>
               <img
-                src="images/product5.jpg"
+                src="images/hp-spectre-x360-14.jpg"
                 alt="HP Spectre x360"
                 class="product-image"
               />
@@ -362,7 +394,7 @@
             <div class="product-image-wrapper">
               <span class="product-badge product-badge-sale">-10%</span>
               <img
-                src="images/Lenovo thinkpad.avif"
+                src="images/lenovo-thinkpad-x1-carbon-gen12.jpg"
                 alt="Lenovo ThinkPad X1"
                 class="product-image"
               />
@@ -393,7 +425,7 @@
             </div>
           </div>
 
-          <!-- ===== ACCESSORIES (4 cards) ===== -->
+          <!-- ACCESSORIES -->
 
           <!-- Accessory 1 -->
           <div class="product-card" data-category="accessories">
@@ -537,7 +569,7 @@
             </div>
           </div>
 
-          <!-- ===== GAMING (4 cards) ===== -->
+          <!-- GAMING -->
 
           <!-- Gaming 1 -->
           <div class="product-card" data-category="gaming">
@@ -693,7 +725,7 @@
     </section>
 
     <!-- CATEGORIES SECTION -->
-    <section class="categories" id="categories">
+    <section class="categories reveal" id="categories">
       <div class="section-container">
         <!-- Section Header -->
         <div class="section-header">
@@ -799,7 +831,7 @@
     </section>
 
     <!-- VIDEO SECTION -->
-    <section class="video-section" id="video-section">
+    <section class="video-section reveal" id="video-section">
       <div class="section-container">
         <!-- Section Header -->
         <div class="section-header">
@@ -872,7 +904,7 @@
             <div class="video-stat-divider"></div>
             <div class="video-stat">
               <i class="fa-solid fa-shield-halved"></i>
-              <span>1 Year Warranty</span>
+              <span>Warranty Included</span>
             </div>
           </div>
         </div>
@@ -880,7 +912,7 @@
     </section>
 
     <!-- WHY CHOOSE US -->
-    <section class="why-us" id="why-us">
+    <section class="why-us reveal" id="why-us">
       <div class="section-container">
         <!-- Section Header -->
         <div class="section-header">
@@ -929,10 +961,11 @@
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h3 class="why-us-title-card">1 Year Warranty</h3>
+            <h3 class="why-us-title-card">Warranty Protection</h3>
             <p class="why-us-desc">
-              All laptops come with a full 1 year warranty. Shop with confidence
-              knowing your investment is fully protected.
+              New laptops come with a full 1 year warranty, refurbished units
+              with 6 months. Shop with confidence knowing your investment is
+              fully protected.
             </p>
           </div>
 
@@ -964,7 +997,7 @@
     </section>
 
     <!-- QUICK LINKS -->
-    <section class="quick-links" id="quick-links">
+    <section class="quick-links reveal" id="quick-links">
       <div class="section-container">
         <div class="quick-links-grid">
           <!-- Brand Column -->
@@ -1146,6 +1179,10 @@
       <source src="videos/background.mp3" type="audio/mpeg" />
     </audio>
 
+    <!-- Screen reader announcer for dark mode -->
+    <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>
+
+    <script src="js/shared.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
