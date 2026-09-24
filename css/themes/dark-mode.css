@@ -27,10 +27,13 @@ body.dark-mode .nav-link {
   color: var(--text-secondary);
 }
 body.dark-mode .logo-name {
-  color: var(--text-primary);
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-color), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 body.dark-mode .logo-tagline {
-  color: var(--text-light);
+  color: #7ab3f5;
 }
 
 /* Search bar in dark mode */

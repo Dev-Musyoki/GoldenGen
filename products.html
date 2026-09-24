@@ -12,7 +12,6 @@
     <title>Products | GoldenGen Technologies</title>
 
     <link rel="stylesheet" href="css/styles.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -24,7 +23,7 @@
     />
   </head>
 
-  <body>
+  <body class="dark-mode">
     <!-- Loading overlay -->
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loader-content">
@@ -35,8 +34,11 @@
             </div>
           </div>
 
-          <span class="loader-logo-text">
-            <span class="loader-logo-golden">Golden</span>Gen
+          <span class="loader-logo-copy">
+            <span class="loader-logo-text">
+              <span class="loader-logo-golden">Golden</span>Gen
+            </span>
+            <span class="loader-logo-technologies">Technologies</span>
           </span>
         </div>
 
@@ -124,6 +126,7 @@
               href="#"
               class="cart-icon"
               aria-label="Shopping cart"
+              aria-expanded="false"
               id="cartToggle"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
@@ -158,15 +161,6 @@
               </div>
             </div>
           </div>
-
-          <button
-            type="button"
-            class="dark-mode-toggle"
-            id="darkModeToggle"
-            aria-label="Toggle dark mode"
-          >
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          </button>
 
           <button
             type="button"
@@ -211,6 +205,26 @@
         <div class="section-container">
           <div class="products-toolbar">
             <div class="products-toolbar-left">
+              <button
+                type="button"
+                class="products-choose-toggle"
+                id="chooseToggleBtn"
+              >
+                <i class="fa-solid fa-compass" aria-hidden="true"></i>
+                Help me choose
+              </button>
+
+              <button
+                type="button"
+                class="products-compare-toggle"
+                id="compareToggleBtn"
+                disabled
+                aria-disabled="true"
+              >
+                <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
+                Compare <span id="compareCount">0</span>
+              </button>
+
               <button
                 type="button"
                 class="products-filter-toggle"
@@ -641,7 +655,7 @@
     </main>
 
     <!-- Quick links -->
-    <section class="quick-links" id="quick-links">
+    <section class="quick-links reveal" id="quick-links">
       <div class="section-container">
         <div class="quick-links-grid">
           <div class="quick-links-brand">
@@ -803,7 +817,9 @@
           </p>
 
           <p class="footer-made">
-            Built in Kenya
+            Made with
+            <i class="fa-solid fa-heart footer-heart" aria-hidden="true"></i>
+            in Kenya
 
             <img
               src="https://flagcdn.com/16x12/ke.png"
@@ -815,7 +831,7 @@
         </div>
 
         <div class="footer-center">
-          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
 
           <span class="footer-divider">|</span>
 
@@ -823,7 +839,7 @@
 
           <span class="footer-divider">|</span>
 
-          <a href="#" class="footer-link">Returns Policy</a>
+          <a href="#" class="footer-link">Sitemap</a>
         </div>
 
         <div class="footer-right">
@@ -857,6 +873,108 @@
       </button>
 
       <div id="quickViewContent"></div>
+    </dialog>
+
+    <!-- Product choice guide -->
+    <dialog class="choose-dialog" id="chooseDialog">
+      <button
+        type="button"
+        class="quick-view-close"
+        id="chooseDialogClose"
+        aria-label="Close product guide"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="choose-dialog-content">
+        <p class="quick-view-brand">A simpler way to start</p>
+        <h2>What are you buying for?</h2>
+        <p class="choose-dialog-intro">
+          We’ll surface suitable stocked laptops using the product information
+          in this catalogue.
+        </p>
+
+        <form id="chooseForm">
+          <fieldset class="choose-options">
+            <legend class="sr-only">Choose a use case</legend>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Student" />
+              <span class="choose-option-icon" aria-hidden="true">🎓</span>
+              <span>
+                <strong>University</strong>
+                <small>Notes, research, classes and everyday work</small>
+              </span>
+            </label>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Developer" />
+              <span class="choose-option-icon" aria-hidden="true">💻</span>
+              <span>
+                <strong>Programming</strong>
+                <small>Code, tools, containers and local development</small>
+              </span>
+            </label>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Gaming" />
+              <span class="choose-option-icon" aria-hidden="true">🎮</span>
+              <span>
+                <strong>Gaming</strong>
+                <small>Dedicated graphics and high-refresh play</small>
+              </span>
+            </label>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Creative work" />
+              <span class="choose-option-icon" aria-hidden="true">🎨</span>
+              <span>
+                <strong>Creative work</strong>
+                <small>Design, video, photography and heavy media</small>
+              </span>
+            </label>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Business" />
+              <span class="choose-option-icon" aria-hidden="true">💼</span>
+              <span>
+                <strong>Business</strong>
+                <small>Reliable office work, calls and travel</small>
+              </span>
+            </label>
+
+            <label class="choose-option">
+              <input type="radio" name="useCase" value="Everyday use" />
+              <span class="choose-option-icon" aria-hidden="true">🏠</span>
+              <span>
+                <strong>Everyday use</strong>
+                <small>Browsing, streaming and practical home tasks</small>
+              </span>
+            </label>
+          </fieldset>
+
+          <button type="submit" class="choose-submit">
+            Show suitable products
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <div id="chooseResults" class="choose-results" aria-live="polite"></div>
+      </div>
+    </dialog>
+
+    <!-- Product comparison dialog -->
+    <dialog class="compare-dialog" id="compareDialog">
+      <button
+        type="button"
+        class="quick-view-close"
+        id="compareDialogClose"
+        aria-label="Close comparison"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="compareContent"></div>
     </dialog>
 
     <!-- Toast notification -->

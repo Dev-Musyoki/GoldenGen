@@ -22,7 +22,6 @@ class LoadingOverlay {
     this.#text = document.getElementById("loaderText");
 
     if (!this.#overlay) {
-      console.warn("Overlay not found!");
       return;
     }
 
@@ -121,22 +120,6 @@ class LoadingOverlay {
 
 const loader = new LoadingOverlay();
 
-// ===== SYSTEM DARK MODE PREFERENCE (first visit only) =====
-(function applySystemPreference() {
-  const saved = localStorage.getItem("goldengen_darkmode");
-
-  if (!saved) {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    if (prefersDark) {
-      document.body.classList.add("dark-mode");
-    }
-  } else if (saved === "true") {
-    document.body.classList.add("dark-mode");
-  }
-})();
-
 // ===== SCROLL ANIMATIONS =====
 class ScrollAnimator {
   #observer;
@@ -218,66 +201,30 @@ if (announcementText) {
   });
 }
 
-// ===== DARK MODE =====
-class DarkMode {
-  #KEY = "goldengen_darkmode";
-  #btn = document.getElementById("darkModeToggle");
-  #icon = document.querySelector("#darkModeToggle i");
+// ===== SHARED NAVBAR SEARCH =====
+// The Products page owns live filtering; other pages route searches there.
+const sharedSearchInput = document.getElementById("searchInput");
+const sharedSearchButton = document.getElementById("searchBtn");
+const isProductsPage = Boolean(document.getElementById("productsGrid"));
 
-  constructor() {
-    this.#init();
+if (sharedSearchInput && !isProductsPage) {
+  function routeSharedSearch() {
+    const query = sharedSearchInput.value.trim();
+    const destination = query
+      ? `products.html?search=${encodeURIComponent(query)}`
+      : "products.html";
+
+    window.location.href = destination;
   }
 
-  get isEnabled() {
-    return localStorage.getItem(this.#KEY) === "true";
-  }
+  sharedSearchButton?.addEventListener("click", routeSharedSearch);
 
-  enable() {
-    document.body.classList.add("dark-mode");
-    localStorage.setItem(this.#KEY, "true");
-    this.#updateIcon(true);
-    this.#announceChange("Dark mode enabled");
-  }
-
-  disable() {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem(this.#KEY, "false");
-    this.#updateIcon(false);
-    this.#announceChange("Light mode enabled");
-  }
-
-  toggle() {
-    this.isEnabled ? this.disable() : this.enable();
-  }
-
-  #updateIcon(isDark) {
-    if (!this.#icon) return;
-    this.#icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
-  }
-
-  #announceChange(message) {
-    const announcer = document.getElementById("srAnnouncer");
-    if (announcer) announcer.textContent = message;
-  }
-
-  #init() {
-    if (this.isEnabled) this.enable();
-
-    if (this.#btn) {
-      this.#btn.addEventListener("click", () => this.toggle());
+  sharedSearchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      routeSharedSearch();
     }
-
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        if (!localStorage.getItem(this.#KEY)) {
-          e.matches ? this.enable() : this.disable();
-        }
-      });
-  }
+  });
 }
-
-const darkMode = new DarkMode();
 
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById("hamburger");
@@ -343,3 +290,156 @@ if (cartCount) {
     setTimeout(() => cartCount.classList.remove("bounce"), 400);
   };
 }
+
+// ===== SHARED CART HELPERS =====
+const GOLDENGEN_CART_KEY = "goldengen_cart";
+
+function ggReadCart() {
+  try {
+    const value = JSON.parse(localStorage.getItem(GOLDENGEN_CART_KEY));
+    return Array.isArray(value) ? value : [];
+  } catch {
+    return [];
+  }
+}
+
+function ggWriteCart(cart) {
+  try {
+    localStorage.setItem(GOLDENGEN_CART_KEY, JSON.stringify(cart));
+  } catch (error) {
+    console.warn("GoldenGen local storage error:", error);
+  }
+}
+
+function ggUpdateCartCount() {
+  const cartCountEl = document.getElementById("cartCount");
+  if (!cartCountEl) return;
+
+  const total = ggReadCart().reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0,
+  );
+  cartCountEl.textContent = total;
+}
+
+ggUpdateCartCount();
+
+function ggFormatPrice(value) {
+  return `Ksh ${Number(value).toLocaleString("en-KE")}`;
+}
+
+// ===== SHARED TOAST =====
+let ggToastTimeout;
+
+function ggShowToast(message) {
+  const toast = document.getElementById("toast");
+  const toastMessage = document.getElementById("toastMessage");
+
+  if (!toast || !toastMessage) return;
+
+  toastMessage.textContent = message;
+  toast.classList.add("visible");
+
+  clearTimeout(ggToastTimeout);
+
+  ggToastTimeout = setTimeout(() => {
+    toast.classList.remove("visible");
+  }, 2500);
+}
+
+// ===== SHARED CART DROPDOWN =====
+function ggRenderCartDropdown() {
+  const itemsEl = document.getElementById("cartDropdownItems");
+  const totalEl = document.getElementById("cartDropdownTotal");
+
+  if (!itemsEl || !totalEl) return;
+
+  const cart = ggReadCart();
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = `<p class="cart-dropdown-empty">Your cart is empty.</p>`;
+    totalEl.textContent = ggFormatPrice(0);
+    return;
+  }
+
+  let total = 0;
+
+  itemsEl.innerHTML = cart
+    .map((item) => {
+      if (!item.name) return "";
+
+      total += (item.price || 0) * item.quantity;
+
+      return `
+        <div class="cart-dropdown-item">
+          <img src="${item.image || ""}" alt="${item.name}" />
+          <div>
+            <p class="cart-dropdown-item-name">${item.name}</p>
+            <p class="cart-dropdown-item-meta">
+              ${ggFormatPrice(item.price || 0)} × ${item.quantity}
+            </p>
+          </div>
+          <button
+            type="button"
+            class="cart-dropdown-item-remove"
+            data-remove-cart-item="${item.id}"
+            aria-label="Remove ${item.name}"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      `;
+    })
+    .join("");
+
+  totalEl.textContent = ggFormatPrice(total);
+}
+
+function ggRemoveFromCart(productId) {
+  const cart = ggReadCart().filter(
+    (item) => String(item.id) !== String(productId),
+  );
+
+  ggWriteCart(cart);
+  ggUpdateCartCount();
+  ggRenderCartDropdown();
+}
+
+function ggToggleCartDropdown(forceState) {
+  const dropdown = document.getElementById("cartDropdown");
+  const toggle = document.getElementById("cartToggle");
+  if (!dropdown) return;
+
+  const shouldOpen = forceState ?? !dropdown.classList.contains("open");
+  dropdown.classList.toggle("open", shouldOpen);
+  toggle?.setAttribute("aria-expanded", String(shouldOpen));
+
+  if (shouldOpen) {
+    ggRenderCartDropdown();
+  }
+}
+
+document.getElementById("cartToggle")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  ggToggleCartDropdown();
+});
+
+document
+  .getElementById("cartDropdownClose")
+  ?.addEventListener("click", () => ggToggleCartDropdown(false));
+
+document.addEventListener("click", (event) => {
+  const widget = document.querySelector(".cart-widget");
+  if (widget && !widget.contains(event.target)) {
+    ggToggleCartDropdown(false);
+  }
+});
+
+document
+  .getElementById("cartDropdownItems")
+  ?.addEventListener("click", (event) => {
+    const removeBtn = event.target.closest("[data-remove-cart-item]");
+    if (!removeBtn) return;
+
+    ggRemoveFromCart(removeBtn.dataset.removeCartItem);
+  });

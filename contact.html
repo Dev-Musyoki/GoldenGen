@@ -3,382 +3,514 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GoldenGen Technologies</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <!--Google Fonts-->
+    <meta
+      name="description"
+      content="Contact GoldenGen Technologies about laptops, accessories, product guidance, orders, and delivery across Kenya."
+    />
+
+    <title>Contact GoldenGen | GoldenGen Technologies</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!--Font Awesome For icons-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-  <body>
-    <style>
-      /* ======== Products Page Styles ======== */
-      /* ======== SEARCH BAR & TOOLBAR ======== */
-      .products-controls {
-        background-color: var(--bg-primary);
-        padding-bottom: var(--spacing-lg);
-      }
 
-      .products-search-bar {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        background: var(--gray-light);
-        border: 2px solid rgba(255, 215, 0, 0.6);
-        border-radius: var(--radius-full);
-        padding: 14px 22px;
-        margin-bottom: var(--spacing-md);
-        transition:
-          border-color var(--transition-fast),
-          box-shadow var(--transition-fast);
-      }
-
-      .products-search-bar:focus-within {
-        border-color: var(--primary-color);
-        box-shadow: var(--blue-glow);
-      }
-
-      .products-search-bar i {
-        color: var(--text-light);
-        font-size: 1rem;
-      }
-
-      .products-search-bar input {
-        flex: 1;
-        background: none;
-        font-size: var(--font-size-base);
-        color: var(--text-primary);
-      }
-
-      .products-search-bar input::placeholder {
-        color: var(--text-light);
-      }
-
-      .products-toolbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        background: var(--bg-secondary);
-        border: 1px solid var(--gray-mid);
-        border-radius: var(--radius-md);
-        padding: var(--spacing-sm) var(--spacing-md);
-      }
-
-      .products-toolbar-count {
-        font-size: var(--font-size-sm);
-        color: var(--text-secondary);
-      }
-
-      .products-toolbar-actions {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-      }
-
-      .products-sort select {
-        font-size: var(--font-size-sm);
-        color: var(--text-primary);
-        background: var(--white);
-        border: 1px solid var(--gray-mid);
-        border-radius: var(--radius-sm);
-        padding: 6px 12px;
-        cursor: pointer;
-      }
-
-      .products-view-toggle {
-        display: flex;
-        border: 1px solid var(--gray-mid);
-        border-radius: var(--radius-sm);
-        overflow: hidden;
-      }
-
-      .view-btn {
-        padding: 7px 12px;
-        color: var(--text-secondary);
-        background: var(--white);
-        font-size: 0.9rem;
-        transition: all var(--transition-fast);
-      }
-
-      .view-btn:hover {
-        color: var(--primary-color);
-      }
-
-      .view-btn.active {
-        background: var(--primary-color);
-        color: var(--white);
-      }
-
-      @media (max-width: 600px) {
-        .products-toolbar {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .products-toolbar-actions {
-          justify-content: space-between;
-        }
-      }
-
-      .products-controls ~ .featured-products {
-        opacity: 1;
-        transform: none;
-      }
-      .page-header .section-container,
-      .products-controls .section-container {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-      /* ===== LOADING DOTS ===== */
-      .loading-dots::after {
-        content: "";
-        animation: loadingDots 1.4s infinite;
-      }
-
-      @keyframes loadingDots {
-        0% {
-          content: "";
-        }
-        25% {
-          content: ".";
-        }
-        50% {
-          content: "..";
-        }
-        75% {
-          content: "...";
-        }
-        100% {
-          content: "";
-        }
-      }
-    </style>
-    <script src="js/main.js">
-            // ===== GOLDENGEN — PRODUCTS PAGE ONLY =====
-      // Loaded after shared.js.
-
-      const KSH_RATE = 130; // rough USD → Ksh multiplier
-
-      // ===== CURATED GAMING PRODUCTS (DummyJSON has no gaming category) =====
-      const gamingProducts = [
-        {
-          id: "gaming-1",
-          name: "ASUS ROG Zephyrus",
-          category: "gaming",
-          price: 245000,
-          oldPrice: null,
-          rating: 4.7,
-          ratingCount: 187,
-          image: "images/product4.jpg",
-          badge: { text: "Hot", type: "hot" },
-        },
-        {
-          id: "gaming-2",
-          name: "Razer BlackWidow V4",
-          category: "gaming",
-          price: 18000,
-          oldPrice: 24000,
-          rating: 4.5,
-          ratingCount: 201,
-          image: "images/product8.jpg",
-          badge: { text: "-25%", type: "sale" },
-        },
-        {
-          id: "gaming-3",
-          name: "Logitech G Pro X",
-          category: "gaming",
-          price: 14500,
-          oldPrice: null,
-          rating: 4.7,
-          ratingCount: 334,
-          image: "images/product11.jpg",
-          badge: { text: "New", type: "new" },
-        },
-        {
-          id: "gaming-4",
-          name: "SteelSeries Arctis 7",
-          category: "gaming",
-          price: 16500,
-          oldPrice: 20000,
-          rating: 4.5,
-          ratingCount: 278,
-          image: "images/product12.jpg",
-          badge: { text: "-18%", type: "sale" },
-        },
-      ];
-
-      // ===== FETCH + NORMALIZE DUMMYJSON PRODUCTS =====
-      async function fetchProducts() {
-        try {
-          const response = await fetch("https://dummyjson.com/products?limit=0");
-          const data = await response.json();
-
-          const relevant = data.products.filter((p) =>
-            ["laptops", "smartphones", "tablets", "mobile-accessories"].includes(
-              p.category,
-            ),
-          );
-
-          const normalized = relevant.map((p) => ({
-            id: p.id,
-            name: p.title,
-            category: p.category === "laptops" ? "laptops" : "accessories",
-            price: Math.round(p.price * KSH_RATE),
-            oldPrice:
-              p.discountPercentage > 0
-                ? Math.round(p.price * KSH_RATE * (1 + p.discountPercentage / 100))
-                : null,
-            rating: p.rating,
-            ratingCount: Math.floor(p.rating * 40), // DummyJSON has no real count
-            image: p.thumbnail,
-            badge:
-              p.discountPercentage > 15
-                ? { text: `-${Math.round(p.discountPercentage)}%`, type: "sale" }
-                : null,
-          }));
-
-          return normalized;
-        } catch (error) {
-          console.error("Failed to fetch products:", error);
-          return [];
-        }
-      }
-
-      // ===== BUILD ONE PRODUCT CARD =====
-      function createProductCard(product) {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.dataset.category = product.category;
-
-        const badgeHTML = product.badge
-          ? `<span class="product-badge product-badge-${product.badge.type}">${product.badge.text}</span>`
-          : "";
-
-        const oldPriceHTML = product.oldPrice
-          ? `<span class="product-price-old">Ksh ${product.oldPrice.toLocaleString()}</span>`
-          : "";
-
-        const fullStars = Math.floor(product.rating);
-        const hasHalfStar = product.rating % 1 >= 0.5;
-        let starsHTML = "";
-        for (let i = 0; i < fullStars; i++) {
-          starsHTML += `<i class="fa-solid fa-star"></i>`;
-        }
-        if (hasHalfStar) {
-          starsHTML += `<i class="fa-solid fa-star-half-stroke"></i>`;
-        }
-
-        card.innerHTML = `
-          <div class="product-image-wrapper">
-            ${badgeHTML}
-            <img src="${product.image}" alt="${product.name}" class="product-image" />
-            <div class="product-overlay">
-              <button class="product-quick-view">Quick View</button>
+  <body class="dark-mode secondary-page">
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loader-content">
+        <div class="loader-logo">
+          <div class="logo-icon">
+            <div class="logo-diamond">
+              <span class="logo-letters">GG</span>
             </div>
           </div>
-          <div class="product-info">
-            <span class="product-category">${product.category}</span>
-            <h3 class="product-name">${product.name}</h3>
-            <div class="product-rating">
-              ${starsHTML}
-              <span class="product-rating-count">(${product.ratingCount})</span>
+          <span class="loader-logo-copy">
+            <span class="loader-logo-text">
+              <span class="loader-logo-golden">Golden</span>Gen
+            </span>
+            <span class="loader-logo-technologies">Technologies</span>
+          </span>
+        </div>
+
+        <div class="loader-spinner" aria-hidden="true">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+
+        <p class="loader-text" id="loaderText">Loading amazing products...</p>
+
+        <div class="loader-progress" aria-hidden="true">
+          <div class="loader-progress-fill" id="loaderProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="announcement-bar">
+      <div class="announcement-wrapper">
+        <p class="announcement-text" id="announcementText">
+          🇰🇪 Delivery countrywide — We deliver across Kenya
+        </p>
+        <div class="announcement-progress"></div>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand" aria-label="GoldenGen home">
+          <div class="logo-icon">
+            <div class="logo-diamond">
+              <span class="logo-letters">GG</span>
             </div>
-            <div class="product-price-row">
-              <div class="product-prices">
-                <span class="product-price">Ksh ${product.price.toLocaleString()}</span>
-                ${oldPriceHTML}
+          </div>
+          <div class="logo-text">
+            <span class="logo-name">
+              <span class="logo-golden">Golden</span>Gen
+            </span>
+            <span class="logo-tagline">Technologies</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="about.html" class="nav-link" aria-current="page">About</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+        </div>
+
+        <div class="nav-icons">
+          <div class="nav-search" id="navSearch">
+            <input
+              type="search"
+              placeholder="Search products, brands, accessories..."
+              class="search-input"
+              id="searchInput"
+              aria-label="Search products"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              id="searchBtn"
+              aria-label="Search products"
+            >
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <a href="#" class="account-icon" aria-label="Your account">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </a>
+
+          <div class="cart-widget">
+            <a
+              href="#"
+              class="cart-icon"
+              aria-label="Shopping cart"
+              aria-expanded="false"
+              id="cartToggle"
+            >
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
+
+            <div class="cart-dropdown" id="cartDropdown">
+              <div class="cart-dropdown-header">
+                <h3>Your Cart</h3>
+                <button
+                  type="button"
+                  class="cart-dropdown-close"
+                  id="cartDropdownClose"
+                  aria-label="Close cart"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
               </div>
-              <button class="product-cart-btn" aria-label="Add to cart">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+
+              <div class="cart-dropdown-items" id="cartDropdownItems"></div>
+
+              <div class="cart-dropdown-footer">
+                <div class="cart-dropdown-total">
+                  <span>Total</span>
+                  <span id="cartDropdownTotal">KSh 0</span>
+                </div>
+                <button type="button" class="cart-dropdown-checkout">
+                  View cart (coming soon)
+                </button>
+              </div>
             </div>
           </div>
-        `;
 
-        return card;
-      }
+          <button
+            type="button"
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-      // ===== RENDER GRID =====
-      function renderProducts(products) {
-        const grid = document.getElementById("productsGrid");
-        if (!grid) return;
+    <main>
+      <section class="page-header">
+        <div class="page-header-circle page-header-circle-1"></div>
+        <div class="page-header-circle page-header-circle-2"></div>
+        <div class="page-header-circle page-header-circle-3"></div>
+        <div class="section-container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Contact</span>
+          </nav>
 
-        grid.innerHTML = "";
-        products.forEach((product) => {
-          grid.appendChild(createProductCard(product));
-        });
+          <div class="page-header-row">
+            <h1 class="page-title-compact">
+              Contact <span class="page-title-accent">Us</span>
+            </h1>
+          </div>
+        </div>
+      </section>
 
-        // Reuse the same slide-up-on-scroll effect as the homepage
-        const cardObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry, index) => {
-              if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add("visible"), index * 60);
-                cardObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1 },
-        );
+      <section class="contact-section">
+        <div class="section-container">
+          <div class="contact-grid">
+            <div class="contact-info">
+              <p class="section-tag">
+                <span class="section-tag-dot"></span>
+                Get In Touch
+              </p>
 
-        grid
-          .querySelectorAll(".product-card")
-          .forEach((card) => cardObserver.observe(card));
-      }
+              <h2 class="contact-info-heading">We'd love to hear from you</h2>
 
-      // ===== INIT =====
-      let allProducts = [];
+              <p class="contact-info-desc">
+                Questions about a product, an order, or anything else — reach us
+                however works best for you.
+              </p>
 
-      async function initProducts() {
-        const fetched = await fetchProducts();
-        allProducts = [...fetched, ...gamingProducts];
-        renderProducts(allProducts);
+              <ul class="contact-info-list">
+                <li class="contact-info-item">
+                  <span class="contact-info-icon"
+                    ><i class="fa-solid fa-location-dot"></i
+                  ></span>
+                  <div>
+                    <p class="contact-info-label">Location</p>
+                    <p class="contact-info-value">Nairobi, Kenya</p>
+                  </div>
+                </li>
 
-        // Update counts now that real data is in
-        const productCount = document.getElementById("productCount");
-        const toolbarCount = document.getElementById("toolbarCount");
+                <li class="contact-info-item">
+                  <span class="contact-info-icon"
+                    ><i class="fa-solid fa-phone"></i
+                  ></span>
+                  <div>
+                    <p class="contact-info-label">Phone</p>
+                    <p class="contact-info-value">
+                      <a href="tel:+254795044498">0795 044 498</a>
+                    </p>
+                  </div>
+                </li>
 
-        if (productCount) {
-          productCount.classList.remove("loading-dots");
-          productCount.textContent = `${allProducts.length} products available`;
-        }
+                <li class="contact-info-item">
+                  <span class="contact-info-icon"
+                    ><i class="fa-solid fa-envelope"></i
+                  ></span>
+                  <div>
+                    <p class="contact-info-label">Email</p>
+                    <p class="contact-info-value">
+                      <a href="mailto:sales@goldengen.co.ke"
+                        >sales@goldengen.co.ke</a
+                      >
+                    </p>
+                  </div>
+                </li>
 
-        if (toolbarCount) {
-          toolbarCount.textContent = `Showing all ${allProducts.length} products`;
-        }
-      }
+                <li class="contact-info-item">
+                  <span class="contact-info-icon"
+                    ><i class="fa-brands fa-whatsapp"></i
+                  ></span>
+                  <div>
+                    <p class="contact-info-label">WhatsApp</p>
+                    <p class="contact-info-value">
+                      <a href="https://wa.me/254795044498">Chat on WhatsApp</a>
+                    </p>
+                  </div>
+                </li>
 
-      initProducts();
+                <li class="contact-info-item">
+                  <span class="contact-info-icon"
+                    ><i class="fa-regular fa-clock"></i
+                  ></span>
+                  <div>
+                    <p class="contact-info-label">Hours</p>
+                    <p class="contact-info-value">Mon — Sat: 8am — 8pm</p>
+                  </div>
+                </li>
+              </ul>
 
-      // ===== VIEW TOGGLE (grid / list) =====
-      const gridViewBtn = document.getElementById("gridViewBtn");
-      const listViewBtn = document.getElementById("listViewBtn");
+              <div class="contact-delivery-note">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <div>
+                  <strong>Buying from another county?</strong>
+                  <p>
+                    Tell us your county and we will confirm the delivery
+                    estimate.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-      if (gridViewBtn && listViewBtn) {
-        gridViewBtn.addEventListener("click", () => {
-          gridViewBtn.classList.add("active");
-          gridViewBtn.setAttribute("aria-pressed", "true");
-          listViewBtn.classList.remove("active");
-          listViewBtn.setAttribute("aria-pressed", "false");
-        });
+            <form
+              class="contact-form"
+              id="contactForm"
+              aria-describedby="contactFormIntro"
+              novalidate
+            >
+              <div class="contact-form-heading">
+                <h2>Send us a message</h2>
+                <p id="contactFormIntro">
+                  Include a product name or county when it helps us answer
+                  faster.
+                </p>
+              </div>
 
-        listViewBtn.addEventListener("click", () => {
-          listViewBtn.classList.add("active");
-          listViewBtn.setAttribute("aria-pressed", "true");
-          gridViewBtn.classList.remove("active");
-          gridViewBtn.setAttribute("aria-pressed", "false");
-        });
-      }
-    </script>
+              <div class="contact-form-row">
+                <div class="form-group">
+                  <label for="contactName">Full name</label>
+                  <input type="text" id="contactName" name="name" required />
+                  <span
+                    class="form-error"
+                    id="contactNameError"
+                    role="alert"
+                  ></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail">Email address</label>
+                  <input type="email" id="contactEmail" name="email" required />
+                  <span
+                    class="form-error"
+                    id="contactEmailError"
+                    role="alert"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <input
+                  type="text"
+                  id="contactSubject"
+                  name="subject"
+                  required
+                />
+                <span
+                  class="form-error"
+                  id="contactSubjectError"
+                  role="alert"
+                ></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea
+                  id="contactMessage"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+                <span
+                  class="form-error"
+                  id="contactMessageError"
+                  role="alert"
+                ></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary contact-form-submit">
+                <i class="fa-solid fa-paper-plane"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="quick-links reveal" id="quick-links">
+      <div class="section-container">
+        <div class="quick-links-grid">
+          <div class="quick-links-brand">
+            <a href="index.html" class="nav-brand quick-links-logo">
+              <div class="logo-icon">
+                <div class="logo-diamond">
+                  <span class="logo-letters">GG</span>
+                </div>
+              </div>
+              <div class="logo-text">
+                <span class="logo-name">
+                  <span class="logo-golden">Golden</span>Gen
+                </span>
+                <span class="logo-tagline">Technologies</span>
+              </div>
+            </a>
+
+            <p class="quick-links-brand-desc">
+              Premium laptops, monitors, gaming gear and computer accessories
+              delivered across Kenya.
+            </p>
+
+            <div class="quick-links-social">
+              <a href="#" class="social-icon" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="X"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="WhatsApp"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Quick Links</h2>
+            <ul class="quick-links-list">
+              <li>
+                <a href="index.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="products.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Products</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>About Us</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Categories</h2>
+            <ul class="quick-links-list">
+              <li>
+                <a href="products.html?category=laptops" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Laptops</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=monitors"
+                  class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Monitors</a
+                >
+              </li>
+              <li>
+                <a href="products.html?category=gaming" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Gaming Gear</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=accessories"
+                  class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Contact Us</h2>
+            <ul class="quick-links-list">
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-location-dot"></i
+                ><span>Nairobi, Kenya</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-phone"></i><span>0795 044 498</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-envelope"></i
+                ><span>sales@GoldenGen.co.ke</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-regular fa-clock"></i
+                ><span>Mon — Sat: 8am — 8pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <p class="footer-copy">
+            &copy; 2026
+            <span class="footer-brand-name">GoldenGen Technologies</span>. All
+            rights reserved.
+          </p>
+          <p class="footer-made">
+            Made with
+            <i class="fa-solid fa-heart footer-heart" aria-hidden="true"></i>
+            in Kenya
+            <img
+              src="https://flagcdn.com/16x12/ke.png"
+              alt="Kenya flag"
+              width="16"
+              height="12"
+            />
+          </p>
+        </div>
+
+        <div class="footer-center">
+          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+          <span class="footer-divider">|</span>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <span class="footer-divider">|</span>
+          <a href="#" class="footer-link">Sitemap</a>
+        </div>
+
+        <div class="footer-right">
+          <a href="#" class="footer-top-btn" id="backToTop">
+            Back to top
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <span id="toastMessage"></span>
+    </div>
+
+    <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/contact.js"></script>
   </body>
 </html>

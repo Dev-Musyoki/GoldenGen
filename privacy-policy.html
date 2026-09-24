@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="GoldenGen Technologies privacy policy and information about data used by this frontend project."
+    />
+    <title>Privacy Policy | GoldenGen Technologies</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body class="dark-mode secondary-page">
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loader-content">
+        <div class="loader-logo">
+          <div class="logo-icon">
+            <div class="logo-diamond"><span class="logo-letters">GG</span></div>
+          </div>
+          <span class="loader-logo-copy">
+            <span class="loader-logo-text">
+              <span class="loader-logo-golden">Golden</span>Gen
+            </span>
+            <span class="loader-logo-technologies">Technologies</span>
+          </span>
+        </div>
+
+        <div class="loader-spinner" aria-hidden="true">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+
+        <p class="loader-text" id="loaderText">
+          Preparing your privacy guide...
+        </p>
+
+        <div class="loader-progress" aria-hidden="true">
+          <div class="loader-progress-fill" id="loaderProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="announcement-bar">
+      <div class="announcement-wrapper">
+        <p class="announcement-text" id="announcementText">
+          Delivery countrywide — We deliver across Kenya
+        </p>
+        <div class="announcement-progress"></div>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand" aria-label="GoldenGen home">
+          <div class="logo-icon">
+            <div class="logo-diamond"><span class="logo-letters">GG</span></div>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name"
+              ><span class="logo-golden">Golden</span>Gen</span
+            >
+            <span class="logo-tagline">Technologies</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-icons">
+          <div class="nav-search" id="navSearch">
+            <input
+              type="search"
+              placeholder="Search products, brands, accessories..."
+              class="search-input"
+              id="searchInput"
+              aria-label="Search products"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              id="searchBtn"
+              aria-label="Search products"
+            >
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <a href="#" class="account-icon" aria-label="Your account">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </a>
+
+          <div class="cart-widget">
+            <a
+              href="#"
+              class="cart-icon"
+              id="cartToggle"
+              aria-label="Shopping cart"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <div class="cart-dropdown" id="cartDropdown">
+              <div class="cart-dropdown-header">
+                <h3>Your Cart</h3>
+                <button
+                  type="button"
+                  class="cart-dropdown-close"
+                  id="cartDropdownClose"
+                  aria-label="Close cart"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <div class="cart-dropdown-items" id="cartDropdownItems"></div>
+              <div class="cart-dropdown-footer">
+                <div class="cart-dropdown-total">
+                  <span>Total</span><span id="cartDropdownTotal">KSh 0</span>
+                </div>
+                <button type="button" class="cart-dropdown-checkout">
+                  View cart (coming soon)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page-header">
+        <div class="page-header-circle page-header-circle-1"></div>
+        <div class="page-header-circle page-header-circle-2"></div>
+        <div class="page-header-circle page-header-circle-3"></div>
+        <div class="section-container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Privacy Policy</span>
+          </nav>
+          <div class="page-header-row">
+            <h1 class="page-title-compact">
+              Privacy <span class="page-title-accent">Policy</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <section class="policy-page">
+        <div class="section-container policy-layout">
+          <aside class="policy-summary" aria-label="Privacy policy sections">
+            <p>Last updated: 24 September 2026</p>
+            <nav>
+              <a href="#information">Information we use</a>
+              <a href="#storage">Local storage</a>
+              <a href="#contact">Contact messages</a>
+              <a href="#choices">Your choices</a>
+            </nav>
+          </aside>
+
+          <article class="policy-content">
+            <div class="policy-intro">
+              <p class="section-tag">
+                <span class="section-tag-dot"></span>Clear by design
+              </p>
+              <h2>Your information should be easy to understand too.</h2>
+              <p>
+                This privacy policy describes the current GoldenGen frontend
+                project. It is a fictional storefront prototype and does not yet
+                process real payments, create accounts, or send contact messages
+                to a production service.
+              </p>
+            </div>
+
+            <section class="policy-section" id="information">
+              <h2>Information we use</h2>
+              <p>
+                The storefront may use information you enter into the contact
+                form, such as your name, email address, subject, and message. At
+                this stage, the form submission is simulated in your browser and
+                is not sent to a backend.
+              </p>
+            </section>
+
+            <section class="policy-section" id="storage">
+              <h2>Local storage</h2>
+              <p>
+                To make the prototype useful across pages, your browser may
+                store the following locally on your device:
+              </p>
+              <ul>
+                <li>
+                  Your shopping cart under <strong>goldengen_cart</strong>.
+                </li>
+                <li>
+                  Your wishlist under <strong>goldengen_wishlist</strong>.
+                </li>
+                <li>
+                  Your product comparison selection under
+                  <strong>goldengen_comparison</strong>.
+                </li>
+              </ul>
+              <div class="policy-note">
+                Clearing the site data for GoldenGen in your browser removes
+                these prototype preferences and cart items. No server-side
+                account or order record is created by this frontend alone.
+              </div>
+            </section>
+
+            <section class="policy-section" id="contact">
+              <h2>Contact messages</h2>
+              <p>
+                The current Contact page simulates a successful submission so
+                the interface can demonstrate validation and feedback. Until a
+                backend is connected, GoldenGen does not transmit or retain
+                those messages through this website.
+              </p>
+            </section>
+
+            <section class="policy-section" id="choices">
+              <h2>Your choices</h2>
+              <p>
+                You can clear local browser storage and decide what information
+                to enter into the contact form. GoldenGen uses one consistent
+                dark shopping theme. External services such as fonts, icons, or
+                flag imagery may have their own privacy policies when your
+                browser requests those assets.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>Future updates</h2>
+              <p>
+                When GoldenGen gains real accounts, inventory, delivery,
+                payments, reviews, or customer support integrations, this page
+                should be updated to explain the actual data flows, retention
+                periods, service providers, and user rights that apply.
+              </p>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <section class="quick-links reveal" id="quick-links">
+      <div class="section-container">
+        <div class="quick-links-grid">
+          <div class="quick-links-brand">
+            <a href="index.html" class="nav-brand quick-links-logo">
+              <div class="logo-icon">
+                <div class="logo-diamond">
+                  <span class="logo-letters">GG</span>
+                </div>
+              </div>
+              <div class="logo-text">
+                <span class="logo-name"
+                  ><span class="logo-golden">Golden</span>Gen</span
+                >
+                <span class="logo-tagline">Technologies</span>
+              </div>
+            </a>
+
+            <p class="quick-links-brand-desc">
+              Premium laptops, monitors, gaming gear and computer accessories
+              delivered across Kenya.
+            </p>
+
+            <div class="quick-links-social">
+              <a href="#" class="social-icon" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="X"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="WhatsApp"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Quick Links</h2>
+            <ul class="quick-links-list">
+              <li>
+                <a href="index.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="products.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Products</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>About Us</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Contact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy-policy.html"
+                  class="quick-link-item"
+                  aria-current="page"
+                  ><i class="fa-solid fa-chevron-right"></i>Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Categories</h2>
+            <ul class="quick-links-list">
+              <li>
+                <a href="products.html?category=laptops" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Laptops</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=monitors"
+                  class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Monitors</a
+                >
+              </li>
+              <li>
+                <a href="products.html?category=gaming" class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Gaming Gear</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html?category=accessories"
+                  class="quick-link-item"
+                  ><i class="fa-solid fa-chevron-right"></i>Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="quick-links-col">
+            <h2 class="quick-links-heading">Contact Us</h2>
+            <ul class="quick-links-list">
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-location-dot"></i
+                ><span>Nairobi, Kenya</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-phone"></i><span>0795 044 498</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-solid fa-envelope"></i
+                ><span>sales@GoldenGen.co.ke</span>
+              </li>
+              <li class="quick-link-contact">
+                <i class="fa-regular fa-clock"></i
+                ><span>Mon — Sat: 8am — 8pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <p class="footer-copy">
+            &copy; 2026
+            <span class="footer-brand-name">GoldenGen Technologies</span>. All
+            rights reserved.
+          </p>
+          <p class="footer-made">
+            Made with
+            <i class="fa-solid fa-heart footer-heart" aria-hidden="true"></i>
+            in Kenya
+            <img
+              src="https://flagcdn.com/16x12/ke.png"
+              alt="Kenya flag"
+              width="16"
+              height="12"
+            />
+          </p>
+        </div>
+        <div class="footer-center">
+          <a href="privacy-policy.html" class="footer-link" aria-current="page"
+            >Privacy Policy</a
+          >
+          <span class="footer-divider">|</span>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <span class="footer-divider">|</span>
+          <a href="#" class="footer-link">Sitemap</a>
+        </div>
+        <div class="footer-right">
+          <a href="#" class="footer-top-btn" id="backToTop"
+            >Back to top <i class="fa-solid fa-arrow-up"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <span id="toastMessage"></span>
+    </div>
+    <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>
+
+    <script src="js/shared.js"></script>
+  </body>
+</html>

@@ -29,19 +29,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-  <body>
+  <body class="dark-mode">
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
       <div class="loader-content">
-        <!-- Logo -->
         <div class="loader-logo">
           <div class="logo-icon">
             <div class="logo-diamond">
               <span class="logo-letters">GG</span>
             </div>
           </div>
-          <span class="loader-logo-text">
-            <span class="loader-logo-golden">Golden</span>Gen
+          <span class="loader-logo-copy">
+            <span class="loader-logo-text">
+              <span class="loader-logo-golden">Golden</span>Gen
+            </span>
+            <span class="loader-logo-technologies">Technologies</span>
           </span>
         </div>
 
@@ -126,19 +128,44 @@
           </a>
 
           <!--Cart-->
-          <a href="#" class="cart-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count" id="cartCount">0</span>
-          </a>
+          <div class="cart-widget">
+            <a
+              href="#"
+              class="cart-icon"
+              aria-label="Shopping cart"
+              aria-expanded="false"
+              id="cartToggle"
+            >
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
 
-          <!--Dark Mode-->
-          <button
-            class="dark-mode-toggle"
-            id="darkModeToggle"
-            aria-label="Toggle dark mode"
-          >
-            <i class="fa-solid fa-moon"></i>
-          </button>
+            <div class="cart-dropdown" id="cartDropdown">
+              <div class="cart-dropdown-header">
+                <h3>Your Cart</h3>
+                <button
+                  type="button"
+                  class="cart-dropdown-close"
+                  id="cartDropdownClose"
+                  aria-label="Close cart"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <div class="cart-dropdown-items" id="cartDropdownItems"></div>
+
+              <div class="cart-dropdown-footer">
+                <div class="cart-dropdown-total">
+                  <span>Total</span>
+                  <span id="cartDropdownTotal">KSh 0</span>
+                </div>
+                <button type="button" class="cart-dropdown-checkout">
+                  View cart (coming soon)
+                </button>
+              </div>
+            </div>
+          </div>
 
           <!--Hamburger-->
           <button
@@ -276,6 +303,7 @@
           <button class="filter-tab" data-filter="accessories">
             Accessories
           </button>
+          <button class="filter-tab" data-filter="monitors">Monitors</button>
           <button class="filter-tab" data-filter="gaming">Gaming</button>
         </div>
 
@@ -284,12 +312,19 @@
           <!-- LAPTOPS x-->
 
           <!-- Laptop 1 -->
-          <div class="product-card" data-category="laptops">
+          <div
+            class="product-card"
+            data-category="laptops"
+            data-id="1"
+            data-summary="Thin and lightweight Apple laptop with the M3 chip, bright Liquid Retina display and all-day battery life."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-sale">-15%</span>
+              <span class="product-badge product-badge-new">New</span>
               <img
-                src="images/macbook-pro-M3.jpg"
-                alt="MacBook Pro M3"
+                src="images/products/apple-macbook-air-m3.jpg"
+                alt="Apple MacBook Air M3 13 inch"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -298,19 +333,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Laptop</span>
-              <h3 class="product-name">MacBook Pro M3</h3>
+              <h3 class="product-name">Apple MacBook Air M3 13&quot;</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
-                <span class="product-rating-count">(128)</span>
+                <span class="product-rating-count">4.8 (184)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 185,000</span>
-                  <span class="product-price-old">Ksh 218,000</span>
+                  <span class="product-price">KSh 169,000</span>
+                  <span class="product-price-old">KSh 179,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -320,12 +355,19 @@
           </div>
 
           <!-- Laptop 2 -->
-          <div class="product-card" data-category="laptops">
+          <div
+            class="product-card"
+            data-category="laptops"
+            data-id="2"
+            data-summary="Premium performance laptop built for demanding creative work, productivity and high-resolution media."
+            data-warranty="1-year warranty"
+            data-delivery="Free Nairobi delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-new">New</span>
+              <span class="product-badge product-badge-sale">-7%</span>
               <img
-                src="images/dell-xps-15-9530.jpg"
-                alt="Dell XPS 15"
+                src="images/products/dell-xps-15-9530.jpg"
+                alt="Dell XPS 15 9530 15.6 inch"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -334,18 +376,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Laptop</span>
-              <h3 class="product-name">Dell XPS 15</h3>
+              <h3 class="product-name">Dell XPS 15 9530 15.6&quot;</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
-                <span class="product-rating-count">(94)</span>
+                <span class="product-rating-count">4.7 (126)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 210,000</span>
+                  <span class="product-price">KSh 228,000</span>
+                  <span class="product-price-old">KSh 245,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -355,12 +398,19 @@
           </div>
 
           <!-- Laptop 3 -->
-          <div class="product-card" data-category="laptops">
+          <div
+            class="product-card"
+            data-category="laptops"
+            data-id="3"
+            data-summary="Premium convertible laptop with an OLED touch display, flexible hinge and powerful everyday performance."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-hot">Hot</span>
+              <span class="product-badge product-badge-hot">Popular</span>
               <img
-                src="images/hp-spectre-x360-14.jpg"
-                alt="HP Spectre x360"
+                src="images/products/hp-spectre-x360-14.jpg"
+                alt="HP Spectre x360 14 OLED"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -369,18 +419,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Laptop</span>
-              <h3 class="product-name">HP Spectre x360</h3>
+              <h3 class="product-name">HP Spectre x360 14 OLED</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
-                <span class="product-rating-count">(76)</span>
+                <span class="product-rating-count">4.6 (91)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 178,000</span>
+                  <span class="product-price">KSh 198,000</span>
+                  <span class="product-price-old">KSh 214,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -390,12 +441,21 @@
           </div>
 
           <!-- Laptop 4 -->
-          <div class="product-card" data-category="laptops">
+          <div
+            class="product-card"
+            data-category="laptops"
+            data-id="4"
+            data-summary="Flagship business notebook with a durable chassis, excellent keyboard and enterprise-grade security."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-sale">-10%</span>
+              <span class="product-badge product-badge-bestseller"
+                >Bestseller</span
+              >
               <img
-                src="images/lenovo-thinkpad-x1-carbon-gen12.jpg"
-                alt="Lenovo ThinkPad X1"
+                src="images/products/lenovo-thinkpad-x1-carbon-gen12.jpg"
+                alt="Lenovo ThinkPad X1 Carbon Gen 12"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -404,19 +464,18 @@
             </div>
             <div class="product-info">
               <span class="product-category">Laptop</span>
-              <h3 class="product-name">Lenovo ThinkPad X1</h3>
+              <h3 class="product-name">Lenovo ThinkPad X1 Carbon Gen 12</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
-                <span class="product-rating-count">(143)</span>
+                <span class="product-rating-count">4.8 (143)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 195,000</span>
-                  <span class="product-price-old">Ksh 217,000</span>
+                  <span class="product-price">KSh 235,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -428,12 +487,21 @@
           <!-- ACCESSORIES -->
 
           <!-- Accessory 1 -->
-          <div class="product-card" data-category="accessories">
+          <div
+            class="product-card"
+            data-category="accessories"
+            data-id="13"
+            data-summary="Premium productivity mouse with quiet clicks, precise tracking and multi-device control."
+            data-warranty="6-month warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-sale">-20%</span>
+              <span class="product-badge product-badge-bestseller"
+                >Bestseller</span
+              >
               <img
-                src="images/product3.jpg"
-                alt="Logitech MX Master 3"
+                src="images/products/logitech-mx-master-3s.jpg"
+                alt="Logitech MX Master 3S"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -442,19 +510,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
-              <h3 class="product-name">Logitech MX Master 3</h3>
+              <h3 class="product-name">Logitech MX Master 3S</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <span class="product-rating-count">(256)</span>
+                <span class="product-rating-count">4.9 (486)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 12,000</span>
-                  <span class="product-price-old">Ksh 15,000</span>
+                  <span class="product-price">KSh 14,500</span>
+                  <span class="product-price-old">KSh 16,500</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -464,12 +532,19 @@
           </div>
 
           <!-- Accessory 2 -->
-          <div class="product-card" data-category="accessories">
+          <div
+            class="product-card"
+            data-category="monitors"
+            data-id="9"
+            data-summary="Immersive QHD gaming monitor with a fast refresh rate, curved panel and smooth adaptive gameplay."
+            data-warranty="1-year warranty"
+            data-delivery="Fragile-item delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-new">New</span>
+              <span class="product-badge product-badge-hot">Popular</span>
               <img
-                src="images/product7.jpg"
-                alt="Samsung 27 Monitor"
+                src="images/products/samsung-odyssey-g5-27.jpg"
+                alt="Samsung Odyssey G5 27 inch QHD"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -478,18 +553,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
-              <h3 class="product-name">Samsung 27" Monitor</h3>
+              <h3 class="product-name">Samsung Odyssey G5 27" QHD</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <span class="product-rating-count">(312)</span>
+                <span class="product-rating-count">4.6 (236)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 38,000</span>
+                  <span class="product-price">KSh 52,000</span>
+                  <span class="product-price-old">KSh 59,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -499,11 +575,18 @@
           </div>
 
           <!-- Accessory 3 -->
-          <div class="product-card" data-category="accessories">
+          <div
+            class="product-card"
+            data-category="accessories"
+            data-id="15"
+            data-summary="Flagship wireless headphones with advanced noise cancellation, clear calls and rich sound."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-sale">-12%</span>
+              <span class="product-badge product-badge-sale">-10%</span>
               <img
-                src="images/product9.jpg"
+                src="images/products/sony-wh-1000xm5.jpg"
                 alt="Sony WH-1000XM5"
                 class="product-image"
               />
@@ -513,19 +596,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
-              <h3 class="product-name">Sony WH-1000XM5</h3>
+              <h3 class="product-name">Sony WH-1000XM5 Headphones</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
-                <span class="product-rating-count">(445)</span>
+                <span class="product-rating-count">4.8 (524)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 28,000</span>
-                  <span class="product-price-old">Ksh 32,000</span>
+                  <span class="product-price">KSh 47,000</span>
+                  <span class="product-price-old">KSh 52,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -535,12 +618,19 @@
           </div>
 
           <!-- Accessory 4 -->
-          <div class="product-card" data-category="accessories">
+          <div
+            class="product-card"
+            data-category="accessories"
+            data-id="14"
+            data-summary="Compact wireless mechanical keyboard with flexible connectivity and a comfortable typing feel."
+            data-warranty="6-month warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-hot">Hot</span>
+              <span class="product-badge product-badge-hot">Popular</span>
               <img
-                src="images/product10.jpg"
-                alt="Keychron K2 Keyboard"
+                src="images/products/keychron-k2-pro.jpg"
+                alt="Keychron K2 Pro Mechanical Keyboard"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -549,18 +639,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
-              <h3 class="product-name">Keychron K2 Keyboard</h3>
+              <h3 class="product-name">Keychron K2 Pro Mechanical Keyboard</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
-                <span class="product-rating-count">(189)</span>
+                <span class="product-rating-count">4.7 (267)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 9,500</span>
+                  <span class="product-price">KSh 13,500</span>
+                  <span class="product-price-old">KSh 15,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -572,12 +663,19 @@
           <!-- GAMING -->
 
           <!-- Gaming 1 -->
-          <div class="product-card" data-category="gaming">
+          <div
+            class="product-card"
+            data-category="gaming"
+            data-id="19"
+            data-summary="Compact high-performance gaming laptop balancing powerful graphics, portability and premium display quality."
+            data-warranty="1-year warranty"
+            data-delivery="Insured delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-hot">Hot</span>
+              <span class="product-badge product-badge-hot">Popular</span>
               <img
-                src="images/product4.jpg"
-                alt="ASUS ROG Zephyrus"
+                src="images/products/asus-rog-zephyrus-g14.jpg"
+                alt="ASUS ROG Zephyrus G14"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -586,18 +684,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Gaming</span>
-              <h3 class="product-name">ASUS ROG Zephyrus</h3>
+              <h3 class="product-name">ASUS ROG Zephyrus G14</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
-                <span class="product-rating-count">(187)</span>
+                <span class="product-rating-count">4.8 (197)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 245,000</span>
+                  <span class="product-price">KSh 285,000</span>
+                  <span class="product-price-old">KSh 309,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -607,11 +706,18 @@
           </div>
 
           <!-- Gaming 2 -->
-          <div class="product-card" data-category="gaming">
+          <div
+            class="product-card"
+            data-category="gaming"
+            data-id="21"
+            data-summary="Full-size mechanical gaming keyboard with programmable controls and RGB lighting."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-sale">-25%</span>
+              <span class="product-badge product-badge-sale">-13%</span>
               <img
-                src="images/product8.jpg"
+                src="images/products/razer-blackwidow-v4.jpg"
                 alt="Razer BlackWidow V4"
                 class="product-image"
               />
@@ -621,19 +727,21 @@
             </div>
             <div class="product-info">
               <span class="product-category">Gaming</span>
-              <h3 class="product-name">Razer BlackWidow V4</h3>
+              <h3 class="product-name">
+                Razer BlackWidow V4 Mechanical Keyboard
+              </h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
-                <span class="product-rating-count">(201)</span>
+                <span class="product-rating-count">4.6 (241)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 18,000</span>
-                  <span class="product-price-old">Ksh 24,000</span>
+                  <span class="product-price">KSh 23,500</span>
+                  <span class="product-price-old">KSh 27,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -643,11 +751,20 @@
           </div>
 
           <!-- Gaming 3 -->
-          <div class="product-card" data-category="gaming">
+          <div
+            class="product-card"
+            data-category="gaming"
+            data-id="22"
+            data-summary="Ultra-light wireless esports mouse with precise tracking and long battery life."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
-              <span class="product-badge product-badge-new">New</span>
+              <span class="product-badge product-badge-bestseller"
+                >Bestseller</span
+              >
               <img
-                src="images/product11.jpg"
+                src="images/products/logitech-g-pro-x-superlight-2.jpg"
                 alt="Logitech G Pro X"
                 class="product-image"
               />
@@ -657,18 +774,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Gaming</span>
-              <h3 class="product-name">Logitech G Pro X</h3>
+              <h3 class="product-name">Logitech G Pro X Superlight 2</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
-                <span class="product-rating-count">(334)</span>
+                <span class="product-rating-count">4.8 (329)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 14,500</span>
+                  <span class="product-price">KSh 21,500</span>
+                  <span class="product-price-old">KSh 24,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -678,12 +796,19 @@
           </div>
 
           <!-- Gaming 4 -->
-          <div class="product-card" data-category="gaming">
+          <div
+            class="product-card"
+            data-category="gaming"
+            data-id="24"
+            data-summary="Comfortable wireless gaming headset with clear audio and all-day comfort."
+            data-warranty="1-year warranty"
+            data-delivery="Countrywide delivery"
+          >
             <div class="product-image-wrapper">
               <span class="product-badge product-badge-sale">-18%</span>
               <img
-                src="images/product12.jpg"
-                alt="SteelSeries Arctis 7"
+                src="images/products/steelseries-arctis-nova-7.jpg"
+                alt="SteelSeries Arctis Nova 7 Wireless"
                 class="product-image"
               />
               <div class="product-overlay">
@@ -692,19 +817,19 @@
             </div>
             <div class="product-info">
               <span class="product-category">Gaming</span>
-              <h3 class="product-name">SteelSeries Arctis 7</h3>
+              <h3 class="product-name">SteelSeries Arctis Nova 7 Wireless</h3>
               <div class="product-rating">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
-                <span class="product-rating-count">(278)</span>
+                <span class="product-rating-count">4.7 (214)</span>
               </div>
               <div class="product-price-row">
                 <div class="product-prices">
-                  <span class="product-price">Ksh 16,500</span>
-                  <span class="product-price-old">Ksh 20,000</span>
+                  <span class="product-price">KSh 28,500</span>
+                  <span class="product-price-old">KSh 32,000</span>
                 </div>
                 <button class="product-cart-btn" aria-label="Add to cart">
                   <i class="fa-solid fa-cart-plus"></i>
@@ -744,7 +869,10 @@
         <!-- Categories Grid -->
         <div class="categories-grid">
           <!-- Big Card — Laptops -->
-          <div class="category-card category-card-big cat-laptops">
+          <a
+            href="products.html?category=laptops"
+            class="category-card category-card-big cat-laptops"
+          >
             <div class="category-overlay"></div>
             <div class="category-content">
               <div class="category-icon">
@@ -752,15 +880,18 @@
               </div>
               <h3 class="category-name">Laptops</h3>
               <p class="category-count">120+ Products</p>
-              <a href="products.html" class="category-btn">
+              <span class="category-btn">
                 Shop Now <i class="fa-solid fa-arrow-right"></i>
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
 
           <!-- Small Cards -->
           <div class="categories-small-grid">
-            <div class="category-card category-card-small cat-keyboards">
+            <a
+              href="products.html?category=accessories&search=keyboard"
+              class="category-card category-card-small cat-keyboards"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -769,9 +900,12 @@
                 <h3 class="category-name">Keyboards</h3>
                 <p class="category-count">45+ Products</p>
               </div>
-            </div>
+            </a>
 
-            <div class="category-card category-card-small cat-mice">
+            <a
+              href="products.html?category=accessories&search=mouse"
+              class="category-card category-card-small cat-mice"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -780,9 +914,12 @@
                 <h3 class="category-name">Mice</h3>
                 <p class="category-count">38+ Products</p>
               </div>
-            </div>
+            </a>
 
-            <div class="category-card category-card-small cat-monitors">
+            <a
+              href="products.html?category=monitors"
+              class="category-card category-card-small cat-monitors"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -791,9 +928,12 @@
                 <h3 class="category-name">Monitors</h3>
                 <p class="category-count">30+ Products</p>
               </div>
-            </div>
+            </a>
 
-            <div class="category-card category-card-small cat-headphones">
+            <a
+              href="products.html?category=accessories&search=headphone"
+              class="category-card category-card-small cat-headphones"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -802,9 +942,12 @@
                 <h3 class="category-name">Headphones</h3>
                 <p class="category-count">52+ Products</p>
               </div>
-            </div>
+            </a>
 
-            <div class="category-card category-card-small cat-gaming">
+            <a
+              href="products.html?category=gaming"
+              class="category-card category-card-small cat-gaming"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -813,9 +956,12 @@
                 <h3 class="category-name">Gaming Gear</h3>
                 <p class="category-count">67+ Products</p>
               </div>
-            </div>
+            </a>
 
-            <div class="category-card category-card-small cat-bags">
+            <a
+              href="products.html?category=accessories&search=bag"
+              class="category-card category-card-small cat-bags"
+            >
               <div class="category-overlay"></div>
               <div class="category-content">
                 <div class="category-icon">
@@ -824,88 +970,7 @@
                 <h3 class="category-name">Bags & Cases</h3>
                 <p class="category-count">28+ Products</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO SECTION -->
-    <section class="video-section reveal" id="video-section">
-      <div class="section-container">
-        <!-- Section Header -->
-        <div class="section-header">
-          <div class="section-tag">
-            <span class="section-tag-dot"></span>
-            See It In Action
-          </div>
-          <h2 class="section-title">
-            Watch Our <span class="section-title-highlight">Products</span> In
-            Action
-          </h2>
-          <p class="section-subtitle">
-            See the quality and performance of our premium laptops and
-            accessories
-          </p>
-        </div>
-
-        <!-- Video Wrapper -->
-        <div class="video-wrapper">
-          <!-- Thumbnail & Play Button -->
-          <div class="video-container" id="videoContainer">
-            <!-- Video Thumbnail -->
-            <img
-              src="images/video-thumbnail.png"
-              alt="Product showcase video"
-              class="video-thumbnail"
-              id="videoThumbnail"
-            />
-
-            <!-- Play Button Overlay -->
-            <div class="video-play-overlay" id="videoPlayOverlay">
-              <button
-                class="video-play-btn"
-                id="videoPlayBtn"
-                aria-label="Play video"
-              >
-                <i class="fa-solid fa-play"></i>
-              </button>
-              <p class="video-play-text">Watch Product Showcase</p>
-            </div>
-
-            <!-- Actual Video (hidden until play clicked) -->
-            <video
-              class="video-player"
-              id="videoPlayer"
-              controls
-              preload="none"
-            >
-              <source src="videos/showcase.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <!-- Video Stats Row -->
-          <div class="video-stats">
-            <div class="video-stat">
-              <i class="fa-solid fa-laptop"></i>
-              <span>500+ Products</span>
-            </div>
-            <div class="video-stat-divider"></div>
-            <div class="video-stat">
-              <i class="fa-solid fa-star"></i>
-              <span>Top Rated Brands</span>
-            </div>
-            <div class="video-stat-divider"></div>
-            <div class="video-stat">
-              <i class="fa-solid fa-truck-fast"></i>
-              <span>Countrywide Delivery</span>
-            </div>
-            <div class="video-stat-divider"></div>
-            <div class="video-stat">
-              <i class="fa-solid fa-shield-halved"></i>
-              <span>Warranty Included</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -1063,7 +1128,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="quick-link-item">
+                <a href="privacy-policy.html" class="quick-link-item">
                   <i class="fa-solid fa-chevron-right"></i> Privacy Policy
                 </a>
               </li>
@@ -1158,7 +1223,7 @@
 
         <!-- Center — Links -->
         <div class="footer-center">
-          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
           <span class="footer-divider">|</span>
           <a href="#" class="footer-link">Terms of Service</a>
           <span class="footer-divider">|</span>
@@ -1174,10 +1239,25 @@
       </div>
     </footer>
 
-    <!-- Background Music -->
-    <audio id="bgMusic" loop preload="none">
-      <source src="videos/background.mp3" type="audio/mpeg" />
-    </audio>
+    <!-- Quick-view dialog -->
+    <dialog class="quick-view-dialog" id="quickViewDialog">
+      <button
+        type="button"
+        class="quick-view-close"
+        id="quickViewCloseBtn"
+        aria-label="Close quick view"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="quickViewContent"></div>
+    </dialog>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast" role="status">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <span id="toastMessage"></span>
+    </div>
 
     <!-- Screen reader announcer for dark mode -->
     <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>

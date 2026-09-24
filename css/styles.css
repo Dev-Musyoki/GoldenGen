@@ -14,10 +14,11 @@
 @import url("./components/hero.css");
 @import url("./components/products.css");
 @import url("./components/categories.css");
-@import url("./components/video.css");
 @import url("./components/why-us.css");
 @import url("./components/quick-links.css");
 @import url("./components/footer.css");
+@import url("./components/overlays.css");
+@import url("./components/page-header.css");
 
 /* ===== LAYOUT ===== */
 @import url("./layout/containers.css");
@@ -28,3 +29,10 @@
 
 /* ===== PAGES ===== */
 @import url("./pages/products.css");
+@import url("./pages/about.css");
+@import url("./pages/contact.css");
+@import url("./pages/privacy.css");
+
+@view-transition {
+  navigation: auto;
+}

@@ -16,10 +16,13 @@
   overflow: hidden;
   z-index: 1001;
   box-shadow: var(--shadow-sm);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--primary-color), var(--gold)) 1;
 }
 
 .announcement-wrapper {
   width: 100%;
+  padding: 0 var(--spacing-md);
   text-align: center;
   position: relative;
 }
@@ -28,6 +31,7 @@
   font-size: var(--font-size-base);
   font-weight: 400;
   letter-spacing: 0.5px;
+  line-height: 1.35;
   display: inline-block;
   transition:
     transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),

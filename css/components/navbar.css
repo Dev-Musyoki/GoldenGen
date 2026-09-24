@@ -82,25 +82,29 @@
   display: flex;
   flex-direction: column;
   line-height: 1.2;
+  padding: 2px 0 1px;
   white-space: nowrap;
 }
 
 .logo-name {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-color), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
   letter-spacing: -0.3px;
 }
 
 .logo-golden {
-  color: var(--primary-color);
+  color: inherit;
 }
 
 .logo-tagline {
-  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  font-size: clamp(0.65rem, 1.5vw, 0.7rem);
   font-weight: 500;
-  color: var(--text-light);
-  letter-spacing: 3px;
+  color: #7ab3f5;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-top: 2px;
 }

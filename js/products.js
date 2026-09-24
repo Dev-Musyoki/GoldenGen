@@ -54,6 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
     quickViewContent: document.getElementById("quickViewContent"),
     quickViewClose: document.getElementById("quickViewCloseBtn"),
 
+    chooseDialog: document.getElementById("chooseDialog"),
+    chooseToggle: document.getElementById("chooseToggleBtn"),
+    chooseClose: document.getElementById("chooseDialogClose"),
+    chooseForm: document.getElementById("chooseForm"),
+    chooseResults: document.getElementById("chooseResults"),
+
+    compareToggle: document.getElementById("compareToggleBtn"),
+    compareCount: document.getElementById("compareCount"),
+    compareDialog: document.getElementById("compareDialog"),
+    compareClose: document.getElementById("compareDialogClose"),
+    compareContent: document.getElementById("compareContent"),
+
     cartCount: document.getElementById("cartCount"),
     announcer: document.getElementById("srAnnouncer"),
     backToTop: document.getElementById("backToTop"),
@@ -69,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const CART_KEY = "goldengen_cart";
   const WISHLIST_KEY = "goldengen_wishlist";
+  const COMPARISON_KEY = "goldengen_comparison";
   const VIEW_KEY = "goldengen_product_view";
   const SORT_KEY = "goldengen_product_sort";
 
@@ -100,6 +113,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Thin and lightweight Apple laptop with the M3 chip, bright Liquid Retina display and all-day battery life.",
+      specs: {
+        processor: "Apple M3, 8-core CPU",
+        memory: "16GB unified memory",
+        storage: "512GB SSD",
+        graphics: "8-core GPU",
+        display: '13.6" Liquid Retina, 2560 × 1664',
+        battery: "Up to 18 hours",
+        weight: "1.24 kg",
+        operatingSystem: "macOS",
+        ports: "2× Thunderbolt / USB 4, MagSafe 3",
+        expandability: "Memory is not user-upgradeable",
+      },
+      suitableFor: ["Student", "Developer", "Business", "Creative work"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-07-28",
       featuredRank: 1,
     },
@@ -123,6 +150,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Free Nairobi delivery",
       summary:
         "Premium performance laptop built for demanding creative work, productivity and high-resolution media.",
+      specs: {
+        processor: "Intel Core i7-13700H",
+        memory: "32GB DDR5 RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "NVIDIA RTX 4060, 8GB",
+        display: '15.6" 3.5K OLED touch display',
+        battery: "Up to 8 hours",
+        weight: "1.92 kg",
+        operatingSystem: "Windows 11",
+        ports: "Thunderbolt 4, USB-A, HDMI, SD card",
+        expandability: "SSD upgradeable",
+      },
+      suitableFor: ["Developer", "Creative work", "Business"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-06-12",
       featuredRank: 2,
     },
@@ -146,6 +187,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Premium convertible laptop with an OLED touch display, flexible hinge and powerful everyday performance.",
+      specs: {
+        processor: "Intel Core Ultra 7 155H",
+        memory: "16GB LPDDR5X RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "Intel Arc graphics",
+        display: '14" 2.8K OLED touch display',
+        battery: "Up to 12 hours",
+        weight: "1.44 kg",
+        operatingSystem: "Windows 11",
+        ports: "2× Thunderbolt 4, USB-A, HDMI",
+        expandability: "SSD upgradeable",
+      },
+      suitableFor: ["Student", "Developer", "Business", "Creative work"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-05-20",
       featuredRank: 3,
     },
@@ -169,6 +224,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Flagship business notebook with a durable carbon-fibre chassis, excellent keyboard and enterprise security.",
+      specs: {
+        processor: "Intel Core Ultra 7 155U",
+        memory: "32GB LPDDR5X RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "Intel integrated graphics",
+        display: '14" 2.8K OLED display',
+        battery: "Up to 15 hours",
+        weight: "1.09 kg",
+        operatingSystem: "Windows 11 Pro",
+        ports: "2× Thunderbolt 4, USB-A, HDMI",
+        expandability: "Memory is not user-upgradeable",
+      },
+      suitableFor: ["Business", "Developer", "Student"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-04-18",
       featuredRank: 4,
     },
@@ -192,6 +261,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Compact premium laptop with an OLED display, strong battery life and a travel-friendly aluminium design.",
+      specs: {
+        processor: "AMD Ryzen 7 8840HS",
+        memory: "16GB LPDDR5X RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "AMD Radeon 780M",
+        display: '14" 2.8K OLED display',
+        battery: "Up to 15 hours",
+        weight: "1.28 kg",
+        operatingSystem: "Windows 11",
+        ports: "USB4, USB-A, HDMI, microSD",
+        expandability: "Memory is not user-upgradeable",
+      },
+      suitableFor: ["Student", "Developer", "Business", "Creative work"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-07-02",
       featuredRank: 5,
     },
@@ -215,6 +298,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Dependable everyday laptop for school, office work, browsing and light creative tasks.",
+      specs: {
+        processor: "Intel Core i5-1235U",
+        memory: "16GB DDR4 RAM",
+        storage: "512GB NVMe SSD",
+        graphics: "Intel Iris Xe graphics",
+        display: '15.6" Full HD IPS display',
+        battery: "Up to 8 hours",
+        weight: "1.78 kg",
+        operatingSystem: "Windows 11",
+        ports: "USB-C, 3× USB-A, HDMI",
+        expandability: "RAM and SSD upgradeable",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-03-08",
       featuredRank: 8,
     },
@@ -238,6 +335,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Quality checked",
       summary:
         "Professionally refurbished business laptop with a premium build, strong security and dependable performance.",
+      specs: {
+        processor: "Intel Core i7-1355U",
+        memory: "16GB DDR5 RAM",
+        storage: "512GB NVMe SSD",
+        graphics: "Intel Iris Xe graphics",
+        display: '14" Full HD IPS display',
+        battery: "Up to 10 hours",
+        weight: "1.36 kg",
+        operatingSystem: "Windows 11 Pro",
+        ports: "Thunderbolt 4, USB-A, HDMI",
+        expandability: "SSD upgradeable",
+      },
+      suitableFor: ["Business", "Student", "Developer"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-07-19",
       featuredRank: 6,
     },
@@ -261,6 +372,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Quality checked",
       summary:
         "Refurbished ThinkPad with a sturdy business chassis, excellent keyboard and versatile office performance.",
+      specs: {
+        processor: "AMD Ryzen 5 Pro 6650U",
+        memory: "16GB DDR4 RAM",
+        storage: "512GB NVMe SSD",
+        graphics: "AMD Radeon 660M",
+        display: '14" Full HD IPS display',
+        battery: "Up to 9 hours",
+        weight: "1.46 kg",
+        operatingSystem: "Windows 11 Pro",
+        ports: "USB-C, USB-A, HDMI, RJ45",
+        expandability: "RAM and SSD upgradeable",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-02-14",
       featuredRank: 11,
     },
@@ -514,6 +639,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Insured delivery",
       summary:
         "Compact high-performance gaming laptop balancing powerful graphics, portability and premium display quality.",
+      specs: {
+        processor: "AMD Ryzen 9 8945HS",
+        memory: "32GB DDR5 RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "NVIDIA RTX 4070, 8GB",
+        display: '14" QHD+ 165Hz display',
+        battery: "Up to 10 hours",
+        weight: "1.50 kg",
+        operatingSystem: "Windows 11",
+        ports: "USB4, HDMI, USB-A, microSD",
+        expandability: "SSD upgradeable",
+      },
+      suitableFor: ["Gaming", "Developer", "Creative work"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-07-25",
       featuredRank: 19,
     },
@@ -537,6 +676,20 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Insured delivery",
       summary:
         "Performance-focused gaming notebook with dedicated graphics, fast display and upgrade-friendly internals.",
+      specs: {
+        processor: "Intel Core i7-13620H",
+        memory: "16GB DDR5 RAM",
+        storage: "1TB NVMe SSD",
+        graphics: "NVIDIA RTX 4060, 8GB",
+        display: '15.6" Full HD 144Hz display',
+        battery: "Up to 7 hours",
+        weight: "2.25 kg",
+        operatingSystem: "Windows 11",
+        ports: "USB-C, USB-A, HDMI, RJ45",
+        expandability: "RAM and SSD upgradeable",
+      },
+      suitableFor: ["Gaming", "Developer", "Creative work"],
+      deliveryEstimate: "Nairobi: 1–2 days · Other counties: 2–5 days",
       createdAt: "2026-05-04",
       featuredRank: 20,
     },
@@ -683,6 +836,240 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  function buildProductSpecs(product, compact = false) {
+    if (!product.specs) return "";
+
+    const labels = [
+      ["processor", "Processor"],
+      ["memory", "RAM"],
+      ["storage", "Storage"],
+      ["graphics", "GPU"],
+      ["display", "Display"],
+      ["battery", "Battery"],
+      ["weight", "Weight"],
+      ["operatingSystem", "Operating system"],
+      ["ports", "Ports"],
+      ["expandability", "Expandability"],
+    ];
+
+    const entries = labels
+      .filter(([key]) => product.specs[key])
+      .slice(0, compact ? 3 : labels.length);
+
+    return `
+      <dl class="product-specs ${compact ? "product-specs-compact" : ""}">
+        ${entries
+          .map(
+            ([key, label]) => `
+              <div class="product-spec">
+                <dt>${label}</dt>
+                <dd>${escapeHTML(product.specs[key])}</dd>
+              </div>
+            `,
+          )
+          .join("")}
+      </dl>
+    `;
+  }
+
+  function buildUseCases(product) {
+    if (!product.suitableFor?.length) return "";
+
+    return `
+      <div class="product-use-cases" aria-label="Suitable for">
+        <span class="product-use-cases-label">Suitable for</span>
+        <div class="product-use-case-list">
+          ${product.suitableFor
+            .map((useCase) => `<span>${escapeHTML(useCase)}</span>`)
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function buildChooserResults(useCase) {
+    const matches = PRODUCTS.filter(
+      (product) => product.stock > 0 && product.suitableFor?.includes(useCase),
+    )
+      .sort((first, second) => {
+        const ratingDifference = second.rating - first.rating;
+        return ratingDifference || first.price - second.price;
+      })
+      .slice(0, 3);
+
+    if (matches.length === 0) {
+      return `
+        <div class="choose-results-empty">
+          <strong>No stocked match yet</strong>
+          <p>Try another use case or browse the full catalogue.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="choose-results-heading">
+        <p class="quick-view-brand">Based on your choice</p>
+        <h3>Suitable for ${escapeHTML(useCase)}</h3>
+      </div>
+
+      <div class="choose-result-list">
+        ${matches
+          .map(
+            (product) => `
+              <article class="choose-result">
+                <img
+                  src="${escapeHTML(product.image)}"
+                  alt="${escapeHTML(product.name)}"
+                  loading="lazy"
+                />
+                <div class="choose-result-info">
+                  <h4>${escapeHTML(product.name)}</h4>
+                  <p>${escapeHTML(product.summary)}</p>
+                  ${buildProductSpecs(product, true)}
+                  <strong>${formatPrice(product.price)}</strong>
+                </div>
+                <button
+                  type="button"
+                  class="choose-result-view"
+                  data-choose-product="${product.id}"
+                >
+                  View details
+                </button>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  const comparisonFields = [
+    ["price", "Price"],
+    ["processor", "CPU"],
+    ["memory", "RAM"],
+    ["storage", "Storage"],
+    ["graphics", "GPU"],
+    ["display", "Display"],
+    ["battery", "Battery"],
+    ["weight", "Weight"],
+    ["operatingSystem", "Operating system"],
+    ["ports", "Ports"],
+    ["expandability", "Expandability"],
+    ["warranty", "Warranty"],
+    ["condition", "Condition"],
+    ["availability", "Availability"],
+    ["delivery", "Delivery"],
+  ];
+
+  function getComparisonValue(product, key) {
+    if (key === "price") return formatPrice(product.price);
+    if (key === "warranty") return product.warranty;
+    if (key === "condition") return titleCase(product.condition);
+    if (key === "availability") {
+      return product.stock > 0
+        ? `${product.stock} units in stock`
+        : "Out of stock";
+    }
+    if (key === "delivery") return product.deliveryEstimate || product.delivery;
+
+    return product.specs?.[key] || "Not specified";
+  }
+
+  function renderComparison() {
+    const products = getComparisonProducts();
+
+    if (!el.compareContent) return;
+
+    if (products.length < 2) {
+      el.compareContent.innerHTML = `
+        <div class="compare-empty">
+          <p class="quick-view-brand">Compare products</p>
+          <h2>Select at least two products</h2>
+          <p>Choose up to three structured laptop products from the catalogue.</p>
+        </div>
+      `;
+      return;
+    }
+
+    el.compareContent.innerHTML = `
+      <div class="compare-header">
+        <div>
+          <p class="quick-view-brand">Side-by-side view</p>
+          <h2>Compare products</h2>
+          <p>See the differences that matter before you decide.</p>
+        </div>
+        <span class="compare-limit">${products.length} of 3 selected</span>
+      </div>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Attribute</th>
+              ${products
+                .map(
+                  (product) => `
+                    <th scope="col">
+                      <img src="${escapeHTML(product.image)}" alt="" />
+                      <span>${escapeHTML(product.name)}</span>
+                      <button
+                        type="button"
+                        class="compare-remove"
+                        data-remove-comparison="${product.id}"
+                      >
+                        Remove
+                      </button>
+                    </th>
+                  `,
+                )
+                .join("")}
+            </tr>
+          </thead>
+          <tbody>
+            ${comparisonFields
+              .map(
+                ([key, label]) => `
+                  <tr>
+                    <th scope="row">${label}</th>
+                    ${products
+                      .map(
+                        (product) =>
+                          `<td>${escapeHTML(getComparisonValue(product, key))}</td>`,
+                      )
+                      .join("")}
+                  </tr>
+                `,
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function toggleComparison(productId) {
+    const product = getProduct(productId);
+
+    if (!product?.specs) return;
+
+    if (comparisonIds.has(product.id)) {
+      comparisonIds.delete(product.id);
+      announce(`${product.name} removed from comparison.`);
+    } else if (comparisonIds.size >= 3) {
+      announce("You can compare up to three products.");
+      return;
+    } else {
+      comparisonIds.add(product.id);
+      announce(`${product.name} added to comparison.`);
+    }
+
+    syncComparisonState();
+
+    if (el.compareDialog?.open) {
+      renderComparison();
+    }
+  }
+
   function calculateDiscount(product) {
     if (!product.oldPrice) return 0;
 
@@ -736,6 +1123,44 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.warn("GoldenGen local storage error:", error);
     }
+  }
+
+  const comparisonIds = new Set(
+    readArray(COMPARISON_KEY).map((productId) => Number(productId)),
+  );
+
+  function getComparisonProducts() {
+    return [...comparisonIds]
+      .map((productId) => getProduct(productId))
+      .filter(Boolean);
+  }
+
+  function syncComparisonState() {
+    const ids = [...comparisonIds];
+
+    writeArray(COMPARISON_KEY, ids);
+
+    if (el.compareCount) {
+      el.compareCount.textContent = ids.length;
+    }
+
+    if (el.compareToggle) {
+      const canCompare = ids.length >= 2;
+      el.compareToggle.disabled = !canCompare;
+      el.compareToggle.setAttribute("aria-disabled", String(!canCompare));
+    }
+
+    document.querySelectorAll('[data-action="compare"]').forEach((button) => {
+      const selected = comparisonIds.has(Number(button.dataset.id));
+
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+      button
+        .querySelector("span")
+        ?.replaceChildren(
+          document.createTextNode(selected ? "Selected" : "Compare"),
+        );
+    });
   }
 
   function getProduct(productId) {
@@ -865,47 +1290,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== CART =====
-  function updateCartCount() {
-    if (!el.cartCount) return;
-
-    const cart = readArray(CART_KEY);
-
-    const totalQuantity = cart.reduce(
-      (total, item) => total + (item.quantity || 1),
-      0,
-    );
-
-    el.cartCount.textContent = totalQuantity;
-  }
-
   function addToCart(productId) {
     const product = getProduct(productId);
 
     if (!product || product.stock < 1) return;
 
-    const cart = readArray(CART_KEY);
+    const cart = ggReadCart();
 
-    const existingItem = cart.find((item) => item.id === product.id);
+    const existingItem = cart.find(
+      (item) => String(item.id) === String(product.id),
+    );
 
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
       cart.push({
         id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
         quantity: 1,
       });
     }
 
-    writeArray(CART_KEY, cart);
-    updateCartCount();
-    renderCartDropdown();
+    ggWriteCart(cart);
+    ggUpdateCartCount();
+    ggRenderCartDropdown();
 
     if (typeof window.animateCartCount === "function") {
       window.animateCartCount();
     }
 
     announce(`${product.name} added to cart.`);
-    showToast(`${product.name} added to cart`);
+    ggShowToast(`${product.name} added to cart`);
   }
 
   // ===== GOLDENGEN SPOTLIGHT =====
@@ -1027,111 +1444,6 @@ document.addEventListener("DOMContentLoaded", () => {
     startRotation();
   }
 
-  // ===== CART DROPDOWN =====
-  function renderCartDropdown() {
-    const itemsEl = document.getElementById("cartDropdownItems");
-    const totalEl = document.getElementById("cartDropdownTotal");
-
-    if (!itemsEl || !totalEl) return;
-
-    const cart = readArray(CART_KEY);
-
-    if (cart.length === 0) {
-      itemsEl.innerHTML = `<p class="cart-dropdown-empty">Your cart is empty.</p>`;
-      totalEl.textContent = formatPrice(0);
-      return;
-    }
-
-    let total = 0;
-
-    itemsEl.innerHTML = cart
-      .map((item) => {
-        const product = getProduct(item.id);
-
-        if (!product) return "";
-
-        total += product.price * item.quantity;
-
-        return `
-        <div class="cart-dropdown-item">
-          <img
-            src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
-            data-product-image
-            data-product-id="${product.id}"
-          />
-          <div>
-            <p class="cart-dropdown-item-name">${escapeHTML(product.name)}</p>
-            <p class="cart-dropdown-item-meta">
-              ${formatPrice(product.price)} × ${item.quantity}
-            </p>
-          </div>
-          <button
-            type="button"
-            class="cart-dropdown-item-remove"
-            data-remove-cart-item="${product.id}"
-            aria-label="Remove ${escapeHTML(product.name)}"
-          >
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      `;
-      })
-      .join("");
-
-    totalEl.textContent = formatPrice(total);
-
-    attachImageFallbacks(itemsEl);
-  }
-
-  function removeFromCart(productId) {
-    const cart = readArray(CART_KEY).filter((item) => item.id !== productId);
-
-    writeArray(CART_KEY, cart);
-    updateCartCount();
-    renderCartDropdown();
-  }
-
-  function toggleCartDropdown(forceState) {
-    const dropdown = document.getElementById("cartDropdown");
-
-    if (!dropdown) return;
-
-    const shouldOpen = forceState ?? !dropdown.classList.contains("open");
-
-    dropdown.classList.toggle("open", shouldOpen);
-
-    if (shouldOpen) {
-      renderCartDropdown();
-    }
-  }
-
-  // ===== CART DROPDOWN =====
-  document.getElementById("cartToggle")?.addEventListener("click", (event) => {
-    event.preventDefault();
-    toggleCartDropdown();
-  });
-
-  document
-    .getElementById("cartDropdownClose")
-    ?.addEventListener("click", () => toggleCartDropdown(false));
-
-  document.addEventListener("click", (event) => {
-    const widget = document.querySelector(".cart-widget");
-    if (widget && !widget.contains(event.target)) {
-      toggleCartDropdown(false);
-    }
-  });
-
-  document
-    .getElementById("cartDropdownItems")
-    ?.addEventListener("click", (event) => {
-      const removeBtn = event.target.closest("[data-remove-cart-item]");
-      if (!removeBtn) return;
-
-      removeFromCart(Number(removeBtn.dataset.removeCartItem));
-    });
-
   // ===== WISHLIST =====
   function toggleWishlist(productId) {
     const product = getProduct(productId);
@@ -1218,6 +1530,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inStock = product.stock > 0;
 
     const isSaved = readArray(WISHLIST_KEY).includes(product.id);
+    const isCompared = comparisonIds.has(product.id);
 
     const savePercent = calculateDiscount(product);
 
@@ -1316,6 +1629,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ${escapeHTML(product.summary)}
           </p>
 
+          ${buildProductSpecs(product, true)}
+
+          ${buildUseCases(product)}
+
           <p
             class="product-stock ${inStock ? "in-stock" : "out-of-stock"}"
           >
@@ -1408,6 +1725,23 @@ document.addEventListener("DOMContentLoaded", () => {
               aria-hidden="true"
             ></i>
           </button>
+
+          ${
+            product.specs
+              ? `
+                <button
+                  type="button"
+                  class="product-compare-link ${isCompared ? "selected" : ""}"
+                  data-action="compare"
+                  data-id="${product.id}"
+                  aria-pressed="${isCompared}"
+                >
+                  <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
+                  <span>${isCompared ? "Selected" : "Compare"}</span>
+                </button>
+              `
+              : ""
+          }
         </div>
       </article>
     `;
@@ -1831,6 +2165,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const filteredProducts = sortProducts(getFilteredProducts());
 
+    if (append) {
+      state.visible = Math.min(
+        state.visible + PRODUCTS_PER_PAGE,
+        filteredProducts.length,
+      );
+    }
+
     const visibleProducts = filteredProducts.slice(0, state.visible);
 
     if (el.empty) {
@@ -1870,6 +2211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderActiveFilters();
     attachImageFallbacks(el.grid);
     revealCards(newCards);
+    syncComparisonState();
   }
 
   // ===== CLEAR FILTERS =====
@@ -1983,110 +2325,234 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isSaved = readArray(WISHLIST_KEY).includes(product.id);
 
-    el.quickViewContent.innerHTML = `
-      <div class="quick-view-layout">
-        <div class="quick-view-image">
-          <img
-            src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
-            data-product-image
-            data-product-id="${product.id}"
-          />
+    currentQuickViewProductId = product.id;
+
+    const sourceImage = document.querySelector(
+      `.product-card[data-id="${product.id}"] .product-image`,
+    );
+
+    const buildAndShow = () => {
+      el.quickViewContent.innerHTML = `
+        <div class="quick-view-layout">
+          <div class="quick-view-image">
+            <img
+              src="${escapeHTML(product.image)}"
+              alt="${escapeHTML(product.name)}"
+              data-product-image
+              data-product-id="${product.id}"
+              style="view-transition-name: quick-view-image;"
+            />
+          </div>
+
+          <div class="quick-view-details">
+            <p class="quick-view-brand">
+              ${escapeHTML(product.brand)} ·
+              ${escapeHTML(product.subcategory)}
+            </p>
+
+            <h2>
+              ${escapeHTML(product.name)}
+            </h2>
+
+            <div class="product-rating">
+              ${buildStars(product.rating)}
+
+              <span class="product-rating-count">
+                ${product.rating}
+                (${product.reviews})
+              </span>
+            </div>
+
+            <p class="quick-view-summary">
+              ${escapeHTML(product.summary)}
+            </p>
+
+            ${buildProductSpecs(product)}
+
+            ${buildUseCases(product)}
+
+            <p class="quick-view-price">
+              ${formatPrice(product.price)}
+            </p>
+
+            <div class="product-benefits">
+              <span class="product-benefit">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                ${escapeHTML(product.warranty)}
+              </span>
+
+              <span class="product-benefit">
+                <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                ${escapeHTML(product.delivery)}
+              </span>
+
+              ${
+                product.deliveryEstimate
+                  ? `
+                    <span class="product-benefit">
+                      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                      ${escapeHTML(product.deliveryEstimate)}
+                    </span>
+                  `
+                  : ""
+              }
+            </div>
+
+            <div class="quick-view-actions">
+              <button
+                type="button"
+                class="quick-view-add"
+                data-action="add-to-cart"
+                data-id="${product.id}"
+                ${product.stock > 0 ? "" : "disabled"}
+              >
+                Add to cart
+              </button>
+
+              <button
+                type="button"
+                class="quick-view-wishlist ${isSaved ? "active" : ""}"
+                data-action="wishlist"
+                data-id="${product.id}"
+              >
+                <i class="${isSaved ? "fa-solid" : "fa-regular"} fa-heart"></i>
+                Wishlist
+              </button>
+            </div>
+          </div>
         </div>
+      `;
 
-        <div class="quick-view-details">
-          <p class="quick-view-brand">
-            ${escapeHTML(product.brand)} ·
-            ${escapeHTML(product.subcategory)}
-          </p>
+      attachImageFallbacks(el.quickViewContent);
 
-          <h2>
-            ${escapeHTML(product.name)}
-          </h2>
+      if (typeof el.quickView.showModal === "function") {
+        el.quickView.showModal();
+      } else {
+        el.quickView.setAttribute("open", "");
+      }
 
-          <div class="product-rating">
-            ${buildStars(product.rating)}
+      if (sourceImage) {
+        sourceImage.style.viewTransitionName = "";
+      }
+    };
 
-            <span class="product-rating-count">
-              ${product.rating}
-              (${product.reviews})
-            </span>
-          </div>
+    if (document.startViewTransition && sourceImage) {
+      sourceImage.style.viewTransitionName = "quick-view-image";
 
-          <p class="quick-view-summary">
-            ${escapeHTML(product.summary)}
-          </p>
-
-          <p class="quick-view-price">
-            ${formatPrice(product.price)}
-          </p>
-
-          <div class="product-benefits">
-            <span class="product-benefit">
-              <i
-                class="fa-solid fa-shield-halved"
-                aria-hidden="true"
-              ></i>
-
-              ${escapeHTML(product.warranty)}
-            </span>
-
-            <span class="product-benefit">
-              <i
-                class="fa-solid fa-truck-fast"
-                aria-hidden="true"
-              ></i>
-
-              ${escapeHTML(product.delivery)}
-            </span>
-          </div>
-
-          <div class="quick-view-actions">
-            <button
-              type="button"
-              class="quick-view-add"
-              data-action="add-to-cart"
-              data-id="${product.id}"
-              ${product.stock > 0 ? "" : "disabled"}
-            >
-              Add to cart
-            </button>
-
-            <button
-              type="button"
-              class="quick-view-wishlist ${isSaved ? "active" : ""}"
-              data-action="wishlist"
-              data-id="${product.id}"
-            >
-              <i
-                class="${isSaved ? "fa-solid" : "fa-regular"} fa-heart"
-              ></i>
-
-              Wishlist
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    attachImageFallbacks(el.quickViewContent);
-
-    if (typeof el.quickView.showModal === "function") {
-      el.quickView.showModal();
+      document.startViewTransition(buildAndShow);
     } else {
-      el.quickView.setAttribute("open", "");
+      buildAndShow();
     }
   }
+
+  let currentQuickViewProductId = null;
 
   function closeQuickView() {
     if (!el.quickView) return;
 
-    if (typeof el.quickView.close === "function") {
-      el.quickView.close();
+    const sourceImage = currentQuickViewProductId
+      ? document.querySelector(
+          `.product-card[data-id="${currentQuickViewProductId}"] .product-image`,
+        )
+      : null;
+
+    const modalImage = el.quickViewContent?.querySelector("img");
+
+    const runClose = () => {
+      if (typeof el.quickView.close === "function") {
+        el.quickView.close();
+      } else {
+        el.quickView.removeAttribute("open");
+      }
+
+      if (sourceImage) {
+        sourceImage.style.viewTransitionName = "quick-view-image";
+      }
+    };
+
+    if (document.startViewTransition && sourceImage && modalImage) {
+      const transition = document.startViewTransition(runClose);
+
+      transition.finished.finally(() => {
+        sourceImage.style.viewTransitionName = "";
+        modalImage.style.viewTransitionName = "";
+      });
     } else {
-      el.quickView.removeAttribute("open");
+      runClose();
     }
+
+    currentQuickViewProductId = null;
   }
+
+  // ===== HELP ME CHOOSE =====
+  el.chooseToggle?.addEventListener("click", () => {
+    if (typeof el.chooseDialog?.showModal === "function") {
+      el.chooseDialog.showModal();
+    } else {
+      el.chooseDialog?.setAttribute("open", "");
+    }
+  });
+
+  el.chooseClose?.addEventListener("click", () => {
+    el.chooseDialog?.close();
+  });
+
+  el.chooseDialog?.addEventListener("click", (event) => {
+    if (event.target === el.chooseDialog) {
+      el.chooseDialog.close();
+    }
+  });
+
+  el.chooseForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const selected = el.chooseForm.querySelector(
+      'input[name="useCase"]:checked',
+    );
+
+    if (!selected) {
+      announce("Choose a use case first.");
+      return;
+    }
+
+    el.chooseResults.innerHTML = buildChooserResults(selected.value);
+    el.chooseResults.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  el.chooseResults?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-choose-product]");
+
+    if (!button) return;
+
+    el.chooseDialog?.close();
+    openQuickView(button.dataset.chooseProduct);
+  });
+
+  el.compareToggle?.addEventListener("click", () => {
+    renderComparison();
+
+    if (typeof el.compareDialog?.showModal === "function") {
+      el.compareDialog.showModal();
+    } else {
+      el.compareDialog?.setAttribute("open", "");
+    }
+  });
+
+  el.compareClose?.addEventListener("click", () => {
+    el.compareDialog?.close();
+  });
+
+  el.compareDialog?.addEventListener("click", (event) => {
+    if (event.target === el.compareDialog) {
+      el.compareDialog.close();
+    }
+
+    const removeButton = event.target.closest("[data-remove-comparison]");
+
+    if (removeButton) {
+      toggleComparison(removeButton.dataset.removeComparison);
+    }
+  });
 
   // ===== SEARCH EVENTS =====
   let searchDebounce;
@@ -2314,8 +2780,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== LOAD MORE =====
   el.loadMoreBtn?.addEventListener("click", () => {
-    state.visible += PRODUCTS_PER_PAGE;
-
     refresh({
       append: true,
     });
@@ -2341,6 +2805,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (action === "quick-view") {
       openQuickView(productId);
     }
+
+    if (action === "compare") {
+      toggleComparison(productId);
+    }
   }
 
   el.grid.addEventListener("click", handleProductAction);
@@ -2364,6 +2832,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el.quickView?.open) {
       closeQuickView();
     }
+
+    if (el.chooseDialog?.open) {
+      el.chooseDialog.close();
+    }
+
+    if (el.compareDialog?.open) {
+      el.compareDialog.close();
+    }
   });
 
   // ===== BACK TO TOP =====
@@ -2376,16 +2852,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== URL CATEGORY FILTER =====
-  const categoryFromURL = new URLSearchParams(window.location.search).get(
-    "category",
-  );
+  // ===== URL CATEGORY & SEARCH FILTER =====
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryFromURL = urlParams.get("category");
+  const searchFromURL = urlParams.get("search");
 
   if (
     categoryFromURL &&
     PRODUCTS.some((product) => product.category === categoryFromURL)
   ) {
     state.categories.add(categoryFromURL);
+  }
+
+  if (searchFromURL) {
+    state.search = searchFromURL;
   }
 
   // ===== INITIALIZE PRICE CONTROLS =====
@@ -2403,7 +2883,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showSkeletons();
   syncControls();
   applyView(state.view);
-  updateCartCount();
+  ggUpdateCartCount();
   initSpotlight();
 
   // Small delay simulates a future API request.

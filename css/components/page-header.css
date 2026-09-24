@@ -1,0 +1,126 @@
+.page-header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(26, 115, 232, 0.08),
+      transparent 30%
+    ),
+    var(--bg-primary);
+  padding-top: calc(
+    var(--navbar-height) + var(--announcement-height) + var(--spacing-sm)
+  );
+  padding-bottom: var(--spacing-sm);
+}
+
+.page-header-circle {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.page-header-circle-1 {
+  width: 340px;
+  height: 340px;
+  top: -170px;
+  right: -70px;
+  background: var(--primary-color);
+}
+
+.page-header-circle-2 {
+  width: 220px;
+  height: 220px;
+  bottom: -150px;
+  left: 12%;
+  background: gold;
+}
+
+.page-header-circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 22%;
+  left: 54%;
+  background: var(--primary-color);
+}
+
+.page-header .section-container {
+  position: relative;
+  z-index: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.secondary-page main {
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(26, 115, 232, 0.16),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 88% 68%,
+      rgba(255, 215, 0, 0.1),
+      transparent 28rem
+    ),
+    var(--bg-primary);
+}
+
+body.secondary-page main > .page-header,
+body.secondary-page main > .about-story,
+body.secondary-page main > .about-journey,
+body.secondary-page main > .contact-section,
+body.secondary-page main > .policy-page {
+  background-color: transparent;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-color);
+}
+
+.breadcrumb i {
+  font-size: 0.65rem;
+}
+
+.page-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.page-title-compact {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.page-title-accent {
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-color), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.page-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}

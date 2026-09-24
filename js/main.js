@@ -1,6 +1,3 @@
-// ===== GOLDENGEN — HOMEPAGE ONLY =====
-// Loaded after shared.js. Only things unique to index.html live here.
-
 // ===== COUNTER ANIMATION =====
 function animateCounter(element, target, duration = 2000) {
   const startTime = performance.now();
@@ -148,67 +145,254 @@ filterTabs.forEach((tab) => {
   });
 });
 
-// ===== VIDEO SECTION =====
-const videoPlayBtn = document.getElementById("videoPlayBtn");
-const videoPlayOverlay = document.getElementById("videoPlayOverlay");
-const videoThumbnail = document.getElementById("videoThumbnail");
-const videoPlayer = document.getElementById("videoPlayer");
-const bgMusic = document.getElementById("bgMusic");
+// ===== ADD TO CART + QUICK VIEW (HOMEPAGE) =====
+const productsGridEl = document.getElementById("productsGrid");
+const ggQuickView = document.getElementById("quickViewDialog");
+const ggQuickViewContent = document.getElementById("quickViewContent");
+const ggQuickViewClose = document.getElementById("quickViewCloseBtn");
 
-if (videoPlayBtn) {
-  videoPlayBtn.addEventListener("click", () => {
-    videoThumbnail.style.display = "none";
-    videoPlayOverlay.style.display = "none";
-    videoPlayer.classList.add("active");
-    videoPlayer.play();
+function ggParsePrice(text) {
+  return Number(String(text).replace(/[^0-9]/g, "")) || 0;
+}
 
+function ggAddToCart(card) {
+  const cart = ggReadCart();
+  const existingItem = cart.find(
+    (item) => String(item.id) === String(card.dataset.id),
+  );
+  const name =
+    card.querySelector(".product-name")?.textContent.trim() || "Product";
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      id: card.dataset.id,
+      name,
+      price: ggParsePrice(card.querySelector(".product-price")?.textContent),
+      image: card.querySelector(".product-image")?.getAttribute("src") || "",
+      quantity: 1,
+    });
+  }
+
+  ggWriteCart(cart);
+  ggUpdateCartCount();
+
+  if (typeof window.animateCartCount === "function") {
+    window.animateCartCount();
+  }
+
+  const announcer = document.getElementById("srAnnouncer");
+  if (announcer) {
+    announcer.textContent = "";
     setTimeout(() => {
-      if (bgMusic) {
-        bgMusic.currentTime = 0;
-        bgMusic.volume = 0.3;
-        bgMusic.play().catch((err) => console.log("Music blocked:", err));
-      }
-    }, 300);
-  });
+      announcer.textContent = `${name} added to cart.`;
+    }, 20);
+  }
 
-  videoPlayer.addEventListener("ended", () => {
-    if (bgMusic) {
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
+  ggShowToast(`${name} added to cart`);
+}
+
+let ggCurrentQuickViewCard = null;
+
+function ggOpenQuickView(card) {
+  if (!ggQuickView || !ggQuickViewContent) return;
+
+  const name =
+    card.querySelector(".product-name")?.textContent.trim() || "Product";
+  const category = card.dataset.category
+    ? card.dataset.category.charAt(0).toUpperCase() +
+      card.dataset.category.slice(1)
+    : "";
+  const image = card.querySelector(".product-image")?.getAttribute("src") || "";
+  const price = ggParsePrice(card.querySelector(".product-price")?.textContent);
+  const oldPriceText = card
+    .querySelector(".product-price-old")
+    ?.textContent.trim();
+  const ratingHTML = card.querySelector(".product-rating")?.innerHTML || "";
+  const summary = card.dataset.summary || "";
+  const warranty = card.dataset.warranty || "";
+  const delivery = card.dataset.delivery || "";
+  const sourceImage = card.querySelector(".product-image");
+
+  const buildAndShow = () => {
+    ggQuickViewContent.innerHTML = `
+      <div class="quick-view-layout">
+        <div class="quick-view-image">
+          <img src="${image}" alt="${name}" style="view-transition-name: quick-view-image;" />
+        </div>
+
+        <div class="quick-view-details">
+          <p class="quick-view-brand">${category}</p>
+          <h2>${name}</h2>
+
+          <div class="product-rating">${ratingHTML}</div>
+
+          ${summary ? `<p class="quick-view-summary">${summary}</p>` : ""}
+
+          ${
+            warranty || delivery
+              ? `
+                <div class="quick-view-meta">
+                  ${warranty ? `<span><i class="fa-solid fa-shield-halved"></i> ${warranty}</span>` : ""}
+                  ${delivery ? `<span><i class="fa-solid fa-truck-fast"></i> ${delivery}</span>` : ""}
+                </div>
+              `
+              : ""
+          }
+
+          <p class="quick-view-price">
+            ${ggFormatPrice(price)}
+            ${oldPriceText ? `<span class="product-price-old">${oldPriceText}</span>` : ""}
+          </p>
+
+          <div class="quick-view-actions">
+            <button type="button" class="quick-view-add" data-quick-view-add="${card.dataset.id}">
+              Add to cart
+            </button>
+
+            <a class="quick-view-wishlist" href="products.html?search=${encodeURIComponent(name)}">
+              View full details
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    if (typeof ggQuickView.showModal === "function") {
+      ggQuickView.showModal();
+    } else {
+      ggQuickView.setAttribute("open", "");
     }
-    videoThumbnail.style.display = "block";
-    videoPlayOverlay.style.display = "flex";
-    videoPlayer.classList.remove("active");
-  });
 
-  videoPlayer.addEventListener("pause", () => {
-    if (bgMusic) bgMusic.pause();
-  });
+    if (sourceImage) {
+      sourceImage.style.viewTransitionName = "";
+    }
+  };
 
-  videoPlayer.addEventListener("play", () => {
-    if (bgMusic) {
-      bgMusic.volume = 0.3;
-      bgMusic.play().catch((err) => console.log("Music blocked:", err));
+  ggCurrentQuickViewCard = card;
+
+  if (document.startViewTransition && sourceImage) {
+    sourceImage.style.viewTransitionName = "quick-view-image";
+
+    document.startViewTransition(buildAndShow);
+  } else {
+    buildAndShow();
+  }
+}
+
+function ggCloseQuickView() {
+  if (!ggQuickView) return;
+
+  const sourceImage = ggCurrentQuickViewCard?.querySelector(".product-image");
+  const modalImage = ggQuickViewContent?.querySelector("img");
+
+  const runClose = () => {
+    if (typeof ggQuickView.close === "function") {
+      ggQuickView.close();
+    } else {
+      ggQuickView.removeAttribute("open");
+    }
+
+    if (sourceImage) {
+      sourceImage.style.viewTransitionName = "quick-view-image";
+    }
+  };
+
+  if (document.startViewTransition && sourceImage && modalImage) {
+    const transition = document.startViewTransition(runClose);
+
+    transition.finished.finally(() => {
+      sourceImage.style.viewTransitionName = "";
+      modalImage.style.viewTransitionName = "";
+    });
+  } else {
+    runClose();
+  }
+
+  ggCurrentQuickViewCard = null;
+}
+if (productsGridEl) {
+  productsGridEl.addEventListener("click", (event) => {
+    const cartBtn = event.target.closest(".product-cart-btn");
+    if (cartBtn) {
+      const card = cartBtn.closest(".product-card");
+      if (card && card.dataset.id) ggAddToCart(card);
+      return;
+    }
+
+    const quickViewBtn = event.target.closest(".product-quick-view");
+    if (quickViewBtn) {
+      const card = quickViewBtn.closest(".product-card");
+      if (card) ggOpenQuickView(card);
     }
   });
 }
 
-// ===== AUDIO UNLOCK =====
-let audioUnlocked = false;
+ggQuickViewClose?.addEventListener("click", ggCloseQuickView);
 
-document.addEventListener(
-  "click",
-  () => {
-    if (!audioUnlocked && bgMusic) {
-      bgMusic
-        .play()
-        .then(() => {
-          bgMusic.pause();
-          bgMusic.currentTime = 0;
-          audioUnlocked = true;
-        })
-        .catch((err) => console.log(err));
-    }
-  },
-  { once: true },
-);
+ggQuickView?.addEventListener("click", (event) => {
+  if (event.target === ggQuickView) {
+    ggCloseQuickView();
+  }
+});
+
+ggQuickViewContent?.addEventListener("click", (event) => {
+  const addBtn = event.target.closest("[data-quick-view-add]");
+  if (!addBtn) return;
+
+  const card = document.querySelector(
+    `.product-card[data-id="${addBtn.dataset.quickViewAdd}"]`,
+  );
+  if (!card) return;
+
+  ggAddToCart(card);
+  ggCloseQuickView();
+});
+
+function ggRemoveFromCart(productId) {
+  const cart = ggReadCart().filter(
+    (item) => String(item.id) !== String(productId),
+  );
+
+  ggWriteCart(cart);
+  ggUpdateCartCount();
+  ggRenderCartDropdown();
+}
+
+function ggToggleCartDropdown(forceState) {
+  const dropdown = document.getElementById("cartDropdown");
+  if (!dropdown) return;
+
+  const shouldOpen = forceState ?? !dropdown.classList.contains("open");
+  dropdown.classList.toggle("open", shouldOpen);
+
+  if (shouldOpen) {
+    ggRenderCartDropdown();
+  }
+}
+
+document.getElementById("cartToggle")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  ggToggleCartDropdown();
+});
+
+document
+  .getElementById("cartDropdownClose")
+  ?.addEventListener("click", () => ggToggleCartDropdown(false));
+
+document.addEventListener("click", (event) => {
+  const widget = document.querySelector(".cart-widget");
+  if (widget && !widget.contains(event.target)) {
+    ggToggleCartDropdown(false);
+  }
+});
+
+document
+  .getElementById("cartDropdownItems")
+  ?.addEventListener("click", (event) => {
+    const removeBtn = event.target.closest("[data-remove-cart-item]");
+    if (!removeBtn) return;
+
+    ggRemoveFromCart(removeBtn.dataset.removeCartItem);
+  });

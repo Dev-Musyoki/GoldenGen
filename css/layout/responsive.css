@@ -110,11 +110,13 @@
   /* ===== ANNOUNCEMENT BAR ===== */
   .announcement-text {
     font-size: 0.8rem;
-    padding: 0 var(--spacing-md);
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100%;
+    display: -webkit-box;
+    max-width: calc(100% - 8px);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   /* ===== HERO ===== */
@@ -348,7 +350,8 @@
     right: -3px;
   }
   .announcement-text {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    line-height: 1.25;
   }
   .products-grid {
     grid-template-columns: 1fr;
