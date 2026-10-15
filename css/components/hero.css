@@ -169,7 +169,7 @@
 /* Description text */
 .hero-description {
   font-size: var(--font-size-base);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.8;
   max-width: 480px;
 }

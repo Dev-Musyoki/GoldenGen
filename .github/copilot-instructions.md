@@ -486,8 +486,12 @@ This section records the major GoldenGen improvements completed during the curre
 - Consolidated Products-page cart behavior onto the shared cart implementation in `js/shared.js`.
 - Removed duplicate Products-page cart dropdown listeners and renderers.
 - Preserved the `goldengen_cart` contract and normalized homepage/catalogue product IDs when merging cart items.
+- Escaped stored cart values before rendering them into shared HTML templates.
+- Replaced the inactive cart “View cart (coming soon)” control with a truthful “Continue shopping” action and a clearly labelled future-checkout note across all pages.
+- Kept the cart dropdown open and restored focus after item removal; Continue shopping now closes the dropdown without reloading the Products page.
 - Added shared navbar search routing from About, Contact, and Privacy Policy to `products.html?search=...` without duplicating the Products live-search handler.
 - Made the shared loading overlay optional for lightweight pages, then added the same branded loader to Privacy Policy.
+- Added progressive fallbacks for loading/reveal behavior when `IntersectionObserver` is unavailable.
 
 ## Product Discovery And Decision Support
 
@@ -496,13 +500,19 @@ This section records the major GoldenGen improvements completed during the curre
 - Added full structured specifications and delivery information to Quick View.
 - Added the data-driven Help Me Choose flow for University, Programming, Gaming, Creative work, Business, and Everyday use.
 - Added persisted comparison selection with a three-product limit and a shared side-by-side table covering price, specifications, warranty, condition, availability, and delivery.
-- Fixed Load More pagination so the catalogue correctly expands from 12 to all 24 products and hides the completed action.
+- Clarified product comparison with prominent, touch-friendly per-card controls, a live selection guide, and a count-aware Compare action.
+- Fixed Load More pagination so the catalogue expands through the complete available product set and hides the completed action.
 - Aligned all homepage featured cards with catalogue IDs, names, images, prices, badges, ratings, summaries, and cart behavior.
+- Added monitor-specific descriptions, structured comparison fields, monitor recommendations, and a Help Me Choose device-type selector.
+- Added Best for/use-case filtering from structured `suitableFor` metadata, including counts and active filter chips.
+- Added prototype inventory so laptops, monitors, keyboards, mice, headphones, bags/cases, and gaming gear each have meaningful catalogue coverage while final images remain replaceable.
+- Replaced the prototype products' generic “Sample” badges with visible Popular, New, Bestseller, percentage-discount, and Out of Stock states.
 
 ## About, Contact, And Privacy
 
 - Added the About journey section: Discover, Understand, Compare, Trust, and Support.
 - Improved Contact with actionable phone, email, and WhatsApp links, county delivery guidance, clearer form guidance, `aria-invalid`, and `aria-busy` states.
+- Improved contrast for Contact page location labels and the county-delivery note against their actual dark and light backgrounds.
 - Added `privacy-policy.html` with honest prototype data-flow documentation covering localStorage, cart, wishlist, comparison, and simulated contact submissions.
 - Added Quick Links and the complete shared footer structure to Privacy Policy.
 - Restored descriptive document titles for Products, About, and Contact.
@@ -518,6 +528,11 @@ This section records the major GoldenGen improvements completed during the curre
 - Improved the announcement bar with a blue-gold edge and safe two-line wrapping on small screens.
 - Added a visible gold border around the Products toolbar.
 - Improved the Privacy Policy note with a visible gold border and higher-contrast text.
+- Applied the blue-gold footer brand accent consistently across pages.
+- Added the homepage-inspired circle treatment to the Products page header.
+- Improved Help Me Choose hover, selected, and focus states so gold accents do not reduce text readability.
+- Added visible warranty and delivery trust signals to homepage product cards.
+- Kept Quick View discoverable on touch/coarse-pointer devices instead of relying on hover.
 
 ## Final Validation
 
@@ -528,3 +543,33 @@ This section records the major GoldenGen improvements completed during the curre
 - Contact validation and successful simulated submission were exercised in the browser.
 - Homepage featured products were compared against all 24 catalogue products with no ID, name, price, or image mismatches.
 - Formatting checks pass with `git diff --check`.
+
+## Accessibility, Maintainability, And Motion
+
+- Added accessible pressed states and live result announcements to homepage product filters.
+- Added product-specific labels to homepage cart and Quick View controls.
+- Added keyboard focus visibility for product-card actions and focus restoration for Quick View dialogs, including Escape dismissal.
+- Added `aria-labelledby` support for dynamically populated homepage Quick View dialogs.
+- Added reduced-motion support for counters, typewriter text, card reveals, View Transitions, and shared CSS animations.
+- Added explanatory comments around non-obvious state, rendering, persistence, accessibility, fallback, and prototype-backend behavior in `js/shared.js`, `js/main.js`, `js/products.js`, `js/contact.js`, `index.html`, and `products.html`.
+- Added `js/catalogue-summary.js` as the temporary homepage category-count summary until homepage cards and catalogue products are fully rendered from one source of truth.
+
+## Remaining Before Final Review
+
+- Reconcile the remaining hardcoded homepage featured-card markup with the catalogue data source incrementally; do not rewrite the no-build architecture blindly.
+- Repeat browser-level desktop, mobile, keyboard, reduced-motion, cart, Help Me Choose, comparison, and contact-flow checks after the current changes.
+- Review all user-facing copy, placeholder images, mock trust data, and responsive layouts against Kenyan technology-shopping expectations.
+
+## Final Frontend Review Baseline
+
+- Final browser checks confirmed that product discovery, Help Me Choose, same-type comparison, Quick View, cart behavior, homepage filtering, and contact-form validation work as intended in the current no-build prototype.
+- Remaining production-readiness gaps are explicit scope boundaries: account creation, checkout/payment processing, backend contact delivery, real social-profile URLs, Terms of Service, and Sitemap are not implemented yet and must not be presented as completed features.
+- Keep prototype/sample catalogue data and placeholder imagery visibly replaceable before launch; validate every price, warranty, delivery promise, stock level, and product image against the real Kenyan inventory source.
+
+## Prototype Trust and Mobile Color Consistency
+
+- Keep prototype catalogue, business metrics, service claims, prices, stock, ratings, warranty and delivery information visibly identified as illustrative until verified.
+- The contact form is validation-only until a real submission service is connected; never announce that a message was sent or received before then.
+- Declare the fixed dark color scheme to the browser and use the explicit `#ffd700` gold token. Mobile breakpoints should adapt layout and spacing without dimming or recoloring brand accents.
+- Prototype inventory imagery should use available category illustrations with honest alt text, not nonexistent product-image paths.
+- Recommendation explanations must follow their actual use-case match and listed product attributes; do not award a constant score for a budget filter every result has already passed.

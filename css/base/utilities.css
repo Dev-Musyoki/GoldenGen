@@ -234,6 +234,19 @@
   transition-delay: 0.5s;
 }
 
+/* Respect a user's motion preference while keeping content and state changes
+   available immediately. JavaScript also skips timed homepage effects. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Smooth entrance for entire sections */
 .featured-products,
 .categories,

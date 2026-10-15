@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
 
     <meta
       name="description"
@@ -122,16 +123,17 @@
           </a>
 
           <div class="cart-widget">
-            <a
-              href="#"
+            <button
+              type="button"
               class="cart-icon"
               aria-label="Shopping cart"
               aria-expanded="false"
+              aria-controls="cartDropdown"
               id="cartToggle"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
               <span class="cart-count" id="cartCount">0</span>
-            </a>
+            </button>
 
             <div class="cart-dropdown" id="cartDropdown">
               <div class="cart-dropdown-header">
@@ -155,9 +157,10 @@
                   <span>Total</span>
                   <span id="cartDropdownTotal">KSh 0</span>
                 </div>
-                <button type="button" class="cart-dropdown-checkout">
-                  View cart (coming soon)
-                </button>
+                <a class="cart-dropdown-continue" href="products.html">
+                  Continue shopping
+                </a>
+                <p class="cart-dropdown-note">Checkout will be available soon.</p>
               </div>
             </div>
           </div>
@@ -179,6 +182,10 @@
     <main>
       <!-- Page header -->
       <section class="page-header">
+        <div class="page-header-circle page-header-circle-1"></div>
+        <div class="page-header-circle page-header-circle-2"></div>
+        <div class="page-header-circle page-header-circle-3"></div>
+
         <div class="section-container">
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="index.html">Home</a>
@@ -220,9 +227,11 @@
                 id="compareToggleBtn"
                 disabled
                 aria-disabled="true"
+                aria-describedby="compareHint"
               >
                 <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
-                Compare <span id="compareCount">0</span>
+                Compare selected
+                <span class="products-compare-count" id="compareCount">0</span>
               </button>
 
               <button
@@ -301,6 +310,11 @@
             </div>
           </div>
 
+          <p class="products-compare-hint" id="compareHint" role="status" aria-live="polite">
+            Select 2–3 products of the same type using “Add to compare” on their
+            cards to see their key specifications side by side.
+          </p>
+
           <div
             class="active-filters hidden"
             id="activeFilters"
@@ -359,6 +373,21 @@
                 </button>
 
                 <div class="filter-group-content" id="categoryFilterList"></div>
+              </div>
+
+              <!-- Intended use -->
+              <div class="filter-group">
+                <button
+                  type="button"
+                  class="filter-group-title"
+                  aria-expanded="true"
+                >
+                  <span>Best for</span>
+
+                  <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+                </button>
+
+                <div class="filter-group-content" id="useCaseFilterList"></div>
               </div>
 
               <!-- Price -->
@@ -611,15 +640,15 @@
       </section>
 
       <!-- Trust strip -->
-      <section class="catalogue-trust" aria-label="GoldenGen shopping benefits">
+      <section class="catalogue-trust" aria-label="Catalogue tools">
         <div class="section-container">
           <div class="catalogue-trust-grid">
             <article class="catalogue-trust-item">
               <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
 
               <div>
-                <h2>Countrywide delivery</h2>
-                <p>Reliable delivery across all 47 counties.</p>
+                <h2>Filter by what matters</h2>
+                <p>Narrow the catalogue by category, price, use case and more.</p>
               </div>
             </article>
 
@@ -627,8 +656,8 @@
               <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
 
               <div>
-                <h2>Warranty included</h2>
-                <p>Clear warranty coverage on eligible products.</p>
+                <h2>Review product details</h2>
+                <p>Inspect listed specifications before opening a product.</p>
               </div>
             </article>
 
@@ -636,8 +665,8 @@
               <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
 
               <div>
-                <h2>Quality checked</h2>
-                <p>Every listed device is inspected before dispatch.</p>
+                <h2>Compare side by side</h2>
+                <p>Choose up to three products of the same type to compare.</p>
               </div>
             </article>
 
@@ -645,8 +674,8 @@
               <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
 
               <div>
-                <h2>Human support</h2>
-                <p>Talk to GoldenGen before or after purchase.</p>
+                <h2>Find a starting point</h2>
+                <p>Use the product guide to explore options for your needs.</p>
               </div>
             </article>
           </div>
@@ -875,7 +904,7 @@
       <div id="quickViewContent"></div>
     </dialog>
 
-    <!-- Product choice guide -->
+    <!-- Product choice guide: inputs are scored against PRODUCTS in products.js. -->
     <dialog class="choose-dialog" id="chooseDialog">
       <button
         type="button"
@@ -890,11 +919,38 @@
         <p class="quick-view-brand">A simpler way to start</p>
         <h2>What are you buying for?</h2>
         <p class="choose-dialog-intro">
-          We’ll surface suitable stocked laptops using the product information
-          in this catalogue.
+          Answer a few practical questions to see example products that fit
+          your budget, with reasons and details to help you compare.
         </p>
 
         <form id="chooseForm">
+          <fieldset class="choose-step">
+            <legend>What are you shopping for?</legend>
+
+            <div class="choose-options choose-options-three">
+              <label class="choose-option">
+                <input type="radio" name="deviceType" value="laptops" checked />
+                <span class="choose-option-icon" aria-hidden="true">💻</span>
+                <span>
+                  <strong>Laptop</strong>
+                  <small>Study, work, programming or gaming</small>
+                </span>
+              </label>
+
+              <label class="choose-option">
+                <input type="radio" name="deviceType" value="monitors" />
+                <span class="choose-option-icon" aria-hidden="true">🖥️</span>
+                <span>
+                  <strong>Monitor</strong>
+                  <small>Office, study, creative work or gaming</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choose-step">
+            <legend>What will you use it for?</legend>
+
           <fieldset class="choose-options">
             <legend class="sr-only">Choose a use case</legend>
 
@@ -953,13 +1009,45 @@
             </label>
           </fieldset>
 
+          </fieldset>
+
+          <div class="choose-preferences">
+            <label>
+              <span>Maximum budget</span>
+              <select name="budget">
+                <option value="any">No fixed budget</option>
+                <option value="50000">Up to KSh 50,000</option>
+                <option value="100000">Up to KSh 100,000</option>
+                <option value="175000">Up to KSh 175,000</option>
+                <option value="250000">Up to KSh 250,000</option>
+                <option value="300000">Up to KSh 300,000</option>
+              </select>
+            </label>
+
+            <label>
+              <span>What matters most?</span>
+              <select name="priority">
+                <option value="balanced">Balanced choice</option>
+                <option value="performance">Performance</option>
+                <option value="portability">Portability</option>
+                <option value="display">Display quality</option>
+                <option value="battery">Battery life</option>
+              </select>
+            </label>
+          </div>
+
           <button type="submit" class="choose-submit">
             Show suitable products
             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </button>
         </form>
 
-        <div id="chooseResults" class="choose-results" aria-live="polite"></div>
+        <div
+          id="chooseResults"
+          class="choose-results"
+          aria-live="polite"
+          tabindex="-1"
+        ></div>
       </div>
     </dialog>
 

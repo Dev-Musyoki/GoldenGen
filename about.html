@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
 
     <meta
       name="description"
-      content="Learn about GoldenGen Technologies — Kenya's trusted source for premium laptops and computer accessories, delivered countrywide."
+      content="Explore the GoldenGen technology-shopping prototype and its product discovery and comparison experience."
     />
 
     <title>About GoldenGen | GoldenGen Technologies</title>
@@ -112,16 +113,17 @@
           </a>
 
           <div class="cart-widget">
-            <a
-              href="#"
+            <button
+              type="button"
               class="cart-icon"
               aria-label="Shopping cart"
               aria-expanded="false"
+              aria-controls="cartDropdown"
               id="cartToggle"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
               <span class="cart-count" id="cartCount">0</span>
-            </a>
+            </button>
 
             <div class="cart-dropdown" id="cartDropdown">
               <div class="cart-dropdown-header">
@@ -143,9 +145,10 @@
                   <span>Total</span>
                   <span id="cartDropdownTotal">KSh 0</span>
                 </div>
-                <button type="button" class="cart-dropdown-checkout">
-                  View cart (coming soon)
-                </button>
+                <a class="cart-dropdown-continue" href="products.html">
+                  Continue shopping
+                </a>
+                <p class="cart-dropdown-note">Checkout will be available soon.</p>
               </div>
             </div>
           </div>
@@ -198,24 +201,22 @@
               </h2>
 
               <p>
-                GoldenGen Technologies started with a simple goal: give Kenyans
-                a straightforward way to buy laptops and computer accessories
-                they can actually trust — real specs, honest pricing, and
-                delivery that shows up when it says it will.
+                GoldenGen Technologies is a Kenya-focused technology-shopping
+                prototype. Its product pages are designed to help people
+                discover laptops and computer accessories, understand key
+                specifications, and compare options before deciding.
               </p>
 
               <p>
-                We carry everything from everyday laptops to business machines,
-                gaming rigs and the accessories that go with them. Every product
-                listed is checked for quality before it reaches our shelves, and
-                every laptop we sell comes with clear warranty coverage — no
-                fine print surprises.
+                The experience brings together category browsing, use-case
+                recommendations, product details and side-by-side comparisons.
+                Product records and store information shown here are examples,
+                not verified offers.
               </p>
 
               <p>
-                We're still growing, and every order, question and piece of
-                feedback helps us get better at serving customers across all 47
-                counties.
+                This prototype focuses on product discovery, clear comparisons
+                and practical guidance for technology shoppers in Kenya.
               </p>
 
               <a href="products.html" class="btn btn-primary">
@@ -226,20 +227,20 @@
 
             <div class="about-stats">
               <div class="about-stat">
-                <span class="about-stat-number">500+</span>
-                <span class="about-stat-label">Products</span>
+                <span class="about-stat-number">01</span>
+                <span class="about-stat-label">Browse and filter</span>
               </div>
               <div class="about-stat">
-                <span class="about-stat-number">2K+</span>
-                <span class="about-stat-label">Customers</span>
+                <span class="about-stat-number">02</span>
+                <span class="about-stat-label">Explore use cases</span>
               </div>
               <div class="about-stat">
-                <span class="about-stat-number">47</span>
-                <span class="about-stat-label">Counties reached</span>
+                <span class="about-stat-number">03</span>
+                <span class="about-stat-label">Review product details</span>
               </div>
               <div class="about-stat">
-                <span class="about-stat-number">24/7</span>
-                <span class="about-stat-label">Customer support</span>
+                <span class="about-stat-number">04</span>
+                <span class="about-stat-label">Compare options</span>
               </div>
             </div>
           </div>
@@ -251,15 +252,14 @@
           <div class="section-header">
             <div class="section-tag why-us-tag">
               <span class="section-tag-dot"></span>
-              Why Choose Us
+              Shopping Tools
             </div>
             <h2 class="section-title why-us-title">
-              Why Shop With
-              <span class="section-title-highlight">GoldenGen?</span>
+              Make a More
+              <span class="section-title-highlight">Informed Choice</span>
             </h2>
             <p class="section-subtitle why-us-subtitle">
-              We are committed to giving you the best shopping experience every
-              time
+              Explore product information and compare options in one place.
             </p>
           </div>
 
@@ -268,10 +268,10 @@
               <div class="why-us-icon-wrapper">
                 <i class="fa-solid fa-medal"></i>
               </div>
-              <h3 class="why-us-title-card">Quality Products</h3>
+              <h3 class="why-us-title-card">Explore product details</h3>
               <p class="why-us-desc">
-                Every product we sell is carefully vetted for quality and
-                performance. Only the best brands make it to our shelves.
+                Review listed specifications, condition and other product
+                information before deciding.
               </p>
             </div>
 
@@ -279,10 +279,10 @@
               <div class="why-us-icon-wrapper">
                 <i class="fa-solid fa-truck-fast"></i>
               </div>
-              <h3 class="why-us-title-card">Fast Countrywide Delivery</h3>
+              <h3 class="why-us-title-card">Find a starting point</h3>
               <p class="why-us-desc">
-                We deliver to all 47 counties across Kenya. Fast, reliable and
-                affordable delivery right to your doorstep.
+                Get product suggestions based on a device type, use case, budget
+                and priority.
               </p>
             </div>
 
@@ -290,10 +290,9 @@
               <div class="why-us-icon-wrapper">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
-              <h3 class="why-us-title-card">Warranty Protection</h3>
+              <h3 class="why-us-title-card">Compare options</h3>
               <p class="why-us-desc">
-                New laptops come with a full 1 year warranty, refurbished units
-                with 6 months. Shop with confidence.
+                Compare up to three products of the same type side by side.
               </p>
             </div>
 
@@ -301,10 +300,10 @@
               <div class="why-us-icon-wrapper">
                 <i class="fa-solid fa-tag"></i>
               </div>
-              <h3 class="why-us-title-card">Best Prices</h3>
+              <h3 class="why-us-title-card">Filter by your needs</h3>
               <p class="why-us-desc">
-                We offer the most competitive prices in Kenya. Get premium
-                products without breaking the bank.
+                Narrow the catalogue by category, price, use case and other
+                available filters.
               </p>
             </div>
 
@@ -312,10 +311,9 @@
               <div class="why-us-icon-wrapper">
                 <i class="fa-solid fa-headset"></i>
               </div>
-              <h3 class="why-us-title-card">24/7 Customer Support</h3>
+              <h3 class="why-us-title-card">Keep your options handy</h3>
               <p class="why-us-desc">
-                Our support team is always available via WhatsApp, email or
-                phone. We are here whenever you need us.
+                Save products in the wishlist while you explore the catalogue.
               </p>
             </div>
           </div>

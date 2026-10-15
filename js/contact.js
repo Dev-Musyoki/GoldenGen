@@ -2,6 +2,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   if (!form) return;
+  const status = document.getElementById("contactFormStatus");
+
+  // Each field owns its validation message so the form can identify the exact
+  // correction needed before a submission is attempted.
 
   const fields = {
     name: {
@@ -41,12 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
   Object.values(fields).forEach((field) => {
     field.input.addEventListener("blur", () => validateField(field));
     field.input.addEventListener("input", () => {
+      if (status) status.textContent = "";
       if (field.input.classList.contains("invalid")) validateField(field);
     });
   });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (status) status.textContent = "";
 
     const allValid = Object.values(fields).map(validateField).every(Boolean);
     if (!allValid) {
@@ -54,30 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const submitBtn = form.querySelector(".contact-form-submit");
-    submitBtn.disabled = true;
-    form.setAttribute("aria-busy", "true");
-    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
+    const validationMessage =
+      "Form validation passed. This preview is not connected, so no message was sent or stored.";
+    if (status) {
+      status.textContent = validationMessage;
+    }
 
-    // No backend yet — simulated submission.
-    // Swap block for a real API call once Express is in place.
-    setTimeout(() => {
-      form.reset();
-      form.removeAttribute("aria-busy");
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message`;
-
-      if (typeof ggShowToast === "function") {
-        ggShowToast("Message received — we'll get back to you soon");
-      }
-
-      const announcer = document.getElementById("srAnnouncer");
-      if (announcer) {
-        announcer.textContent = "";
-        setTimeout(() => {
-          announcer.textContent = "Your message has been sent.";
-        }, 20);
-      }
-    }, 900);
+    const announcer = document.getElementById("srAnnouncer");
+    if (announcer) {
+      announcer.textContent = validationMessage;
+    }
   });
 });

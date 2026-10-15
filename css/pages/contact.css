@@ -61,10 +61,11 @@
 }
 
 .contact-info-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  color: var(--text-light);
+  color: var(--text-secondary);
   margin-bottom: 2px;
 }
 
@@ -106,13 +107,13 @@
 }
 
 .contact-delivery-note strong {
-  color: var(--text-primary);
+  color: var(--black);
   font-size: 0.78rem;
 }
 
 .contact-delivery-note p {
   margin-top: 3px;
-  color: var(--text-secondary);
+  color: var(--gray-dark);
   font-size: 0.72rem;
   line-height: 1.5;
 }
@@ -141,6 +142,11 @@
   color: var(--text-secondary);
   font-size: 0.78rem;
   line-height: 1.5;
+}
+
+.contact-form-heading .contact-form-demo-note {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
 }
 
 .contact-form-row {
@@ -201,6 +207,12 @@
 .contact-form-submit {
   justify-self: start;
   margin-top: var(--spacing-xs);
+}
+
+.contact-form-status {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
 }
 
 @media (max-width: 900px) {

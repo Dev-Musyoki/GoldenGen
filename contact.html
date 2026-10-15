@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
 
     <meta
       name="description"
@@ -110,16 +111,17 @@
           </a>
 
           <div class="cart-widget">
-            <a
-              href="#"
+            <button
+              type="button"
               class="cart-icon"
               aria-label="Shopping cart"
               aria-expanded="false"
+              aria-controls="cartDropdown"
               id="cartToggle"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
               <span class="cart-count" id="cartCount">0</span>
-            </a>
+            </button>
 
             <div class="cart-dropdown" id="cartDropdown">
               <div class="cart-dropdown-header">
@@ -141,9 +143,10 @@
                   <span>Total</span>
                   <span id="cartDropdownTotal">KSh 0</span>
                 </div>
-                <button type="button" class="cart-dropdown-checkout">
-                  View cart (coming soon)
-                </button>
+                <a class="cart-dropdown-continue" href="products.html">
+                  Continue shopping
+                </a>
+                <p class="cart-dropdown-note">Checkout will be available soon.</p>
               </div>
             </div>
           </div>
@@ -282,6 +285,9 @@
                   Include a product name or county when it helps us answer
                   faster.
                 </p>
+                <p class="contact-form-demo-note">
+                  Demo form only — no message is sent or stored.
+                </p>
               </div>
 
               <div class="contact-form-row">
@@ -337,9 +343,15 @@
               </div>
 
               <button type="submit" class="btn btn-primary contact-form-submit">
-                <i class="fa-solid fa-paper-plane"></i>
-                Send Message
+                <i class="fa-solid fa-check"></i>
+                Validate demo form
               </button>
+              <p
+                class="contact-form-status"
+                id="contactFormStatus"
+                role="status"
+                aria-live="polite"
+              ></p>
             </form>
           </div>
         </div>

@@ -308,7 +308,7 @@
   color: var(--text-primary);
 }
 
-.cart-dropdown-checkout {
+.cart-dropdown-continue {
   width: 100%;
   padding: 10px;
   background: var(--primary-color);
@@ -316,10 +316,20 @@
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: var(--font-size-sm);
+  text-align: center;
+  text-decoration: none;
+  display: block;
 }
 
-.cart-dropdown-checkout:hover {
+.cart-dropdown-continue:hover {
   background: var(--primary-dark);
+}
+
+.cart-dropdown-note {
+  margin: 8px 0 0;
+  color: var(--text-light);
+  font-size: 0.7rem;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     emptyReset: document.getElementById("emptyResetBtn"),
 
     categoryList: document.getElementById("categoryFilterList"),
+    useCaseList: document.getElementById("useCaseFilterList"),
     brandList: document.getElementById("brandFilterList"),
     brandSearch: document.getElementById("brandSearchInput"),
 
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     compareToggle: document.getElementById("compareToggleBtn"),
     compareCount: document.getElementById("compareCount"),
+    compareHint: document.getElementById("compareHint"),
     compareDialog: document.getElementById("compareDialog"),
     compareClose: document.getElementById("compareDialogClose"),
     compareContent: document.getElementById("compareContent"),
@@ -409,6 +411,17 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Fragile-item delivery",
       summary:
         "Immersive QHD gaming monitor with a fast refresh rate, curved panel and smooth adaptive gameplay.",
+      suitableFor: ["Gaming", "Creative work"],
+      specs: {
+        displaySize: '27"',
+        resolution: "2560 × 1440 QHD",
+        refreshRate: "165Hz",
+        brightness: "300 nits",
+        responseTime: "1ms",
+        panelType: "VA curved",
+        mounting: "VESA 75 × 75mm",
+        eyeCare: "Flicker-free and low-blue-light mode",
+      },
       createdAt: "2026-05-11",
       featuredRank: 7,
     },
@@ -432,6 +445,17 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Fragile-item delivery",
       summary:
         "Fast IPS gaming monitor with sharp QHD resolution, responsive motion and wide viewing angles.",
+      suitableFor: ["Gaming", "Creative work"],
+      specs: {
+        displaySize: '27"',
+        resolution: "2560 × 1440 QHD",
+        refreshRate: "144Hz",
+        brightness: "350 nits",
+        responseTime: "1ms",
+        panelType: "IPS",
+        mounting: "VESA 100 × 100mm",
+        eyeCare: "Flicker-free and reader mode",
+      },
       createdAt: "2026-04-28",
       featuredRank: 9,
     },
@@ -455,6 +479,17 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Countrywide delivery",
       summary:
         "Comfortable productivity monitor with an IPS panel, adjustable stand and practical office connectivity.",
+      suitableFor: ["Business", "Student", "Everyday use"],
+      specs: {
+        displaySize: '24"',
+        resolution: "1920 × 1080 Full HD",
+        refreshRate: "60Hz",
+        brightness: "250 nits",
+        responseTime: "8ms",
+        panelType: "IPS",
+        mounting: "VESA 100 × 100mm",
+        eyeCare: "Flicker-free and ComfortView",
+      },
       createdAt: "2026-01-24",
       featuredRank: 12,
     },
@@ -478,6 +513,17 @@ document.addEventListener("DOMContentLoaded", () => {
       delivery: "Fragile-item delivery",
       summary:
         "Wide productivity display for multitasking, content timelines and immersive desktop workflows.",
+      suitableFor: ["Business", "Creative work"],
+      specs: {
+        displaySize: '34"',
+        resolution: "3440 × 1440 UltraWide",
+        refreshRate: "100Hz",
+        brightness: "300 nits",
+        responseTime: "5ms",
+        panelType: "IPS",
+        mounting: "VESA 100 × 100mm",
+        eyeCare: "Flicker-free and reader mode",
+      },
       createdAt: "2026-07-30",
       featuredRank: 10,
     },
@@ -787,6 +833,208 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  // Prototype inventory used to make every homepage category useful before
+  // final product images and commercial catalogue data are available.
+  const placeholderGroups = [
+    {
+      category: "laptops",
+      image: "images/cat-laptops.jpg",
+      subcategory: "Everyday laptop",
+      prefix: "GoldenGen Everyday Laptop",
+      count: 4,
+      startPrice: 62000,
+      step: 8500,
+      summary:
+        "Sample everyday laptop with practical performance for study, office work and home use.",
+      suitableFor: ["Student", "Business", "Everyday use"],
+      specs: {
+        processor: "Intel Core i5 sample processor",
+        memory: "16GB RAM",
+        storage: "512GB SSD",
+        graphics: "Integrated graphics",
+        display: '15.6" Full HD display',
+        battery: "Up to 8 hours",
+        weight: "1.7 kg",
+        operatingSystem: "Windows 11",
+        ports: "USB-C, USB-A, HDMI",
+        expandability: "RAM and SSD upgradeable",
+      },
+    },
+    {
+      category: "monitors",
+      image: "images/cat-monitors.jpg",
+      subcategory: "Office monitor",
+      prefix: "GoldenGen Office Monitor",
+      count: 10,
+      startPrice: 23000,
+      step: 4200,
+      summary:
+        "Sample monitor with a clear display and practical features for office work, study and everyday use.",
+      suitableFor: ["Business", "Student", "Everyday use"],
+      specs: {
+        displaySize: '27"',
+        resolution: "1920 × 1080 Full HD",
+        refreshRate: "75Hz",
+        brightness: "250 nits",
+        responseTime: "5ms",
+        panelType: "IPS",
+        speakers: "Not included",
+        mounting: "VESA 100 × 100mm",
+        eyeCare: "Flicker-free and low-blue-light mode",
+      },
+    },
+    {
+      category: "accessories",
+      image: "images/cat-keyboards.jpg",
+      subcategory: "Mechanical keyboard",
+      prefix: "GoldenGen Mechanical Keyboard",
+      count: 9,
+      startPrice: 6500,
+      step: 900,
+      summary:
+        "Sample mechanical keyboard with comfortable switches, reliable connectivity and a practical layout.",
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      specs: {
+        connectivity: "USB-C and wireless sample configuration",
+        layout: "Compact full-function layout",
+        switchType: "Mechanical switches",
+        battery: "Rechargeable battery",
+        compatibility: "Windows, macOS and Linux",
+      },
+    },
+    {
+      category: "accessories",
+      image: "images/cat-mice.jpg",
+      subcategory: "Wireless mouse",
+      prefix: "GoldenGen Wireless Mouse",
+      count: 9,
+      startPrice: 2800,
+      step: 650,
+      summary:
+        "Sample wireless mouse designed for comfortable everyday navigation, office work and study.",
+      suitableFor: ["Business", "Student", "Everyday use"],
+      specs: {
+        connectivity: "2.4GHz wireless and Bluetooth",
+        buttons: "6 programmable buttons",
+        sensor: "High-precision optical sensor",
+        battery: "Rechargeable battery",
+        compatibility: "Windows, macOS and Linux",
+      },
+    },
+    {
+      category: "accessories",
+      image: "images/cat-headphones.jpg",
+      subcategory: "Wireless headphones",
+      prefix: "GoldenGen Wireless Headphones",
+      count: 9,
+      startPrice: 5200,
+      step: 2400,
+      summary:
+        "Sample wireless headphones with comfortable earcups, clear calls and balanced everyday audio.",
+      suitableFor: ["Business", "Student", "Everyday use"],
+      specs: {
+        connectivity: "Bluetooth 5.3",
+        battery: "Up to 35 hours",
+        microphone: "Built-in call microphone",
+        noiseControl: "Passive noise isolation",
+        compatibility: "Phones, laptops and tablets",
+      },
+    },
+    {
+      category: "accessories",
+      image: "images/cat-bags.jpg",
+      subcategory: "Bags & Cases",
+      prefix: "GoldenGen Laptop Bag",
+      count: 10,
+      startPrice: 2800,
+      step: 850,
+      summary:
+        "Sample laptop bag with protective padding, organised storage and a practical everyday carry design.",
+      suitableFor: ["Student", "Business", "Everyday use"],
+      specs: {
+        laptopFit: "Up to 15.6-inch laptop",
+        material: "Water-resistant outer material",
+        compartments: "Padded laptop compartment and accessory pockets",
+        carrying: "Shoulder strap and carry handles",
+        protection: "Reinforced protective padding",
+      },
+    },
+    {
+      category: "gaming",
+      image: "images/cat-gaming.jpg",
+      subcategory: "Gaming gear",
+      prefix: "GoldenGen Gaming Gear",
+      count: 6,
+      startPrice: 8500,
+      step: 3200,
+      summary:
+        "Sample gaming accessory with practical controls, durable construction and a focused play experience.",
+      suitableFor: ["Gaming"],
+      specs: {
+        connectivity: "USB and wireless sample configuration",
+        lighting: "Customisable RGB lighting",
+        compatibility: "PC and selected consoles",
+        warrantySupport: "Sample gaming accessory warranty",
+      },
+    },
+  ];
+
+  const placeholderBadges = [
+    { badge: "hot", label: "Popular" },
+    { badge: "new", label: "New" },
+    { badge: "bestseller", label: "Bestseller" },
+    { badge: "sale" },
+  ];
+
+  const placeholderProducts = placeholderGroups.flatMap((group, groupIndex) =>
+    Array.from({ length: group.count }, (_, index) => {
+      const id = 25 + placeholderGroups
+        .slice(0, groupIndex)
+        .reduce((total, previous) => total + previous.count, 0) + index;
+      const sequence = String(index + 1).padStart(2, "0");
+      const isOutOfStock = index === group.count - 1;
+      const badge = placeholderBadges[(id - 25) % placeholderBadges.length];
+      const price = group.startPrice + group.step * index;
+      const oldPrice =
+        badge.badge === "sale" && !isOutOfStock
+          ? Math.ceil((price * 1.1) / 100) * 100
+          : null;
+      const badgeText = oldPrice
+        ? `-${Math.round(((oldPrice - price) / oldPrice) * 100)}%`
+        : badge.label;
+
+      return {
+        id,
+        sku: `GG-SAMPLE-${String(id).padStart(3, "0")}`,
+        name: `${group.prefix} ${sequence}`,
+        brand: "GoldenGen Sample",
+        category: group.category,
+        subcategory: group.subcategory,
+        price,
+        oldPrice,
+        image: group.image,
+        imageAlt: `Illustrative ${group.subcategory.toLowerCase()} image`,
+        rating: 0,
+        reviews: 0,
+        badge: badge.badge,
+        badgeText,
+        stock: isOutOfStock ? 0 : 5,
+        condition: "new",
+        warranty: "Prototype warranty",
+        delivery: "Delivery estimate to be confirmed",
+        summary: group.summary,
+        specs: { ...group.specs },
+        suitableFor: group.suitableFor,
+        deliveryEstimate: "Prototype delivery estimate",
+        createdAt: "2026-08-15",
+        featuredRank: 100 + id,
+        isPrototype: true,
+      };
+    }),
+  );
+
+  PRODUCTS.push(...placeholderProducts);
+
   // ===== CATALOGUE PRICE LIMITS =====
   const prices = PRODUCTS.map((product) => product.price);
 
@@ -795,11 +1043,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const catalogueMax = Math.ceil(Math.max(...prices) / 5000) * 5000;
 
   // ===== APPLICATION STATE =====
+  // Controls update this state and then pass through refresh(); PRODUCTS remains
+  // immutable so filtering and sorting never change the catalogue source data.
   const state = {
     search: "",
     sort: localStorage.getItem(SORT_KEY) || "featured",
 
     categories: new Set(),
+    useCases: new Set(),
     brands: new Set(),
     conditions: new Set(),
 
@@ -844,12 +1095,36 @@ document.addEventListener("DOMContentLoaded", () => {
       ["memory", "RAM"],
       ["storage", "Storage"],
       ["graphics", "GPU"],
+      ["displaySize", "Screen size"],
+      ["resolution", "Resolution"],
+      ["refreshRate", "Refresh rate"],
+      ["brightness", "Brightness"],
+      ["responseTime", "Response time"],
+      ["panelType", "Panel type"],
       ["display", "Display"],
       ["battery", "Battery"],
       ["weight", "Weight"],
       ["operatingSystem", "Operating system"],
       ["ports", "Ports"],
       ["expandability", "Expandability"],
+      ["connectivity", "Connectivity"],
+      ["layout", "Layout"],
+      ["switchType", "Switch type"],
+      ["buttons", "Buttons"],
+      ["sensor", "Sensor"],
+      ["microphone", "Microphone"],
+      ["noiseControl", "Noise control"],
+      ["compatibility", "Compatibility"],
+      ["laptopFit", "Laptop fit"],
+      ["material", "Material"],
+      ["compartments", "Compartments"],
+      ["carrying", "Carrying options"],
+      ["protection", "Protection"],
+      ["lighting", "Lighting"],
+      ["warrantySupport", "Support"],
+      ["speakers", "Speakers"],
+      ["mounting", "Mounting"],
+      ["eyeCare", "Eye care"],
     ];
 
     const entries = labels
@@ -887,44 +1162,185 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  function buildChooserResults(useCase) {
+  function getProductType(product) {
+    const subcategory = String(product.subcategory || "").toLowerCase();
+
+    if (product.specs?.processor || /\b(laptop|notebook)\b/.test(subcategory)) {
+      return "laptops";
+    }
+    if (product.category === "monitors" || /\bmonitor\b/.test(subcategory)) {
+      return "monitors";
+    }
+    if (/\bheadphones?\b/.test(subcategory)) return "headphones";
+    if (/\bheadsets?\b/.test(subcategory)) return "headsets";
+    if (/\bkeyboards?\b/.test(subcategory)) return "keyboards";
+    if (/\b(mice|mouse)\b/.test(subcategory)) return "mice";
+    if (/\b(bags?|cases?)\b/.test(subcategory)) return "bags and cases";
+    if (/\bpower banks?\b/.test(subcategory)) return "power banks";
+    if (/\b(external storage|ssd|hard drives?)\b/.test(subcategory)) {
+      return "external storage";
+    }
+    if (/\b(networking|routers?)\b/.test(subcategory)) return "networking";
+
+    // Do not treat every product in a broad category as interchangeable.
+    return `${product.category}:${subcategory.trim()}`;
+  }
+
+  function getPriorityMatch(product, priority) {
+    const specs = product.specs || {};
+    const evidence = [];
+    let score = 0;
+
+    if (priority === "performance") {
+      const memory = Number.parseFloat(specs.memory || "");
+      const graphics = specs.graphics || "";
+
+      if (/\b(rtx|geforce|radeon rx)\b/i.test(graphics)) {
+        score += 4;
+        evidence.push(`${graphics} graphics`);
+      } else if (graphics) {
+        evidence.push(`${graphics} listed`);
+      }
+
+      if (memory >= 32) {
+        score += 3;
+        evidence.push(`${memory}GB memory`);
+      } else if (memory >= 16) {
+        score += 2;
+        evidence.push(`${memory}GB memory`);
+      } else if (memory >= 8) {
+        score += 1;
+        evidence.push(`${memory}GB memory`);
+      }
+    }
+
+    if (priority === "portability") {
+      const weight = Number.parseFloat(specs.weight || "");
+      if (Number.isFinite(weight)) {
+        evidence.push(`${specs.weight} listed`);
+        score =
+          weight <= 1.3 ? 4 : weight <= 1.5 ? 3 : weight <= 1.8 ? 1 : 0;
+      }
+    }
+
+    if (priority === "display") {
+      const resolution = specs.resolution || specs.display || "";
+      const panel = specs.panelType || "";
+
+      if (/\b(oled)\b/i.test(`${resolution} ${panel}`)) {
+        score += 2;
+        evidence.push("OLED display");
+      }
+      if (/\b(3840|2160|4k|uhd)\b/i.test(resolution)) {
+        score += 3;
+        evidence.push(`${resolution} resolution`);
+      } else if (/\b(2560|1440|2k|qhd)\b/i.test(resolution)) {
+        score += 2;
+        evidence.push(`${resolution} resolution`);
+      } else if (/\b(1920|1080|full hd|fhd)\b/i.test(resolution)) {
+        score += 1;
+        evidence.push(`${resolution} resolution`);
+      }
+    }
+
+    if (priority === "battery") {
+      const hours = Number.parseFloat(
+        specs.battery?.match(/(\d+(?:\.\d+)?)/)?.[1] || "",
+      );
+      if (Number.isFinite(hours)) {
+        score = hours >= 12 ? 4 : hours >= 9 ? 3 : hours >= 6 ? 1 : 0;
+        evidence.push(`${specs.battery} listed`);
+      }
+    }
+
+    return { score, evidence };
+  }
+
+  function buildChooserResults({ deviceType, useCase, budget, priority }) {
+    // Score only available examples that fit the selected device and budget. The
+    // explanation shown beside each result is derived from the same score inputs.
+    const useCaseLabel =
+      {
+        Student: "university",
+        Developer: "programming",
+        Gaming: "gaming",
+        "Creative work": "creative work",
+        Business: "business",
+        "Everyday use": "everyday use",
+      }[useCase] || useCase;
+    const maximumBudget = budget === "any" ? Infinity : Number(budget);
     const matches = PRODUCTS.filter(
-      (product) => product.stock > 0 && product.suitableFor?.includes(useCase),
+      (product) =>
+        product.stock > 0 &&
+        getProductType(product) === deviceType &&
+        product.price <= maximumBudget,
     )
-      .sort((first, second) => {
-        const ratingDifference = second.rating - first.rating;
-        return ratingDifference || first.price - second.price;
+      .map((product) => {
+        const matchesUseCase = product.suitableFor?.includes(useCase) || false;
+        const priorityMatch = getPriorityMatch(product, priority);
+        const priorityReason =
+          priorityMatch.evidence.length > 0
+            ? `Relevant details: ${priorityMatch.evidence.join(", ")}.`
+            : priority === "balanced"
+              ? "Compare its listed specifications and price."
+              : `No listed ${priority} details support this preference; check the specifications before deciding.`;
+
+        return {
+          product,
+          score: (matchesUseCase ? 10 : 0) + priorityMatch.score,
+          reason: matchesUseCase
+            ? `Matches your ${useCaseLabel} use case. ${priorityReason}`
+            : `Not tagged for ${useCaseLabel}; consider only if its listed specifications suit your needs. ${priorityReason}`,
+        };
       })
+      .sort((first, second) =>
+        second.score - first.score ||
+        second.product.rating - first.product.rating ||
+        first.product.price - second.product.price,
+      )
       .slice(0, 3);
 
     if (matches.length === 0) {
       return `
         <div class="choose-results-empty">
-          <strong>No stocked match yet</strong>
-          <p>Try another use case or browse the full catalogue.</p>
+          <strong>No example fits these choices</strong>
+          <p>Try a wider budget or browse the full catalogue.</p>
         </div>
       `;
     }
 
+    const hasUseCaseMatches = matches.some(({ product }) =>
+      product.suitableFor?.includes(useCase),
+    );
+    const deviceLabel = deviceType === "monitors" ? "monitors" : "laptops";
+    const heading = hasUseCaseMatches
+      ? `Top ${deviceLabel} for ${escapeHTML(useCaseLabel)}`
+      : `Other ${deviceLabel} within your budget`;
+
     return `
       <div class="choose-results-heading">
         <p class="quick-view-brand">Based on your choice</p>
-        <h3>Suitable for ${escapeHTML(useCase)}</h3>
+        <h3>${heading}</h3>
+        <p>
+          Results fit your budget. Use the notes to see whether they match
+          your use case and priority.
+        </p>
       </div>
 
       <div class="choose-result-list">
         ${matches
           .map(
-            (product) => `
+            ({ product, reason }) => `
               <article class="choose-result">
                 <img
                   src="${escapeHTML(product.image)}"
-                  alt="${escapeHTML(product.name)}"
+                  alt="${escapeHTML(product.imageAlt || product.name)}"
                   loading="lazy"
                 />
                 <div class="choose-result-info">
                   <h4>${escapeHTML(product.name)}</h4>
                   <p>${escapeHTML(product.summary)}</p>
+                  <p class="choose-result-reason">${escapeHTML(reason)}</p>
                   ${buildProductSpecs(product, true)}
                   <strong>${formatPrice(product.price)}</strong>
                 </div>
@@ -961,6 +1377,85 @@ document.addEventListener("DOMContentLoaded", () => {
     ["delivery", "Delivery"],
   ];
 
+  const monitorComparisonFields = [
+    ["price", "Price"],
+    ["displaySize", "Screen size"],
+    ["resolution", "Resolution"],
+    ["refreshRate", "Refresh rate"],
+    ["brightness", "Brightness"],
+    ["responseTime", "Response time"],
+    ["panelType", "Panel type"],
+    ["speakers", "Speakers"],
+    ["mounting", "Mounting"],
+    ["eyeCare", "Eye care"],
+    ["warranty", "Warranty"],
+    ["condition", "Condition"],
+    ["availability", "Availability"],
+    ["delivery", "Delivery"],
+  ];
+
+  const comparisonFieldsByType = {
+    headphones: [
+      ["connectivity", "Connectivity"],
+      ["battery", "Battery"],
+      ["microphone", "Microphone"],
+      ["noiseControl", "Noise control"],
+      ["compatibility", "Compatibility"],
+    ],
+    headsets: [
+      ["connectivity", "Connectivity"],
+      ["battery", "Battery"],
+      ["microphone", "Microphone"],
+      ["noiseControl", "Noise control"],
+      ["compatibility", "Compatibility"],
+    ],
+    keyboards: [
+      ["connectivity", "Connectivity"],
+      ["layout", "Layout"],
+      ["switchType", "Switch type"],
+      ["lighting", "Lighting"],
+      ["compatibility", "Compatibility"],
+    ],
+    mice: [
+      ["connectivity", "Connectivity"],
+      ["buttons", "Buttons"],
+      ["sensor", "Sensor"],
+      ["battery", "Battery"],
+      ["compatibility", "Compatibility"],
+    ],
+    "bags and cases": [
+      ["laptopFit", "Laptop fit"],
+      ["material", "Material"],
+      ["compartments", "Compartments"],
+      ["carrying", "Carrying options"],
+      ["protection", "Protection"],
+    ],
+    "power banks": [
+      ["capacity", "Capacity"],
+      ["output", "Power output"],
+      ["ports", "Ports"],
+    ],
+    "external storage": [
+      ["capacity", "Capacity"],
+      ["interface", "Interface"],
+      ["durability", "Durability"],
+      ["compatibility", "Compatibility"],
+    ],
+    networking: [
+      ["wifiStandard", "Wi-Fi standard"],
+      ["bands", "Bands"],
+      ["coverage", "Coverage"],
+      ["ports", "Ports"],
+    ],
+  };
+
+  const generalComparisonFields = [
+    ["warranty", "Warranty"],
+    ["condition", "Condition"],
+    ["availability", "Availability"],
+    ["delivery", "Delivery"],
+  ];
+
   function getComparisonValue(product, key) {
     if (key === "price") return formatPrice(product.price);
     if (key === "warranty") return product.warranty;
@@ -980,27 +1475,118 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!el.compareContent) return;
 
-    if (products.length < 2) {
-      el.compareContent.innerHTML = `
-        <div class="compare-empty">
-          <p class="quick-view-brand">Compare products</p>
-          <h2>Select at least two products</h2>
-          <p>Choose up to three structured laptop products from the catalogue.</p>
-        </div>
-      `;
-      return;
-    }
+    const productType = products[0]
+      ? getProductType(products[0])
+      : comparisonType;
+    const fields =
+      productType === "monitors"
+        ? monitorComparisonFields
+        : productType && comparisonFieldsByType[productType]
+          ? [
+              ["price", "Price"],
+              ...comparisonFieldsByType[productType],
+              ...generalComparisonFields,
+            ]
+          : comparisonFields;
+    const candidates = productType
+      ? PRODUCTS.filter(
+          (product) =>
+            getProductType(product) === productType &&
+            !comparisonIds.has(product.id),
+        )
+      : [];
+    const comparisonMessage =
+      products.length === 1
+        ? "One product remains. Choose another product from the compatible list below."
+        : products.length === 0 && productType
+          ? "Choose two compatible products from the list below to start comparing."
+          : products.length === 3
+            ? "You have selected the maximum of three products."
+            : "Choose another compatible product to compare side by side.";
 
     el.compareContent.innerHTML = `
       <div class="compare-header">
         <div>
-          <p class="quick-view-brand">Side-by-side view</p>
+          <p class="quick-view-brand">Product comparison</p>
           <h2>Compare products</h2>
-          <p>See the differences that matter before you decide.</p>
+          <p>${products.length < 2 ? "Manage your selection and add a compatible product to continue." : "See the differences that matter before you decide."}</p>
         </div>
         <span class="compare-limit">${products.length} of 3 selected</span>
       </div>
 
+      <p class="compare-message" role="status">${comparisonMessage}</p>
+
+      <section class="compare-selection" aria-label="Selected products">
+        <h3>Selected products</h3>
+        ${
+          products.length
+            ? `
+              <ul class="compare-product-list">
+                ${products
+                  .map(
+                    (product) => `
+                      <li class="compare-product-item">
+                        <img src="${escapeHTML(product.image)}" alt="" />
+                        <span>${escapeHTML(product.name)}</span>
+                        <button
+                          type="button"
+                          class="compare-remove"
+                          data-remove-comparison="${product.id}"
+                          aria-label="Remove ${escapeHTML(product.name)} from comparison"
+                        >
+                          Remove
+                        </button>
+                      </li>
+                    `,
+                  )
+                  .join("")}
+              </ul>
+            `
+            : '<p class="compare-selection-empty">No products selected yet.</p>'
+        }
+      </section>
+
+      ${
+        products.length < 3 && productType
+          ? `
+            <section class="compare-available" aria-label="Products available to add">
+              <h3>Available products to add</h3>
+              ${
+                candidates.length
+                  ? `
+                    <ul class="compare-product-list">
+                      ${candidates
+                        .map(
+                          (product) => `
+                            <li class="compare-product-item">
+                              <img src="${escapeHTML(product.image)}" alt="" />
+                              <span>
+                                <strong>${escapeHTML(product.name)}</strong>
+                                <small>${formatPrice(product.price)}</small>
+                              </span>
+                              <button
+                                type="button"
+                                class="compare-add"
+                                data-add-comparison="${product.id}"
+                              >
+                                Add
+                              </button>
+                            </li>
+                          `,
+                        )
+                        .join("")}
+                    </ul>
+                  `
+                  : '<p class="compare-selection-empty">There are no more products of this type to add.</p>'
+              }
+            </section>
+          `
+          : ""
+      }
+
+      ${
+        products.length >= 2
+          ? `
       <div class="compare-table-wrap">
         <table class="compare-table">
           <thead>
@@ -1012,13 +1598,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <th scope="col">
                       <img src="${escapeHTML(product.image)}" alt="" />
                       <span>${escapeHTML(product.name)}</span>
-                      <button
-                        type="button"
-                        class="compare-remove"
-                        data-remove-comparison="${product.id}"
-                      >
-                        Remove
-                      </button>
                     </th>
                   `,
                 )
@@ -1026,7 +1605,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </tr>
           </thead>
           <tbody>
-            ${comparisonFields
+            ${fields
               .map(
                 ([key, label]) => `
                   <tr>
@@ -1044,13 +1623,28 @@ document.addEventListener("DOMContentLoaded", () => {
           </tbody>
         </table>
       </div>
+          `
+          : ""
+      }
     `;
   }
 
   function toggleComparison(productId) {
     const product = getProduct(productId);
 
-    if (!product?.specs) return;
+    if (!product) return;
+
+    const selectedProducts = getComparisonProducts();
+    const selectedType = selectedProducts[0]
+      ? getProductType(selectedProducts[0])
+      : comparisonType;
+
+    // Mixing laptops, monitors, or accessories would produce misleading rows, so
+    // reject the selection before changing persisted comparison state.
+    if (selectedType && getProductType(product) !== selectedType) {
+      announce("Compare products from the same type, such as laptops with laptops.");
+      return;
+    }
 
     if (comparisonIds.has(product.id)) {
       comparisonIds.delete(product.id);
@@ -1059,6 +1653,7 @@ document.addEventListener("DOMContentLoaded", () => {
       announce("You can compare up to three products.");
       return;
     } else {
+      comparisonType = getProductType(product);
       comparisonIds.add(product.id);
       announce(`${product.name} added to comparison.`);
     }
@@ -1108,6 +1703,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function readArray(key) {
+    // Preferences can outlive a code update, so malformed localStorage data
+    // falls back safely instead of preventing the catalogue from rendering.
     try {
       const value = JSON.parse(localStorage.getItem(key));
 
@@ -1128,6 +1725,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const comparisonIds = new Set(
     readArray(COMPARISON_KEY).map((productId) => Number(productId)),
   );
+  let comparisonType = getComparisonProducts()[0]
+    ? getProductType(getComparisonProducts()[0])
+    : null;
 
   function getComparisonProducts() {
     return [...comparisonIds]
@@ -1136,6 +1736,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function syncComparisonState() {
+    let selectedProducts = getComparisonProducts();
+    const firstType = selectedProducts[0]
+      ? getProductType(selectedProducts[0])
+      : null;
+
+    if (firstType) {
+      [...comparisonIds].forEach((productId) => {
+        const product = getProduct(productId);
+
+        if (product && getProductType(product) !== firstType) {
+          comparisonIds.delete(productId);
+        }
+      });
+    }
+
+    selectedProducts = getComparisonProducts();
+    if (selectedProducts.length) {
+      comparisonType = getProductType(selectedProducts[0]);
+    }
+
     const ids = [...comparisonIds];
 
     writeArray(COMPARISON_KEY, ids);
@@ -1148,17 +1768,47 @@ document.addEventListener("DOMContentLoaded", () => {
       const canCompare = ids.length >= 2;
       el.compareToggle.disabled = !canCompare;
       el.compareToggle.setAttribute("aria-disabled", String(!canCompare));
+      el.compareToggle.setAttribute(
+        "aria-label",
+        canCompare
+          ? `Compare ${ids.length} selected products side by side`
+          : `Select ${2 - ids.length} more product${ids.length === 0 ? "s" : ""} of the same type to compare`,
+      );
+    }
+
+    if (el.compareHint) {
+      if (ids.length === 0) {
+        el.compareHint.textContent =
+          'Select 2–3 products of the same type using “Add to compare” on their cards to see their key specifications side by side.';
+      } else if (ids.length === 1) {
+        el.compareHint.textContent =
+          `${selectedProducts[0].name} is selected. Add one more product of the same type to compare key specifications side by side.`;
+      } else {
+        el.compareHint.textContent =
+          `${ids.length} ${firstType} selected. Compare them side by side now${ids.length < 3 ? " or add one more" : ""}.`;
+      }
     }
 
     document.querySelectorAll('[data-action="compare"]').forEach((button) => {
       const selected = comparisonIds.has(Number(button.dataset.id));
+      const product = getProduct(button.dataset.id);
 
       button.classList.toggle("selected", selected);
       button.setAttribute("aria-pressed", String(selected));
+      if (product) {
+        button.setAttribute(
+          "aria-label",
+          selected
+            ? `Remove ${product.name} from comparison`
+            : `Add ${product.name} to comparison`,
+        );
+      }
       button
         .querySelector("span")
         ?.replaceChildren(
-          document.createTextNode(selected ? "Selected" : "Compare"),
+          document.createTextNode(
+            selected ? "In comparison" : "Add to compare",
+          ),
         );
     });
   }
@@ -1345,7 +1995,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="spotlight-image-wrap">
               <img
                 src="${escapeHTML(product.image)}"
-                alt="${escapeHTML(product.name)}"
+                alt="${escapeHTML(product.imageAlt || product.name)}"
                 data-product-image
                 data-product-id="${product.id}"
               />
@@ -1570,7 +2220,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <img
             src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
+            alt="${escapeHTML(product.imageAlt || product.name)}"
             class="product-image"
             loading="lazy"
             data-product-image
@@ -1726,22 +2376,18 @@ document.addEventListener("DOMContentLoaded", () => {
             ></i>
           </button>
 
-          ${
-            product.specs
-              ? `
-                <button
-                  type="button"
-                  class="product-compare-link ${isCompared ? "selected" : ""}"
-                  data-action="compare"
-                  data-id="${product.id}"
-                  aria-pressed="${isCompared}"
-                >
-                  <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
-                  <span>${isCompared ? "Selected" : "Compare"}</span>
-                </button>
-              `
-              : ""
-          }
+          <button
+            type="button"
+            class="product-compare-link ${isCompared ? "selected" : ""}"
+            data-action="compare"
+            data-id="${product.id}"
+            aria-label="${isCompared ? `Remove ${escapeHTML(product.name)} from comparison` : `Add ${escapeHTML(product.name)} to comparison`}"
+            aria-pressed="${isCompared}"
+            aria-describedby="compareHint"
+          >
+            <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
+            <span>${isCompared ? "In comparison" : "Add to compare"}</span>
+          </button>
         </div>
       </article>
     `;
@@ -1854,6 +2500,28 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   }
 
+  function renderUseCaseFilters() {
+    // Build this filter from suitableFor metadata so new products automatically
+    // contribute to the available use-case counts.
+    const counts = PRODUCTS.reduce((result, product) => {
+      (product.suitableFor || []).forEach((useCase) => {
+        result[useCase] = (result[useCase] || 0) + 1;
+      });
+
+      return result;
+    }, {});
+
+    const useCases = Object.keys(counts).sort();
+
+    if (el.useCaseList) {
+      el.useCaseList.innerHTML = useCases
+        .map((useCase) =>
+          buildFilterOption("useCase", useCase, counts[useCase]),
+        )
+        .join("");
+    }
+  }
+
   function renderBrandFilters(searchTerm = "") {
     const counts = countBy("brand");
 
@@ -1886,6 +2554,9 @@ document.addEventListener("DOMContentLoaded", () => {
         product.subcategory,
         product.sku,
         product.condition,
+        product.summary,
+        ...(product.suitableFor || []),
+        ...Object.values(product.specs || {}),
       ]
         .join(" ")
         .toLowerCase();
@@ -1894,6 +2565,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const matchesCategory =
         state.categories.size === 0 || state.categories.has(product.category);
+
+      const matchesUseCase =
+        state.useCases.size === 0 ||
+        [...state.useCases].some((useCase) =>
+          product.suitableFor?.includes(useCase),
+        );
 
       const matchesBrand =
         state.brands.size === 0 || state.brands.has(product.brand);
@@ -1911,6 +2588,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return (
         matchesSearch &&
         matchesCategory &&
+        matchesUseCase &&
         matchesBrand &&
         matchesCondition &&
         matchesPrice &&
@@ -1960,6 +2638,14 @@ document.addEventListener("DOMContentLoaded", () => {
         type: "category",
         value,
         label: titleCase(value),
+      });
+    });
+
+    state.useCases.forEach((value) => {
+      items.push({
+        type: "useCase",
+        value,
+        label: `Best for ${value}`,
       });
     });
 
@@ -2094,6 +2780,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderCategoryFilters();
 
+    renderUseCaseFilters();
+
     renderBrandFilters(el.brandSearch?.value || "");
   }
 
@@ -2157,6 +2845,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== RENDER PRODUCTS =====
   function refresh({ resetPage = false, append = false } = {}) {
+    // One rendering pipeline keeps search, filters, sorting, pagination, counts,
+    // and empty states synchronized after every catalogue interaction.
     const previousVisible = state.visible;
 
     if (resetPage) {
@@ -2219,6 +2909,7 @@ document.addEventListener("DOMContentLoaded", () => {
     state.search = "";
 
     state.categories.clear();
+    state.useCases.clear();
     state.brands.clear();
     state.conditions.clear();
 
@@ -2248,6 +2939,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (type === "category") {
       state.categories.delete(value);
+    }
+
+    if (type === "useCase") {
+      state.useCases.delete(value);
     }
 
     if (type === "brand") {
@@ -2316,7 +3011,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== QUICK VIEW =====
-  function openQuickView(productId) {
+  function openQuickView(productId, { returnToChooser = false } = {}) {
     const product = getProduct(productId);
 
     if (!product || !el.quickView || !el.quickViewContent) {
@@ -2326,6 +3021,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isSaved = readArray(WISHLIST_KEY).includes(product.id);
 
     currentQuickViewProductId = product.id;
+    currentQuickViewReturnToChooser = returnToChooser;
 
     const sourceImage = document.querySelector(
       `.product-card[data-id="${product.id}"] .product-image`,
@@ -2337,7 +3033,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="quick-view-image">
             <img
               src="${escapeHTML(product.image)}"
-              alt="${escapeHTML(product.name)}"
+              alt="${escapeHTML(product.imageAlt || product.name)}"
               data-product-image
               data-product-id="${product.id}"
               style="view-transition-name: quick-view-image;"
@@ -2345,6 +3041,21 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <div class="quick-view-details">
+            ${
+              currentQuickViewReturnToChooser
+                ? `
+                  <button
+                    type="button"
+                    class="quick-view-back"
+                    data-return-to-chooser
+                  >
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    Back to recommendations
+                  </button>
+                `
+                : ""
+            }
+
             <p class="quick-view-brand">
               ${escapeHTML(product.brand)} ·
               ${escapeHTML(product.subcategory)}
@@ -2446,8 +3157,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let currentQuickViewProductId = null;
+  let currentQuickViewReturnToChooser = false;
 
-  function closeQuickView() {
+  function closeQuickView({ returnToChooser = false } = {}) {
     if (!el.quickView) return;
 
     const sourceImage = currentQuickViewProductId
@@ -2463,6 +3175,16 @@ document.addEventListener("DOMContentLoaded", () => {
         el.quickView.close();
       } else {
         el.quickView.removeAttribute("open");
+      }
+
+      if (returnToChooser && el.chooseDialog) {
+        if (typeof el.chooseDialog.showModal === "function") {
+          el.chooseDialog.showModal();
+        } else {
+          el.chooseDialog.setAttribute("open", "");
+        }
+
+        el.chooseResults?.focus({ preventScroll: true });
       }
 
       if (sourceImage) {
@@ -2482,6 +3204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     currentQuickViewProductId = null;
+    currentQuickViewReturnToChooser = false;
   }
 
   // ===== HELP ME CHOOSE =====
@@ -2515,7 +3238,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    el.chooseResults.innerHTML = buildChooserResults(selected.value);
+    const deviceType =
+      el.chooseForm.querySelector('input[name="deviceType"]:checked')?.value ||
+      "laptops";
+    const budget = el.chooseForm.elements.budget?.value || "any";
+    const priority = el.chooseForm.elements.priority?.value || "balanced";
+
+    el.chooseResults.innerHTML = buildChooserResults({
+      deviceType,
+      useCase: selected.value,
+      budget,
+      priority,
+    });
     el.chooseResults.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 
@@ -2525,7 +3259,53 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!button) return;
 
     el.chooseDialog?.close();
-    openQuickView(button.dataset.chooseProduct);
+    openQuickView(button.dataset.chooseProduct, { returnToChooser: true });
+  });
+
+  function returnToChooser() {
+    const layout = el.quickViewContent?.querySelector(".quick-view-layout");
+    const backButton = el.quickViewContent?.querySelector(
+      "[data-return-to-chooser]",
+    );
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (
+      !layout ||
+      !el.quickView?.open ||
+      typeof layout.animate !== "function" ||
+      prefersReducedMotion
+    ) {
+      closeQuickView({ returnToChooser: true });
+      return;
+    }
+
+    if (backButton) backButton.disabled = true;
+
+    const animation = layout.animate(
+      [
+        { opacity: 1, transform: "translateY(0) scale(1)" },
+        { opacity: 0, transform: "translateY(10px) scale(0.985)" },
+      ],
+      {
+        duration: 220,
+        easing: "ease-in",
+        fill: "forwards",
+      },
+    );
+
+    animation.onfinish = () => {
+      if (el.quickView?.open) {
+        closeQuickView({ returnToChooser: true });
+      }
+    };
+  }
+
+  el.quickViewContent?.addEventListener("click", (event) => {
+    if (event.target.closest("[data-return-to-chooser]")) {
+      returnToChooser();
+    }
   });
 
   el.compareToggle?.addEventListener("click", () => {
@@ -2547,10 +3327,25 @@ document.addEventListener("DOMContentLoaded", () => {
       el.compareDialog.close();
     }
 
-    const removeButton = event.target.closest("[data-remove-comparison]");
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const removeButton = target.closest("[data-remove-comparison]");
 
     if (removeButton) {
       toggleComparison(removeButton.dataset.removeComparison);
+      return;
+    }
+
+    const addButton = target.closest("[data-add-comparison]");
+    if (addButton) {
+      toggleComparison(addButton.dataset.addComparison);
+    }
+  });
+
+  el.compareDialog?.addEventListener("close", () => {
+    if (comparisonIds.size === 0) {
+      comparisonType = null;
     }
   });
 
@@ -2653,6 +3448,8 @@ document.addEventListener("DOMContentLoaded", () => {
       targetSet = state.categories;
     } else if (type === "brand") {
       targetSet = state.brands;
+    } else if (type === "useCase") {
+      targetSet = state.useCases;
     } else {
       targetSet = state.conditions;
     }

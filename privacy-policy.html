@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
     <meta
       name="description"
       content="GoldenGen Technologies privacy policy and information about data used by this frontend project."
@@ -102,16 +103,17 @@
           </a>
 
           <div class="cart-widget">
-            <a
-              href="#"
+            <button
+              type="button"
               class="cart-icon"
               id="cartToggle"
               aria-label="Shopping cart"
               aria-expanded="false"
+              aria-controls="cartDropdown"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
               <span class="cart-count" id="cartCount">0</span>
-            </a>
+            </button>
             <div class="cart-dropdown" id="cartDropdown">
               <div class="cart-dropdown-header">
                 <h3>Your Cart</h3>
@@ -129,9 +131,10 @@
                 <div class="cart-dropdown-total">
                   <span>Total</span><span id="cartDropdownTotal">KSh 0</span>
                 </div>
-                <button type="button" class="cart-dropdown-checkout">
-                  View cart (coming soon)
-                </button>
+                <a class="cart-dropdown-continue" href="products.html">
+                  Continue shopping
+                </a>
+                <p class="cart-dropdown-note">Checkout will be available soon.</p>
               </div>
             </div>
           </div>

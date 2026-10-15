@@ -9,6 +9,14 @@
   flex-wrap: wrap;
 }
 
+.filter-results-status {
+  min-height: 1.25rem;
+  margin: -8px 0 var(--spacing-md);
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
 .filter-tab {
   padding: 8px 24px;
   border-radius: var(--radius-full);
@@ -149,6 +157,11 @@
   opacity: 1;
 }
 
+/* Match the hover cue for keyboard users who focus an action inside the card. */
+.product-image-wrapper:focus-within .product-overlay {
+  opacity: 1;
+}
+
 .product-quick-view {
   background: var(--white);
   color: var(--text-primary);
@@ -165,6 +178,22 @@
 
 .product-card:hover .product-quick-view {
   transform: translateY(0);
+}
+
+.product-image-wrapper:focus-within .product-quick-view {
+  transform: translateY(0);
+}
+
+/* Touch screens do not have a dependable hover state, so keep Quick View
+   discoverable instead of hiding the only product-details action. */
+@media (hover: none), (pointer: coarse) {
+  .product-overlay {
+    opacity: 1;
+  }
+
+  .product-quick-view {
+    transform: translateY(0);
+  }
 }
 
 .product-quick-view:hover {
@@ -213,6 +242,27 @@
   align-items: center;
   justify-content: space-between;
   margin-top: var(--spacing-xs);
+}
+
+.product-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 4px;
+  color: var(--text-light);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.product-trust-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.product-trust-strip i {
+  color: var(--gold);
+  font-size: 0.65rem;
 }
 
 .product-prices {

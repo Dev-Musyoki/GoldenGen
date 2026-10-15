@@ -2,6 +2,8 @@
 // Loaded on every page, before the page-specific script.
 
 // ===== LOADING OVERLAY =====
+// The loader is shared by every page, but its markup is optional so lightweight
+// pages can use this script without requiring a loading-overlay component.
 class LoadingOverlay {
   #overlay;
   #progress;
@@ -121,6 +123,8 @@ class LoadingOverlay {
 const loader = new LoadingOverlay();
 
 // ===== SCROLL ANIMATIONS =====
+// Reveal is progressive enhancement: if IntersectionObserver is unavailable,
+// content is made visible immediately instead of remaining hidden.
 class ScrollAnimator {
   #observer;
   #selectors = [".reveal", ".reveal-left", ".reveal-right", ".reveal-scale"];
@@ -205,7 +209,7 @@ if (announcementText) {
 // The Products page owns live filtering; other pages route searches there.
 const sharedSearchInput = document.getElementById("searchInput");
 const sharedSearchButton = document.getElementById("searchBtn");
-const isProductsPage = Boolean(document.getElementById("productsGrid"));
+const isProductsPage = Boolean(document.getElementById("productsFilters"));
 
 if (sharedSearchInput && !isProductsPage) {
   function routeSharedSearch() {
@@ -328,6 +332,22 @@ function ggFormatPrice(value) {
   return `Ksh ${Number(value).toLocaleString("en-KE")}`;
 }
 
+// Cart items are rendered into HTML templates, so escape stored values before
+// inserting them. This also protects future API-backed product data.
+function ggEscapeHTML(value) {
+  return String(value).replace(
+    /[&<>'"]/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;",
+      })[character],
+  );
+}
+
 // ===== SHARED TOAST =====
 let ggToastTimeout;
 
@@ -356,8 +376,10 @@ function ggRenderCartDropdown() {
 
   const cart = ggReadCart();
 
+  // The dropdown is a quick cart summary, not a checkout screen. Checkout remains
+  // explicitly marked as a future capability in the shared page markup.
   if (cart.length === 0) {
-    itemsEl.innerHTML = `<p class="cart-dropdown-empty">Your cart is empty.</p>`;
+    itemsEl.innerHTML = `<p class="cart-dropdown-empty" role="status" tabindex="-1">Your cart is empty.</p>`;
     totalEl.textContent = ggFormatPrice(0);
     return;
   }
@@ -372,9 +394,9 @@ function ggRenderCartDropdown() {
 
       return `
         <div class="cart-dropdown-item">
-          <img src="${item.image || ""}" alt="${item.name}" />
+          <img src="${ggEscapeHTML(item.image || "")}" alt="${ggEscapeHTML(item.name)}" />
           <div>
-            <p class="cart-dropdown-item-name">${item.name}</p>
+            <p class="cart-dropdown-item-name">${ggEscapeHTML(item.name)}</p>
             <p class="cart-dropdown-item-meta">
               ${ggFormatPrice(item.price || 0)} × ${item.quantity}
             </p>
@@ -382,8 +404,8 @@ function ggRenderCartDropdown() {
           <button
             type="button"
             class="cart-dropdown-item-remove"
-            data-remove-cart-item="${item.id}"
-            aria-label="Remove ${item.name}"
+            data-remove-cart-item="${ggEscapeHTML(item.id)}"
+            aria-label="Remove ${ggEscapeHTML(item.name)}"
           >
             <i class="fa-solid fa-trash"></i>
           </button>
@@ -441,5 +463,24 @@ document
     const removeBtn = event.target.closest("[data-remove-cart-item]");
     if (!removeBtn) return;
 
+    // Removing an item rerenders this container; stop bubbling before the
+    // outside-click handler can mistake the detached button for an outside click.
+    event.preventDefault();
+    event.stopPropagation();
     ggRemoveFromCart(removeBtn.dataset.removeCartItem);
+
+    const itemsEl = document.getElementById("cartDropdownItems");
+    const nextControl =
+      itemsEl?.querySelector("[data-remove-cart-item]") ||
+      itemsEl?.querySelector(".cart-dropdown-empty");
+    nextControl?.focus();
   });
+
+if (isProductsPage) {
+  document
+    .querySelector(".cart-dropdown-continue")
+    ?.addEventListener("click", (event) => {
+      event.preventDefault();
+      ggToggleCartDropdown(false);
+    });
+}

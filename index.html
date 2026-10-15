@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
     <title>GoldenGen Technologies | Laptops & Computer Accessories</title>
 
     <!-- Prevent flash of unstyled content -->
@@ -129,16 +130,17 @@
 
           <!--Cart-->
           <div class="cart-widget">
-            <a
-              href="#"
+            <button
+              type="button"
               class="cart-icon"
               aria-label="Shopping cart"
               aria-expanded="false"
+              aria-controls="cartDropdown"
               id="cartToggle"
             >
               <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
               <span class="cart-count" id="cartCount">0</span>
-            </a>
+            </button>
 
             <div class="cart-dropdown" id="cartDropdown">
               <div class="cart-dropdown-header">
@@ -160,9 +162,10 @@
                   <span>Total</span>
                   <span id="cartDropdownTotal">KSh 0</span>
                 </div>
-                <button type="button" class="cart-dropdown-checkout">
-                  View cart (coming soon)
-                </button>
+                <a class="cart-dropdown-continue" href="products.html">
+                  Continue shopping
+                </a>
+                <p class="cart-dropdown-note">Checkout will be available soon.</p>
               </div>
             </div>
           </div>
@@ -211,10 +214,9 @@
 
           <!-- Description -->
           <p class="hero-description">
-            Discover the latest laptops, accessories and tech gear. Quality
-            products, competitive prices and delivery countrywide across Kenya.
+            Explore a Kenya-focused technology-shopping prototype with product
+            discovery, recommendations and side-by-side comparisons.
           </p>
-
           <!-- CTA Buttons -->
           <div class="hero-buttons">
             <a href="products.html" class="btn btn-primary">
@@ -227,21 +229,21 @@
             </a>
           </div>
 
-          <!-- Stats -->
+          <!-- Shopping tools available in this prototype -->
           <div class="hero-stats">
             <div class="hero-stat">
-              <span class="hero-stat-number">500+</span>
-              <span class="hero-stat-label">Products</span>
+              <span class="hero-stat-number">01</span>
+              <span class="hero-stat-label">Browse and filter</span>
             </div>
             <div class="hero-stat-divider"></div>
             <div class="hero-stat">
-              <span class="hero-stat-number">2K+</span>
-              <span class="hero-stat-label">Customers</span>
+              <span class="hero-stat-number">02</span>
+              <span class="hero-stat-label">Get recommendations</span>
             </div>
             <div class="hero-stat-divider"></div>
             <div class="hero-stat">
-              <span class="hero-stat-number">47</span>
-              <span class="hero-stat-label">Counties</span>
+              <span class="hero-stat-number">03</span>
+              <span class="hero-stat-label">Compare options</span>
             </div>
           </div>
         </div>
@@ -258,15 +260,15 @@
             <!-- Floating badges -->
             <div class="hero-badge hero-badge-1">
               <i class="fa-solid fa-shield-halved"></i>
-              <span>Warranty Included</span>
+              <span>Warranty details shown</span>
             </div>
             <div class="hero-badge hero-badge-2">
               <i class="fa-solid fa-truck-fast"></i>
-              <span>Free Delivery</span>
+              <span>Delivery estimates shown</span>
             </div>
             <div class="hero-badge hero-badge-3">
               <i class="fa-solid fa-star"></i>
-              <span>Top Rated</span>
+              <span>Ratings shown</span>
             </div>
           </div>
         </div>
@@ -296,16 +298,22 @@
           </p>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="laptops">Laptops</button>
-          <button class="filter-tab" data-filter="accessories">
+        <!-- Accessible category toggles; main.js also updates the live result count. -->
+        <div
+          class="filter-tabs"
+          role="group"
+          aria-label="Filter featured products"
+          aria-describedby="featuredProductsStatus"
+        >
+          <button type="button" class="filter-tab active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-tab" data-filter="laptops" aria-pressed="false">Laptops</button>
+          <button type="button" class="filter-tab" data-filter="accessories" aria-pressed="false">
             Accessories
           </button>
-          <button class="filter-tab" data-filter="monitors">Monitors</button>
-          <button class="filter-tab" data-filter="gaming">Gaming</button>
+          <button type="button" class="filter-tab" data-filter="monitors" aria-pressed="false">Monitors</button>
+          <button type="button" class="filter-tab" data-filter="gaming" aria-pressed="false">Gaming</button>
         </div>
+        <p class="filter-results-status" id="featuredProductsStatus" aria-live="polite"></p>
 
         <!-- Products Grid -->
         <div class="products-grid" id="productsGrid">
@@ -879,7 +887,9 @@
                 <i class="fa-solid fa-laptop"></i>
               </div>
               <h3 class="category-name">Laptops</h3>
-              <p class="category-count">120+ Products</p>
+              <p class="category-count" data-category-summary="laptops">
+                12 products
+              </p>
               <span class="category-btn">
                 Shop Now <i class="fa-solid fa-arrow-right"></i>
               </span>
@@ -898,7 +908,9 @@
                   <i class="fa-solid fa-keyboard"></i>
                 </div>
                 <h3 class="category-name">Keyboards</h3>
-                <p class="category-count">45+ Products</p>
+                <p class="category-count" data-category-summary="keyboards">
+                  10 products
+                </p>
               </div>
             </a>
 
@@ -912,7 +924,9 @@
                   <i class="fa-solid fa-computer-mouse"></i>
                 </div>
                 <h3 class="category-name">Mice</h3>
-                <p class="category-count">38+ Products</p>
+                <p class="category-count" data-category-summary="mice">
+                  10 products
+                </p>
               </div>
             </a>
 
@@ -926,7 +940,9 @@
                   <i class="fa-solid fa-desktop"></i>
                 </div>
                 <h3 class="category-name">Monitors</h3>
-                <p class="category-count">30+ Products</p>
+                <p class="category-count" data-category-summary="monitors">
+                  14 products
+                </p>
               </div>
             </a>
 
@@ -940,7 +956,9 @@
                   <i class="fa-solid fa-headphones"></i>
                 </div>
                 <h3 class="category-name">Headphones</h3>
-                <p class="category-count">52+ Products</p>
+                <p class="category-count" data-category-summary="headphones">
+                  10 products
+                </p>
               </div>
             </a>
 
@@ -954,7 +972,9 @@
                   <i class="fa-solid fa-gamepad"></i>
                 </div>
                 <h3 class="category-name">Gaming Gear</h3>
-                <p class="category-count">67+ Products</p>
+                <p class="category-count" data-category-summary="gaming">
+                  12 products
+                </p>
               </div>
             </a>
 
@@ -968,7 +988,9 @@
                   <i class="fa-solid fa-bag-shopping"></i>
                 </div>
                 <h3 class="category-name">Bags & Cases</h3>
-                <p class="category-count">28+ Products</p>
+                <p class="category-count" data-category-summary="bags">
+                  10 products
+                </p>
               </div>
             </a>
           </div>
@@ -983,78 +1005,70 @@
         <div class="section-header">
           <div class="section-tag why-us-tag">
             <span class="section-tag-dot"></span>
-            Why Choose Us
+            Shopping Tools
           </div>
           <h2 class="section-title why-us-title">
-            Why Shop With
-            <span class="section-title-highlight">GoldenGen?</span>
+            Make a More
+            <span class="section-title-highlight">Informed Choice</span>
           </h2>
           <p class="section-subtitle why-us-subtitle">
-            We are committed to giving you the best shopping experience every
-            time
+            Explore product information and compare options in one place.
           </p>
         </div>
 
         <!-- Cards Grid -->
         <div class="why-us-grid">
-          <!-- Card 1 — Quality Products -->
           <div class="why-us-card">
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-medal"></i>
             </div>
-            <h3 class="why-us-title-card">Quality Products</h3>
+            <h3 class="why-us-title-card">Explore product details</h3>
             <p class="why-us-desc">
-              Every product we sell is carefully vetted for quality and
-              performance. Only the best brands make it to our shelves.
+              Review listed specifications, condition and other product
+              information before deciding.
             </p>
           </div>
 
-          <!-- Card 2 — Fast Delivery -->
           <div class="why-us-card">
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-truck-fast"></i>
             </div>
-            <h3 class="why-us-title-card">Fast Countrywide Delivery</h3>
+            <h3 class="why-us-title-card">Find a starting point</h3>
             <p class="why-us-desc">
-              We deliver to all 47 counties across Kenya. Fast, reliable and
-              affordable delivery right to your doorstep.
+              Get product suggestions based on a device type, use case, budget
+              and priority.
             </p>
           </div>
 
-          <!-- Card 3 — Warranty -->
           <div class="why-us-card">
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h3 class="why-us-title-card">Warranty Protection</h3>
+            <h3 class="why-us-title-card">Compare options</h3>
             <p class="why-us-desc">
-              New laptops come with a full 1 year warranty, refurbished units
-              with 6 months. Shop with confidence knowing your investment is
-              fully protected.
+              Compare up to three products of the same type side by side.
             </p>
           </div>
 
-          <!-- Card 4 — Best Prices -->
           <div class="why-us-card">
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-tag"></i>
             </div>
-            <h3 class="why-us-title-card">Best Prices</h3>
+            <h3 class="why-us-title-card">Filter by your needs</h3>
             <p class="why-us-desc">
-              We offer the most competitive prices in Kenya. Get premium
-              products without breaking the bank.
+              Narrow the catalogue by category, price, use case and other
+              available filters.
             </p>
           </div>
 
-          <!-- Card 5 — 24/7 Support -->
+          <!-- Card 5 — customer support -->
           <div class="why-us-card">
             <div class="why-us-icon-wrapper">
               <i class="fa-solid fa-headset"></i>
             </div>
-            <h3 class="why-us-title-card">24/7 Customer Support</h3>
+            <h3 class="why-us-title-card">Keep your options handy</h3>
             <p class="why-us-desc">
-              Our support team is always available via WhatsApp, email or phone.
-              We are here whenever you need us.
+              Save products in the wishlist while you explore the catalogue.
             </p>
           </div>
         </div>
@@ -1081,8 +1095,8 @@
               </div>
             </a>
             <p class="quick-links-brand-desc">
-              Your trusted source for premium laptops and computer accessories
-              in Kenya. Quality products, best prices, delivered countrywide.
+              A Kenya-focused technology-shopping prototype for exploring and
+              comparing product options.
             </p>
             <div class="quick-links-social">
               <a href="#" class="social-icon" aria-label="Facebook">
@@ -1240,7 +1254,11 @@
     </footer>
 
     <!-- Quick-view dialog -->
-    <dialog class="quick-view-dialog" id="quickViewDialog">
+    <dialog
+      class="quick-view-dialog"
+      id="quickViewDialog"
+      aria-labelledby="quickViewTitle"
+    >
       <button
         type="button"
         class="quick-view-close"
@@ -1262,6 +1280,7 @@
     <!-- Screen reader announcer for dark mode -->
     <div id="srAnnouncer" aria-live="polite" class="sr-only"></div>
 
+    <script src="js/catalogue-summary.js"></script>
     <script src="js/shared.js"></script>
     <script src="js/main.js"></script>
   </body>
