@@ -6,7 +6,7 @@ body.dark-mode {
   --bg-secondary: #1a1a2e;
   --text-primary: #e8e8f0;
   --text-secondary: #a0a0b8;
-  --text-light: #606080;
+  --text-light: #9292aa;
   --gray-light: #1e1e32;
   --gray-mid: #2a2a45;
 }
@@ -181,6 +181,17 @@ body.dark-mode .why-us-title,
 body.dark-mode .hero-heading,
 body.dark-mode .why-us-title-card {
   color: #ffffff;
+}
+
+body.dark-mode .hero-heading-highlight {
+  color: transparent;
+  background: linear-gradient(135deg, #7ab3f5, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body.dark-mode .hero-stat-label {
+  color: var(--text-light);
 }
 
 /* Dark theme transition */
