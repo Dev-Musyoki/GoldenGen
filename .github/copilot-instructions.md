@@ -467,6 +467,9 @@ Preserve dark mode unless explicitly asked to remove it. Use semantic HTML, mean
 
 Design mobile-first rather than shrinking desktop layouts. Check navigation, search, product cards, filters, quick view, cart, forms, buttons, and specifications on narrow screens and slower connections.
 
+Keep product search, filters, sorting, and view layout in the catalogue URL so
+shoppers can share or bookmark a selection and restore it with browser navigation.
+
 Prefer lazy-loaded images where appropriate, small DOM changes, delegated or limited event listeners, and animations that do not cause layout thrashing. Every animation must communicate state, continuity, or feedback. Respect `@media (prefers-reduced-motion: reduce)`.
 
 Implement intentional loading, empty, error, and success states with useful recovery actions. Do not use vague error messages when the user can be told what happened and what to do next.
@@ -505,7 +508,9 @@ This section records the major GoldenGen improvements completed during the curre
 - Aligned all homepage featured cards with catalogue IDs, names, images, prices, badges, ratings, summaries, and cart behavior.
 - Added monitor-specific descriptions, structured comparison fields, monitor recommendations, and a Help Me Choose device-type selector.
 - Added Best for/use-case filtering from structured `suitableFor` metadata, including counts and active filter chips.
-- Added prototype inventory so laptops, monitors, keyboards, mice, headphones, bags/cases, and gaming gear each have meaningful catalogue coverage while final images remain replaceable.
+- Added product-specific entries and imagery for laptops, monitors, keyboards, mice, headphones, bags/cases, and gaming gear; prices and stock remain illustrative pending inventory verification.
+- Synchronized catalogue search, filters, sorting, and grid/list layout with query parameters and browser Back/Forward navigation.
+- Made the mobile filter drawer inert while closed and keyboard-operable as a modal while open, with focus entry, trapping, Escape/close behavior, and focus restoration.
 - Replaced the prototype products' generic “Sample” badges with visible Popular, New, Bestseller, percentage-discount, and Out of Stock states.
 
 ## About, Contact, And Privacy
@@ -564,12 +569,12 @@ This section records the major GoldenGen improvements completed during the curre
 
 - Final browser checks confirmed that product discovery, Help Me Choose, same-type comparison, Quick View, cart behavior, homepage filtering, and contact-form validation work as intended in the current no-build prototype.
 - Remaining production-readiness gaps are explicit scope boundaries: account creation, checkout/payment processing, backend contact delivery, real social-profile URLs, Terms of Service, and Sitemap are not implemented yet and must not be presented as completed features.
-- Keep prototype/sample catalogue data and placeholder imagery visibly replaceable before launch; validate every price, warranty, delivery promise, stock level, and product image against the real Kenyan inventory source.
+- Verify catalogue prices, stock, warranties, delivery estimates, and product images against real Kenyan inventory before launch; current price and stock values remain prototype data until verified.
 
 ## Prototype Trust and Mobile Color Consistency
 
 - Keep prototype catalogue, business metrics, service claims, prices, stock, ratings, warranty and delivery information visibly identified as illustrative until verified.
-- The contact form is validation-only until a real submission service is connected; never announce that a message was sent or received before then.
 - Declare the fixed dark color scheme to the browser and use the explicit `#ffd700` gold token. Mobile breakpoints should adapt layout and spacing without dimming or recoloring brand accents.
-- Prototype inventory imagery should use available category illustrations with honest alt text, not nonexistent product-image paths.
+- Use product-specific available images with product-name alt text; retain the generated image fallback only for missing or unavailable image paths.
 - Recommendation explanations must follow their actual use-case match and listed product attributes; do not award a constant score for a budget filter every result has already passed.
+- Show comparison as readable, labeled product cards on narrow screens while retaining the side-by-side table on larger screens; keep horizontal scrolling keyboard-focusable and clearly described.

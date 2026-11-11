@@ -144,11 +144,6 @@
   line-height: 1.5;
 }
 
-.contact-form-heading .contact-form-demo-note {
-  margin-top: var(--spacing-sm);
-  font-size: var(--font-size-sm);
-}
-
 .contact-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

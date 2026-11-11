@@ -10,6 +10,12 @@
   padding-bottom: 0;
 }
 
+.catalogue-data-note {
+  margin: var(--spacing-sm) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
 /* ===== SEARCH AND TOOLBAR ===== */
 .products-controls {
   position: relative;
@@ -753,6 +759,18 @@
   line-height: 1.4;
 }
 
+.product-specs-heading {
+  margin: 4px 0 -8px;
+  font-size: 0.88rem;
+}
+
+.product-specs-note {
+  margin: -8px 0 14px;
+  color: var(--text-light);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
 .product-specs-compact {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
@@ -1282,6 +1300,36 @@
   line-height: 1.8;
 }
 
+.quick-view-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+.quick-view-meta > div {
+  min-width: 0;
+  padding: 9px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.quick-view-meta dt {
+  color: var(--text-light);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.quick-view-meta dd {
+  margin: 3px 0 0;
+  color: var(--text-primary);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
 .quick-view-price {
   margin-top: auto;
   color: var(--text-primary);
@@ -1790,6 +1838,10 @@
   line-height: 1.4;
 }
 
+.compare-mobile-view {
+  display: none;
+}
+
 .compare-remove {
   color: var(--primary-color);
 }
@@ -2032,6 +2084,10 @@ body.dark-mode .skeleton-circle::after {
     padding: 28px 22px;
   }
 
+  .quick-view-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .choose-dialog-content {
     padding: 28px 20px;
   }
@@ -2060,11 +2116,132 @@ body.dark-mode .skeleton-circle::after {
 
   #compareContent {
     padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compare-header {
+    order: 0;
+  }
+
+  .compare-message {
+    order: 1;
+  }
+
+  .compare-selection {
+    order: 2;
+  }
+
+  .compare-mobile-view,
+  .compare-table-wrap {
+    order: 3;
+  }
+
+  .compare-available {
+    order: 4;
   }
 
   .compare-header {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .compare-mobile-view {
+    display: block;
+    min-width: 0;
+  }
+
+  .compare-mobile-hint {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+  }
+
+  .compare-mobile-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 2px 2px 12px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--bg-secondary);
+  }
+
+  .compare-mobile-list:focus-visible {
+    outline: 3px solid rgba(255, 215, 0, 0.75);
+    outline-offset: 3px;
+  }
+
+  .compare-mobile-product {
+    flex: 0 0 min(100%, 340px);
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    scroll-snap-align: start;
+  }
+
+  .compare-mobile-product-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-mid);
+  }
+
+  .compare-mobile-product-heading img {
+    width: 64px;
+    height: 56px;
+    flex: 0 0 auto;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    background: var(--bg-primary);
+  }
+
+  .compare-mobile-product-heading h3 {
+    min-width: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .compare-mobile-product dl {
+    margin: 0;
+  }
+
+  .compare-mobile-product dl > div {
+    display: grid;
+    grid-template-columns: minmax(78px, 0.8fr) minmax(0, 1.2fr);
+    gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  }
+
+  .compare-mobile-product dl > div:last-child {
+    border-bottom: 0;
+  }
+
+  .compare-mobile-product dt {
+    color: var(--text-secondary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .compare-mobile-product dd {
+    min-width: 0;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+
+  .compare-table-wrap {
+    display: none;
   }
 }
 

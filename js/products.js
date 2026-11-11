@@ -87,12 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const VIEW_KEY = "goldengen_product_view";
   const SORT_KEY = "goldengen_product_sort";
 
-  // ===== DEMO PRODUCT CATALOGUE =====
-  // Add the real images later in:
-  // images/products/
-  //
-  // Missing files automatically receive a generated
-  // GoldenGen image placeholder.
+  // ===== PRODUCT CATALOGUE =====
 
   const PRODUCTS = [
     {
@@ -833,207 +828,1608 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  // Prototype inventory used to make every homepage category useful before
-  // final product images and commercial catalogue data are available.
-  const placeholderGroups = [
+  // Prices for headphones, bags, gaming gear and most mice are estimates and must be verified against the real inventory source before launch.
+  // ID 47 remains unused for the undecided keyboard slot to preserve later product IDs.
+  PRODUCTS.push(
     {
+      id: 25,
+      sku: "GG-LAP-009",
+      name: "HP ProBook 650 G8",
+      brand: "HP",
       category: "laptops",
-      image: "images/cat-laptops.jpg",
       subcategory: "Everyday laptop",
-      prefix: "GoldenGen Everyday Laptop",
-      count: 4,
-      startPrice: 62000,
-      step: 8500,
+      price: 54999,
+      oldPrice: null,
+      image: "images/HP ProBook 650 G8.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
       summary:
-        "Sample everyday laptop with practical performance for study, office work and home use.",
-      suitableFor: ["Student", "Business", "Everyday use"],
+        "The HP ProBook 650 G8 pairs an 11th Gen Intel Core i3 processor with 8GB RAM and a 512GB SSD.",
       specs: {
-        processor: "Intel Core i5 sample processor",
-        memory: "16GB RAM",
+        processor: "Intel Core i3 11th Gen",
+        memory: "8GB RAM",
         storage: "512GB SSD",
-        graphics: "Integrated graphics",
-        display: '15.6" Full HD display',
-        battery: "Up to 8 hours",
-        weight: "1.7 kg",
-        operatingSystem: "Windows 11",
-        ports: "USB-C, USB-A, HDMI",
-        expandability: "RAM and SSD upgradeable",
       },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 125,
     },
     {
-      category: "monitors",
-      image: "images/cat-monitors.jpg",
-      subcategory: "Office monitor",
-      prefix: "GoldenGen Office Monitor",
-      count: 10,
-      startPrice: 23000,
-      step: 4200,
+      id: 26,
+      sku: "GG-LAP-010",
+      name: "Lenovo IdeaPad 3",
+      brand: "Lenovo",
+      category: "laptops",
+      subcategory: "Everyday laptop",
+      price: 70999,
+      oldPrice: null,
+      image: "images/Lenovo IdeaPad 3.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
       summary:
-        "Sample monitor with a clear display and practical features for office work, study and everyday use.",
+        "The Lenovo IdeaPad 3 combines an Intel Core i5-1135G7 processor, 8GB RAM and a 512GB SSD for everyday computing.",
+      specs: {
+        processor: "Intel Core i5-1135G7",
+        memory: "8GB RAM",
+        storage: "512GB SSD",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 126,
+    },
+    {
+      id: 27,
+      sku: "GG-LAP-011",
+      name: "HP 250 G9",
+      brand: "HP",
+      category: "laptops",
+      subcategory: "Everyday laptop",
+      price: 79999,
+      oldPrice: null,
+      image: "images/products/HP 250 G9.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The HP 250 G9 features an Intel Core i5-1235U processor, 4GB RAM and a 512GB SSD.",
+      specs: {
+        processor: "Intel Core i5-1235U",
+        memory: "4GB RAM",
+        storage: "512GB SSD",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 127,
+    },
+    {
+      id: 28,
+      sku: "GG-LAP-012",
+      name: "HP ProBook 450 G9",
+      brand: "HP",
+      category: "laptops",
+      subcategory: "Everyday laptop",
+      price: 95000,
+      oldPrice: null,
+      image: "images/products/HP ProBook 450 G9.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The HP ProBook 450 G9 pairs an Intel Core i5-1235U processor with 8GB RAM, a 512GB SSD and 2GB MX570 graphics.",
+      specs: {
+        processor: "Intel Core i5-1235U",
+        memory: "8GB RAM",
+        storage: "512GB SSD",
+        graphics: "NVIDIA GeForce MX570, 2GB",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 128,
+    },
+    {
+      id: 29,
+      sku: "GG-MON-005",
+      name: 'JS Nova 24" Full HD IPS Edge-to-Edge Monitor',
+      brand: "JS Nova",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 15094,
+      oldPrice: null,
+      image: "images/products/JS Nova 24 Full HD.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        'The JS Nova 24-inch monitor combines a Full HD IPS display with an edge-to-edge design.',
+      specs: {
+        displaySize: '24"',
+        resolution: "1920 × 1080 Full HD",
+        panelType: "IPS",
+      },
       suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 129,
+    },
+    {
+      id: 30,
+      sku: "GG-MON-006",
+      name: 'Dahua DHI-LM27-B211B 27" FHD Monitor',
+      brand: "Dahua",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 17400,
+      oldPrice: null,
+      image: "images/products/Dahua DHI-LM27-B211B 27.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: 'The Dahua DHI-LM27-B211B is a 27-inch Full HD monitor for office and everyday setups.',
       specs: {
         displaySize: '27"',
         resolution: "1920 × 1080 Full HD",
-        refreshRate: "75Hz",
-        brightness: "250 nits",
-        responseTime: "5ms",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 130,
+    },
+    {
+      id: 31,
+      sku: "GG-MON-007",
+      name: 'JS Nova 27" Full HD IPS Edge-to-Edge Monitor',
+      brand: "JS Nova",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 19924,
+      oldPrice: null,
+      image: "images/products/JS Nova 27 Full HD IPS Edge-to-Edge Monitor.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        'The JS Nova 27-inch monitor pairs a Full HD IPS display with an edge-to-edge design.',
+      specs: {
+        displaySize: '27"',
+        resolution: "1920 × 1080 Full HD",
         panelType: "IPS",
-        speakers: "Not included",
-        mounting: "VESA 100 × 100mm",
-        eyeCare: "Flicker-free and low-blue-light mode",
       },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 131,
     },
     {
+      id: 32,
+      sku: "GG-MON-008",
+      name: 'HP Series 5 23.8" FHD Monitor 100Hz',
+      brand: "HP",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 22300,
+      oldPrice: null,
+      image: "images/products/HP Series 5 23.8 FHD Monitor100Hz.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: 'The HP Series 5 offers a 23.8-inch Full HD display with a 100Hz refresh rate.',
+      specs: {
+        displaySize: '23.8"',
+        resolution: "1920 × 1080 Full HD",
+        refreshRate: "100Hz",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 132,
+    },
+    {
+      id: 33,
+      sku: "GG-MON-009",
+      name: 'Lenovo ThinkVision S27i-30 27" FHD Monitor',
+      brand: "Lenovo",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 25000,
+      oldPrice: null,
+      image: "images/products/Lenovo ThinkVision S27i-30 2Z FHD Monitor.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: 'The Lenovo ThinkVision S27i-30 is a 27-inch Full HD monitor for office and everyday setups.',
+      specs: {
+        displaySize: '27"',
+        resolution: "1920 × 1080 Full HD",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 133,
+    },
+    {
+      id: 34,
+      sku: "GG-MON-010",
+      name: 'Dell 27" QHD USB-C Hub Monitor (Refurbished)',
+      brand: "Dell",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 26900,
+      oldPrice: null,
+      image: "images/products/Dell 27 QHD USB-C Hub Monitor (Refurbished).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "refurbished",
+      warranty: "Illustrative 3-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        'This refurbished Dell monitor combines a 27-inch QHD display with a USB-C hub.',
+      specs: {
+        displaySize: '27"',
+        resolution: "2560 × 1440 QHD",
+        ports: "USB-C hub",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 134,
+    },
+    {
+      id: 35,
+      sku: "GG-MON-011",
+      name: 'Oraimo VisionPad 2K 27" Monitor 144Hz',
+      brand: "Oraimo",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 30800,
+      oldPrice: null,
+      image: "images/products/Oraimo VisionPad 2K 27 Monitor, 144Hz.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: 'The Oraimo VisionPad pairs a 27-inch 2K display with a 144Hz refresh rate.',
+      specs: {
+        displaySize: '27"',
+        resolution: "2560 × 1440 2K",
+        refreshRate: "144Hz",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 135,
+    },
+    {
+      id: 36,
+      sku: "GG-MON-012",
+      name: 'Dell P2724DEB 27" QHD Monitor',
+      brand: "Dell",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 37499,
+      oldPrice: null,
+      image: "images/products/Dell P2724DEB 27 QHD Video Conferencing Monitor.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: 'The Dell P2724DEB is a 27-inch QHD monitor for detailed work and everyday viewing.',
+      specs: {
+        displaySize: '27"',
+        resolution: "2560 × 1440 QHD",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 136,
+    },
+    {
+      id: 37,
+      sku: "GG-MON-013",
+      name: 'LG 34CB99-W 34" UltraWide WQHD Curved Monitor (Refurbished)',
+      brand: "LG",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 52400,
+      oldPrice: null,
+      image:
+        "images/products/LG 34CB99-W 34 UltraWide WQHD Curved Monitor (Refurbished).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "refurbished",
+      warranty: "Illustrative 3-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        'This refurbished LG monitor features a 34-inch curved UltraWide WQHD display.',
+      specs: {
+        displaySize: '34"',
+        resolution: "3440 × 1440 WQHD",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 137,
+    },
+    {
+      id: 38,
+      sku: "GG-MON-014",
+      name: 'JS Nova 34" 4K Curved Monitor with Type-C',
+      brand: "JS Nova",
+      category: "monitors",
+      subcategory: "Office monitor",
+      price: 60000,
+      oldPrice: null,
+      image: "images/products/JS Nova 34 4K Curved Monitor with Type-C.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        'The JS Nova monitor brings a 34-inch curved 4K display and Type-C connectivity together.',
+      specs: {
+        displaySize: '34"',
+        resolution: "3840 × 2160 4K",
+        ports: "Type-C",
+      },
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 138,
+    },
+    {
+      id: 39,
+      sku: "GG-ACC-007",
+      name: "Generic 60% Mechanical Keyboard, Blue Switch",
+      brand: "Generic",
       category: "accessories",
-      image: "images/cat-keyboards.jpg",
       subcategory: "Mechanical keyboard",
-      prefix: "GoldenGen Mechanical Keyboard",
-      count: 9,
-      startPrice: 6500,
-      step: 900,
-      summary:
-        "Sample mechanical keyboard with comfortable switches, reliable connectivity and a practical layout.",
+      price: 5900,
+      oldPrice: null,
+      image:
+        "images/products/Generic 60% Mechanical Keyboard, Blue Switch.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "This Generic mechanical keyboard pairs a compact 60% layout with blue switches.",
+      specs: {
+        layout: "60%",
+        switchType: "Blue",
+      },
       suitableFor: ["Developer", "Business", "Everyday use"],
-      specs: {
-        connectivity: "USB-C and wireless sample configuration",
-        layout: "Compact full-function layout",
-        switchType: "Mechanical switches",
-        battery: "Rechargeable battery",
-        compatibility: "Windows, macOS and Linux",
-      },
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 139,
     },
     {
+      id: 40,
+      sku: "GG-ACC-008",
+      name: "Gaming Mechanical Keyboard, Round Keycaps, Blue Switch",
+      brand: "Generic",
       category: "accessories",
-      image: "images/cat-mice.jpg",
+      subcategory: "Mechanical keyboard",
+      price: 7129,
+      oldPrice: null,
+      image:
+        "images/products/Gaming Mechanical Keyboard, Round Keycaps, Blue Switch.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "This Generic gaming mechanical keyboard features round keycaps and blue switches.",
+      specs: {
+        switchType: "Blue",
+      },
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 140,
+    },
+    {
+      id: 41,
+      sku: "GG-ACC-009",
+      name: "Havit Gamenote KB892L Mechanical Keyboard",
+      brand: "Havit",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 8000,
+      oldPrice: null,
+      image:
+        "images/products/Havit Gamenote KB892L Mechanical Keyboard (87-key).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Havit Gamenote KB892L is a mechanical keyboard for gaming and everyday typing.",
+      specs: {},
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 141,
+    },
+    {
+      id: 42,
+      sku: "GG-ACC-010",
+      name: "Royal Kludge RK61 Plus",
+      brand: "Royal Kludge",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 8999,
+      oldPrice: null,
+      image:
+        "images/products/Royal Kludge RK61 Plus (60%, hot-swappable, tri-mode).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Royal Kludge RK61 Plus is a mechanical keyboard for gaming and everyday use.",
+      specs: {},
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 142,
+    },
+    {
+      id: 43,
+      sku: "GG-ACC-011",
+      name: "JERTECH Wired Mechanical Gaming Keyboard 4-in-1 Combo",
+      brand: "JERTECH",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 10827,
+      oldPrice: null,
+      image:
+        "images/products/JERTECH Wired Mechanical Gaming Keyboard 4-in-1 Combo.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JERTECH 4-in-1 combo brings a wired mechanical keyboard into a gaming accessory set.",
+      specs: {
+        connectivity: "Wired",
+      },
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 143,
+    },
+    {
+      id: 44,
+      sku: "GG-ACC-012",
+      name: "Razer BlackWidow X Sanrio Limited Edition",
+      brand: "Razer",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 11679,
+      oldPrice: null,
+      image:
+        "images/products/Razer BlackWidow X Sanrio Limited Edition.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The Razer BlackWidow X Sanrio Limited Edition is a mechanical keyboard with Sanrio styling.",
+      specs: {},
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 144,
+    },
+    {
+      id: 45,
+      sku: "GG-ACC-013",
+      name: "Porodo Gaming Mechanical Keyboard (Gateron Pro Red)",
+      brand: "Porodo",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 12240,
+      oldPrice: null,
+      image:
+        "images/products/Porodo Gaming Mechanical Keyboard, Gateron Pro Red.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The Porodo gaming mechanical keyboard is equipped with Gateron Pro Red switches.",
+      specs: {
+        switchType: "Gateron Pro Red",
+      },
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 145,
+    },
+    {
+      id: 46,
+      sku: "GG-ACC-014",
+      name: "Logitech G413 Mechanical Gaming Keyboard",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Mechanical keyboard",
+      price: 14995,
+      oldPrice: null,
+      image:
+        "images/products/Logitech G413 Mechanical Gaming Keyboard (Carbon).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech G413 is a mechanical keyboard built for gaming.",
+      specs: {},
+      suitableFor: ["Developer", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 146,
+    },
+    {
+      id: 48,
+      sku: "GG-ACC-015",
+      name: "Oraimo ClickFlow 2 Wireless Mouse",
+      brand: "Oraimo",
+      category: "accessories",
       subcategory: "Wireless mouse",
-      prefix: "GoldenGen Wireless Mouse",
-      count: 9,
-      startPrice: 2800,
-      step: 650,
-      summary:
-        "Sample wireless mouse designed for comfortable everyday navigation, office work and study.",
+      price: 2800,
+      oldPrice: null,
+      image:
+        "images/products/Oraimo ClickFlow 2 Ergonomic Wireless Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Oraimo ClickFlow 2 is a wireless mouse for everyday computer use.",
+      specs: {},
       suitableFor: ["Business", "Student", "Everyday use"],
-      specs: {
-        connectivity: "2.4GHz wireless and Bluetooth",
-        buttons: "6 programmable buttons",
-        sensor: "High-precision optical sensor",
-        battery: "Rechargeable battery",
-        compatibility: "Windows, macOS and Linux",
-      },
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 148,
     },
     {
+      id: 49,
+      sku: "GG-ACC-016",
+      name: "Lenovo M241 Wireless Mouse",
+      brand: "Lenovo",
       category: "accessories",
-      image: "images/cat-headphones.jpg",
+      subcategory: "Wireless mouse",
+      price: 3450,
+      oldPrice: null,
+      image: "images/products/Lenovo M241 Wireless Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Lenovo M241 is a wireless mouse for everyday computer use.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 149,
+    },
+    {
+      id: 50,
+      sku: "GG-ACC-017",
+      name: "Logitech M331 Silent Plus",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 4100,
+      oldPrice: null,
+      image: "images/products/Logitech M331 Silent Plus Wireless Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech M331 Silent Plus is a wireless mouse in Logitech's Silent Plus line.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 150,
+    },
+    {
+      id: 51,
+      sku: "GG-ACC-018",
+      name: "Logitech M590 Multi-Device Silent Mouse",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 4750,
+      oldPrice: null,
+      image:
+        "images/products/Logitech M590 Multi-Device Silent Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech M590 Multi-Device Silent is a wireless mouse from Logitech's M-series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 151,
+    },
+    {
+      id: 52,
+      sku: "GG-ACC-019",
+      name: "Logitech M720 Triathlon",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 5400,
+      oldPrice: null,
+      image: "images/products/LogitechM720-Sideview-DokkanTech.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech M720 Triathlon is a wireless mouse in Logitech's M-series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 152,
+    },
+    {
+      id: 53,
+      sku: "GG-ACC-020",
+      name: "Logitech M705 Marathon",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 6050,
+      oldPrice: null,
+      image: "images/products/Logitech M705 Marathon Wireless Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech M705 Marathon is a wireless mouse in Logitech's Marathon line.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 153,
+    },
+    {
+      id: 54,
+      sku: "GG-ACC-021",
+      name: "Logitech MX Anywhere 3",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 6700,
+      oldPrice: null,
+      image: "images/products/Logitech MX Anywhere 3 Compact Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech MX Anywhere 3 is a wireless mouse in Logitech's MX line.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 154,
+    },
+    {
+      id: 55,
+      sku: "GG-ACC-022",
+      name: "Logitech Pebble M350",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 7350,
+      oldPrice: null,
+      image: "images/products/Logitech Pebble M350 Wireless Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech Pebble M350 is a wireless mouse from Logitech's Pebble line.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 155,
+    },
+    {
+      id: 56,
+      sku: "GG-ACC-023",
+      name: "Logitech G305 Lightspeed",
+      brand: "Logitech",
+      category: "accessories",
+      subcategory: "Wireless mouse",
+      price: 8000,
+      oldPrice: null,
+      image:
+        "images/products/Logitech G G305 Lightspeed Wireless Gaming Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech G305 Lightspeed is a wireless gaming mouse from Logitech G.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 156,
+    },
+    {
+      id: 57,
+      sku: "GG-ACC-024",
+      name: "JBL Tune 500BT",
+      brand: "JBL",
+      category: "accessories",
       subcategory: "Wireless headphones",
-      prefix: "GoldenGen Wireless Headphones",
-      count: 9,
-      startPrice: 5200,
-      step: 2400,
-      summary:
-        "Sample wireless headphones with comfortable earcups, clear calls and balanced everyday audio.",
+      price: 5200,
+      oldPrice: null,
+      image: "images/products/JBL Tune 500BT Wireless On-Ear Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JBL Tune 500BT is a wireless headphone model in JBL's Tune series.",
+      specs: {},
       suitableFor: ["Business", "Student", "Everyday use"],
-      specs: {
-        connectivity: "Bluetooth 5.3",
-        battery: "Up to 35 hours",
-        microphone: "Built-in call microphone",
-        noiseControl: "Passive noise isolation",
-        compatibility: "Phones, laptops and tablets",
-      },
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 157,
     },
     {
+      id: 58,
+      sku: "GG-ACC-025",
+      name: "Oraimo FreeLife Wireless Headphones",
+      brand: "Oraimo",
       category: "accessories",
-      image: "images/cat-bags.jpg",
-      subcategory: "Bags & Cases",
-      prefix: "GoldenGen Laptop Bag",
-      count: 10,
-      startPrice: 2800,
-      step: 850,
-      summary:
-        "Sample laptop bag with protective padding, organised storage and a practical everyday carry design.",
-      suitableFor: ["Student", "Business", "Everyday use"],
-      specs: {
-        laptopFit: "Up to 15.6-inch laptop",
-        material: "Water-resistant outer material",
-        compartments: "Padded laptop compartment and accessory pockets",
-        carrying: "Shoulder strap and carry handles",
-        protection: "Reinforced protective padding",
-      },
+      subcategory: "Wireless headphones",
+      price: 7600,
+      oldPrice: null,
+      image: "images/products/Oraimo FreeLife Wireless Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Oraimo FreeLife is a wireless headphone model from Oraimo.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 158,
     },
     {
-      category: "gaming",
-      image: "images/cat-gaming.jpg",
-      subcategory: "Gaming gear",
-      prefix: "GoldenGen Gaming Gear",
-      count: 6,
-      startPrice: 8500,
-      step: 3200,
-      summary:
-        "Sample gaming accessory with practical controls, durable construction and a focused play experience.",
-      suitableFor: ["Gaming"],
-      specs: {
-        connectivity: "USB and wireless sample configuration",
-        lighting: "Customisable RGB lighting",
-        compatibility: "PC and selected consoles",
-        warrantySupport: "Sample gaming accessory warranty",
-      },
+      id: 59,
+      sku: "GG-ACC-026",
+      name: "JBL Tune 510BT",
+      brand: "JBL",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 10000,
+      oldPrice: null,
+      image: "images/products/JBL Tune 510BT Wireless On-Ear Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JBL Tune 510BT is a wireless headphone model in JBL's Tune series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 159,
     },
-  ];
-
-  const placeholderBadges = [
-    { badge: "hot", label: "Popular" },
-    { badge: "new", label: "New" },
-    { badge: "bestseller", label: "Bestseller" },
-    { badge: "sale" },
-  ];
-
-  const placeholderProducts = placeholderGroups.flatMap((group, groupIndex) =>
-    Array.from({ length: group.count }, (_, index) => {
-      const id = 25 + placeholderGroups
-        .slice(0, groupIndex)
-        .reduce((total, previous) => total + previous.count, 0) + index;
-      const sequence = String(index + 1).padStart(2, "0");
-      const isOutOfStock = index === group.count - 1;
-      const badge = placeholderBadges[(id - 25) % placeholderBadges.length];
-      const price = group.startPrice + group.step * index;
-      const oldPrice =
-        badge.badge === "sale" && !isOutOfStock
-          ? Math.ceil((price * 1.1) / 100) * 100
-          : null;
-      const badgeText = oldPrice
-        ? `-${Math.round(((oldPrice - price) / oldPrice) * 100)}%`
-        : badge.label;
-
-      return {
-        id,
-        sku: `GG-SAMPLE-${String(id).padStart(3, "0")}`,
-        name: `${group.prefix} ${sequence}`,
-        brand: "GoldenGen Sample",
-        category: group.category,
-        subcategory: group.subcategory,
-        price,
-        oldPrice,
-        image: group.image,
-        imageAlt: `Illustrative ${group.subcategory.toLowerCase()} image`,
-        rating: 0,
-        reviews: 0,
-        badge: badge.badge,
-        badgeText,
-        stock: isOutOfStock ? 0 : 5,
-        condition: "new",
-        warranty: "Prototype warranty",
-        delivery: "Delivery estimate to be confirmed",
-        summary: group.summary,
-        specs: { ...group.specs },
-        suitableFor: group.suitableFor,
-        deliveryEstimate: "Prototype delivery estimate",
-        createdAt: "2026-08-15",
-        featuredRank: 100 + id,
-        isPrototype: true,
-      };
-    }),
+    {
+      id: 60,
+      sku: "GG-ACC-027",
+      name: "Anker Soundcore Life Q20",
+      brand: "Anker",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 12400,
+      oldPrice: null,
+      image:
+        "images/products/Anker Soundcore Life Q20 Wireless ANC Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Soundcore Life Q20 is a wireless headphone model from Anker.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 160,
+    },
+    {
+      id: 61,
+      sku: "GG-ACC-028",
+      name: "JBL Tune 700BT",
+      brand: "JBL",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 14800,
+      oldPrice: null,
+      image: "images/products/JBL Tune 700BT Wireless Over-Ear Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JBL Tune 700BT is a wireless headphone model in JBL's Tune series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 161,
+    },
+    {
+      id: 62,
+      sku: "GG-ACC-029",
+      name: "JBL Live 400BT",
+      brand: "JBL",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 17200,
+      oldPrice: null,
+      image:
+        "images/products/JBL Live 400BT Wireless Over-Ear Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JBL Live 400BT is a wireless headphone model in JBL's Live series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 162,
+    },
+    {
+      id: 63,
+      sku: "GG-ACC-030",
+      name: "Sony WH-CH520",
+      brand: "Sony",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 19600,
+      oldPrice: null,
+      image: "images/products/Sony WH-CH520 Wireless Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Sony WH-CH520 is a wireless headphone model from Sony.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 163,
+    },
+    {
+      id: 64,
+      sku: "GG-ACC-031",
+      name: "Anker Soundcore Life Q35",
+      brand: "Anker",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 22000,
+      oldPrice: null,
+      image:
+        "images/products/Anker Soundcore Life Q35 Wireless ANC Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Soundcore Life Q35 is a wireless headphone model from Anker.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 164,
+    },
+    {
+      id: 65,
+      sku: "GG-ACC-032",
+      name: "JBL Tune 760NC",
+      brand: "JBL",
+      category: "accessories",
+      subcategory: "Wireless headphones",
+      price: 24400,
+      oldPrice: null,
+      image:
+        "images/products/JBL Tune 760NC Wireless Noise-Cancelling Headphones.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The JBL Tune 760NC is a wireless headphone model in JBL's Tune series.",
+      specs: {},
+      suitableFor: ["Business", "Student", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 165,
+    },
+    {
+      id: 66,
+      sku: "GG-ACC-033",
+      name: 'Generic 15.6" Padded Laptop Sleeve',
+      brand: "Generic",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 2800,
+      oldPrice: null,
+      image: "images/products/Generic 15.6 Padded Laptop Sleeve.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "This Generic padded sleeve is sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 166,
+    },
+    {
+      id: 67,
+      sku: "GG-ACC-034",
+      name: 'HP Essential 15.6" Laptop Sleeve',
+      brand: "HP",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 3650,
+      oldPrice: null,
+      image: "images/products/HP Essential 15.6 Laptop Sleeve.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The HP Essential sleeve is sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 167,
+    },
+    {
+      id: 68,
+      sku: "GG-ACC-035",
+      name: 'HP Value 16" Laptop Backpack',
+      brand: "HP",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 4500,
+      oldPrice: null,
+      image: "images/products/HP Value 16 Laptop Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The HP Value backpack is sized to carry a 16-inch laptop.",
+      specs: {
+        laptopFit: "16-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 168,
+    },
+    {
+      id: 69,
+      sku: "GG-ACC-036",
+      name: 'Targus 15.6" CityLite Backpack',
+      brand: "Targus",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 5350,
+      oldPrice: null,
+      image: "images/products/Targus 15.6 CityLite Laptop Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Targus CityLite is a backpack sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 169,
+    },
+    {
+      id: 70,
+      sku: "GG-ACC-037",
+      name: 'Dell Essential 15.6" Backpack',
+      brand: "Dell",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 6200,
+      oldPrice: null,
+      image: "images/products/Dell Essential 15.6 Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Dell Essential backpack is sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 170,
+    },
+    {
+      id: 71,
+      sku: "GG-ACC-038",
+      name: 'HP Travel 15.6" Backpack',
+      brand: "HP",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 7050,
+      oldPrice: null,
+      image: "images/products/HP Travel 15.6 Laptop Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The HP Travel backpack is sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 171,
+    },
+    {
+      id: 72,
+      sku: "GG-ACC-039",
+      name: 'Lenovo 15.6" Casual Backpack',
+      brand: "Lenovo",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 7900,
+      oldPrice: null,
+      image: "images/products/Lenovo 15.6 Casual Laptop Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Lenovo Casual backpack is sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 172,
+    },
+    {
+      id: 73,
+      sku: "GG-ACC-040",
+      name: 'Targus 15.6" Element Backpack (TSB227)',
+      brand: "Targus",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 8750,
+      oldPrice: null,
+      image: "images/products/Targus 15.6 Element Backpack (TSB227).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The Targus Element TSB227 is a backpack sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 173,
+    },
+    {
+      id: 74,
+      sku: "GG-ACC-041",
+      name: 'Targus 16" Classic Clamshell Laptop Case',
+      brand: "Targus",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 9600,
+      oldPrice: null,
+      image: "images/products/Targus 16 Classic Clamshell Laptop Case.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Targus Classic Clamshell is a laptop case sized for 16-inch laptops.",
+      specs: {
+        laptopFit: "16-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 174,
+    },
+    {
+      id: 75,
+      sku: "GG-ACC-042",
+      name: 'Targus 15.6" CitySmart Advanced Backpack',
+      brand: "Targus",
+      category: "accessories",
+      subcategory: "Bags & Cases",
+      price: 10450,
+      oldPrice: null,
+      image:
+        "images/products/Targus 15.6 CitySmart Advanced Laptop Backpack.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary:
+        "The Targus CitySmart Advanced is a backpack sized to carry a 15.6-inch laptop.",
+      specs: {
+        laptopFit: "15.6-inch laptop",
+      },
+      suitableFor: ["Student", "Business", "Everyday use"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 175,
+    },
+    {
+      id: 76,
+      sku: "GG-GAM-007",
+      name: "Generic RGB Gaming Mouse Pad XL (80x30cm)",
+      brand: "Generic",
+      category: "gaming",
+      subcategory: "Mouse pad",
+      price: 8500,
+      oldPrice: null,
+      image: "images/products/Generic RGB Gaming Mouse Pad (XL, 80×30cm).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "This Generic XL mouse pad adds RGB lighting to an 80-by-30-centimetre gaming surface.",
+      specs: {
+        lighting: "RGB",
+      },
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 176,
+    },
+    {
+      id: 77,
+      sku: "GG-GAM-008",
+      name: "Redgear Pro Wired Gaming Controller",
+      brand: "Redgear",
+      category: "gaming",
+      subcategory: "Gaming controller",
+      price: 11700,
+      oldPrice: null,
+      image:
+        "images/products/Redgear Pro Wired Gaming Controller (PC).jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Redgear Pro is a wired controller for gaming.",
+      specs: {
+        connectivity: "Wired",
+      },
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 177,
+    },
+    {
+      id: 78,
+      sku: "GG-GAM-009",
+      name: "Logitech F710 Wireless Gamepad",
+      brand: "Logitech",
+      category: "gaming",
+      subcategory: "Gaming controller",
+      price: 14900,
+      oldPrice: null,
+      image: "images/products/Logitech F710 Wireless Gamepad.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech F710 is a wireless gamepad for gaming.",
+      specs: {
+        connectivity: "Wireless",
+      },
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 178,
+    },
+    {
+      id: 79,
+      sku: "GG-GAM-010",
+      name: "HyperX Pulsefire Haste 2",
+      brand: "HyperX",
+      category: "gaming",
+      subcategory: "Gaming mouse",
+      price: 18100,
+      oldPrice: null,
+      image: "images/products/HyperX Pulsefire Haste 2 Gaming Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The HyperX Pulsefire Haste 2 is a gaming mouse from HyperX's Pulsefire line.",
+      specs: {},
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 179,
+    },
+    {
+      id: 80,
+      sku: "GG-GAM-011",
+      name: "Razer DeathAdder V3",
+      brand: "Razer",
+      category: "gaming",
+      subcategory: "Gaming mouse",
+      price: 21300,
+      oldPrice: null,
+      image: "images/products/Razer DeathAdder V3 Gaming Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 5,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Razer DeathAdder V3 is a gaming mouse in Razer's DeathAdder line.",
+      specs: {},
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 180,
+    },
+    {
+      id: 81,
+      sku: "GG-GAM-012",
+      name: "Logitech G502 Hero",
+      brand: "Logitech",
+      category: "gaming",
+      subcategory: "Gaming mouse",
+      price: 24500,
+      oldPrice: null,
+      image: "images/products/Logitech G502 Hero Gaming Mouse.jpg",
+      rating: 0,
+      reviews: 0,
+      badge: "",
+      badgeText: "",
+      stock: 0,
+      condition: "new",
+      warranty: "Illustrative 6-month warranty",
+      delivery: "Illustrative countrywide delivery",
+      summary: "The Logitech G502 Hero is a gaming mouse from Logitech G.",
+      specs: {},
+      suitableFor: ["Gaming"],
+      deliveryEstimate:
+        "Illustrative estimate: Nairobi 1–2 days; other counties 2–5 days",
+      createdAt: "2026-08-15",
+      featuredRank: 181,
+    },
   );
 
-  PRODUCTS.push(...placeholderProducts);
+  const illustrativeBadges = [
+    { type: "new", text: "New" },
+    { type: "hot", text: "Popular" },
+    { type: "bestseller", text: "Bestseller" },
+  ];
+
+  PRODUCTS.forEach((product) => {
+    if (product.rating <= 0 || product.reviews <= 0) {
+      product.rating = Number((4.2 + ((product.id * 7) % 8) / 10).toFixed(1));
+      product.reviews = 8 + ((product.id * 17) % 73);
+      product.ratingIsIllustrative = true;
+    }
+
+    if (product.id >= 25 && !product.badge && !product.badgeText) {
+      const badge =
+        illustrativeBadges[(product.id - 25) % illustrativeBadges.length];
+      product.badge = badge.type;
+      product.badgeText = badge.text;
+      product.badgeIsIllustrative = true;
+    }
+  });
 
   // ===== CATALOGUE PRICE LIMITS =====
   const prices = PRODUCTS.map((product) => product.price);
@@ -1043,8 +2439,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const catalogueMax = Math.ceil(Math.max(...prices) / 5000) * 5000;
 
   // ===== APPLICATION STATE =====
-  // Controls update this state and then pass through refresh(); PRODUCTS remains
-  // immutable so filtering and sorting never change the catalogue source data.
+  // Catalogue defaults are resolved once above; filtering and sorting never
+  // change product data afterward.
   const state = {
     search: "",
     sort: localStorage.getItem(SORT_KEY) || "featured",
@@ -1063,6 +2459,8 @@ document.addEventListener("DOMContentLoaded", () => {
     view: localStorage.getItem(VIEW_KEY) || "grid",
     visible: PRODUCTS_PER_PAGE,
   };
+  const initialSort = state.sort;
+  const initialView = state.view;
 
   // ===== HELPERS =====
   function formatPrice(value) {
@@ -1088,8 +2486,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildProductSpecs(product, compact = false) {
-    if (!product.specs) return "";
-
     const labels = [
       ["processor", "Processor"],
       ["memory", "RAM"],
@@ -1125,25 +2521,123 @@ document.addEventListener("DOMContentLoaded", () => {
       ["speakers", "Speakers"],
       ["mounting", "Mounting"],
       ["eyeCare", "Eye care"],
+      ["capacity", "Capacity"],
+      ["output", "Power output"],
+      ["interface", "Interface"],
+      ["durability", "Durability"],
+      ["wifiStandard", "Wi-Fi standard"],
+      ["bands", "Bands"],
+      ["coverage", "Coverage"],
     ];
 
-    const entries = labels
-      .filter(([key]) => product.specs[key])
-      .slice(0, compact ? 3 : labels.length);
+    const detailFieldsByType = {
+      laptops: [
+        "processor",
+        "memory",
+        "storage",
+        "graphics",
+        "display",
+        "battery",
+        "weight",
+        "operatingSystem",
+        "ports",
+        "expandability",
+      ],
+      monitors: [
+        "displaySize",
+        "resolution",
+        "refreshRate",
+        "brightness",
+        "responseTime",
+        "panelType",
+        "speakers",
+        "mounting",
+        "eyeCare",
+      ],
+      headphones: [
+        "connectivity",
+        "battery",
+        "microphone",
+        "noiseControl",
+        "compatibility",
+      ],
+      headsets: [
+        "connectivity",
+        "battery",
+        "microphone",
+        "noiseControl",
+        "compatibility",
+      ],
+      keyboards: [
+        "connectivity",
+        "layout",
+        "switchType",
+        "lighting",
+        "compatibility",
+      ],
+      mice: [
+        "connectivity",
+        "buttons",
+        "sensor",
+        "battery",
+        "compatibility",
+      ],
+      "bags and cases": [
+        "laptopFit",
+        "material",
+        "compartments",
+        "carrying",
+        "protection",
+      ],
+      "power banks": ["capacity", "output", "ports"],
+      "external storage": [
+        "capacity",
+        "interface",
+        "durability",
+        "compatibility",
+      ],
+      networking: ["wifiStandard", "bands", "coverage", "ports"],
+    };
+    const detailFields = detailFieldsByType[getProductType(product)];
+    const entries = compact
+      ? labels.filter(([key]) => product.specs?.[key]).slice(0, 3)
+      : detailFields
+        ? detailFields
+            .map((key) => labels.find(([labelKey]) => labelKey === key))
+            .filter(Boolean)
+        : labels.filter(([key]) => product.specs?.[key]);
+
+    if (!entries.length) return "";
+    const hasEstimatedSpecs =
+      !compact && entries.some(([key]) => !product.specs?.[key]);
 
     return `
+      ${
+        compact
+          ? ""
+          : '<h3 class="product-specs-heading">Key specifications</h3>'
+      }
       <dl class="product-specs ${compact ? "product-specs-compact" : ""}">
         ${entries
-          .map(
-            ([key, label]) => `
+          .map(([key, label]) => {
+            const value =
+              product.specs?.[key] ||
+              getEstimatedSpec(product, key) ||
+              "Not specified";
+            return `
               <div class="product-spec">
                 <dt>${label}</dt>
-                <dd>${escapeHTML(product.specs[key])}</dd>
+                <dd>${escapeHTML(value)}</dd>
               </div>
-            `,
-          )
+            `;
+          })
           .join("")}
       </dl>
+      ${
+        hasEstimatedSpecs
+          ? '<p class="product-specs-note">Specifications marked “Approx.” are illustrative estimates. Confirm the exact model configuration before purchase.</p>'
+          : ""
+      }
     `;
   }
 
@@ -1184,6 +2678,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Do not treat every product in a broad category as interchangeable.
     return `${product.category}:${subcategory.trim()}`;
+  }
+
+  function getEstimatedSpec(product, key) {
+    const estimatesByType = {
+      laptops: {
+        graphics: "Approx. integrated graphics; varies by SKU",
+        display: 'Approx. 14–15.6" FHD; varies by SKU',
+        battery: "Approx. 4–8 hours of everyday use; varies by battery health",
+        weight: "Approx. 1.5–2.2 kg; varies by model",
+        operatingSystem: "Approx. Windows 11; confirm installed edition",
+        ports: "Approx. USB-A, USB-C and HDMI mix; confirm exact ports",
+        expandability:
+          "Approx. upgrade options vary; confirm RAM and storage limits",
+      },
+      monitors: {
+        refreshRate: "Approx. 60–144 Hz; model-dependent",
+        brightness: "Approx. 250–350 nits; model-dependent",
+        responseTime: "Approx. 4–8 ms; mode-dependent",
+        panelType: "Approx. IPS or VA; verify the exact panel",
+        speakers: "Approx. built-in speakers may be included; confirm model",
+        mounting: "Approx. VESA support; confirm hole pattern",
+        eyeCare:
+          "Approx. low-blue-light and flicker-reduction features vary by model",
+      },
+      headphones: {
+        connectivity: "Approx. Bluetooth 5.x; check for wired-use support",
+        battery: "Approx. 20–50 hours per charge; model-dependent",
+        microphone: "An integrated microphone is typical; verify model",
+        noiseControl: "Active noise cancellation varies by model",
+        compatibility: "Approx. Bluetooth phone/computer support; confirm model",
+      },
+      headsets: {
+        connectivity: "Approx. Bluetooth or USB; varies by model",
+        battery: "Approx. 20–50 hours per charge; model-dependent",
+        microphone: "An integrated microphone is typical; verify model",
+        noiseControl: "Noise-control features vary by model",
+        compatibility: "Approx. computer/mobile support; confirm model",
+      },
+      keyboards: {
+        connectivity: "Approx. wired USB, Bluetooth or 2.4 GHz; varies by model",
+        layout: "Approx. 60% to tenkeyless; verify the exact key count",
+        switchType: "Approx. mechanical switch type varies by model",
+        lighting: "Approx. backlighting varies by model",
+        compatibility: "Approx. Windows support; confirm other OS layouts",
+      },
+      mice: {
+        connectivity: "Approx. wired USB or wireless receiver; varies by model",
+        buttons: "Approx. 3–11 buttons; varies by model",
+        sensor: "Approx. optical sensor; sensitivity varies by model",
+        battery: "Approx. AA battery or rechargeable; varies by model",
+        compatibility: "Approx. USB-connected computer support",
+      },
+      "bags and cases": {
+        laptopFit: 'Approx. fits laptops up to 15.6–16"; check bag dimensions',
+        material: "Approx. polyester or nylon; confirm exact material",
+        compartments: "Approx. 1–3 compartments; model-dependent",
+        carrying: "Approx. backpack or hand-carry style; see listing image",
+        protection: "Some padding is typical; protection level varies by model",
+      },
+    };
+
+    return estimatesByType[getProductType(product)]?.[key] || "";
   }
 
   function getPriorityMatch(product, priority) {
@@ -1257,7 +2813,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildChooserResults({ deviceType, useCase, budget, priority }) {
-    // Score only available examples that fit the selected device and budget. The
+    // Score only available products that fit the selected device and budget. The
     // explanation shown beside each result is derived from the same score inputs.
     const useCaseLabel =
       {
@@ -1303,7 +2859,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (matches.length === 0) {
       return `
         <div class="choose-results-empty">
-          <strong>No example fits these choices</strong>
+          <strong>No listed product fits these choices</strong>
           <p>Try a wider budget or browse the full catalogue.</p>
         </div>
       `;
@@ -1467,7 +3023,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (key === "delivery") return product.deliveryEstimate || product.delivery;
 
-    return product.specs?.[key] || "Not specified";
+    return product.specs?.[key] || getEstimatedSpec(product, key) || "Not specified";
   }
 
   function renderComparison() {
@@ -1587,6 +3143,45 @@ document.addEventListener("DOMContentLoaded", () => {
       ${
         products.length >= 2
           ? `
+      <section
+        class="compare-mobile-view"
+        aria-label="Product specifications"
+      >
+        <p class="compare-mobile-hint">
+          Swipe or scroll through each product to compare its details.
+        </p>
+        <div
+          class="compare-mobile-list"
+          role="region"
+          tabindex="0"
+          aria-label="Products being compared"
+        >
+          ${products
+            .map(
+              (product) => `
+                <article class="compare-mobile-product">
+                  <div class="compare-mobile-product-heading">
+                    <img src="${escapeHTML(product.image)}" alt="" />
+                    <h3>${escapeHTML(product.name)}</h3>
+                  </div>
+                  <dl>
+                    ${fields
+                      .map(
+                        ([key, label]) => `
+                          <div>
+                            <dt>${label}</dt>
+                            <dd>${escapeHTML(getComparisonValue(product, key))}</dd>
+                          </div>
+                        `,
+                      )
+                      .join("")}
+                  </dl>
+                </article>
+              `,
+            )
+            .join("")}
+        </div>
+      </section>
       <div class="compare-table-wrap">
         <table class="compare-table">
           <thead>
@@ -1723,7 +3318,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const comparisonIds = new Set(
-    readArray(COMPARISON_KEY).map((productId) => Number(productId)),
+    readArray(COMPARISON_KEY)
+      .map((productId) => Number(productId))
+      .filter((productId) => getProduct(productId)),
   );
   let comparisonType = getComparisonProducts()[0]
     ? getProductType(getComparisonProducts()[0])
@@ -1816,6 +3413,40 @@ document.addEventListener("DOMContentLoaded", () => {
   function getProduct(productId) {
     return PRODUCTS.find((product) => product.id === Number(productId));
   }
+
+  function refreshSavedCartProducts() {
+    const cart = ggReadCart();
+    let updated = false;
+
+    const refreshedCart = cart.map((item) => {
+      const product = getProduct(item.id);
+
+      if (!product) return item;
+
+      if (
+        item.name !== product.name ||
+        item.price !== product.price ||
+        item.image !== product.image
+      ) {
+        updated = true;
+      }
+
+      return {
+        ...item,
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      };
+    });
+
+    if (updated) {
+      ggWriteCart(refreshedCart);
+      ggRenderCartDropdown();
+    }
+  }
+
+  refreshSavedCartProducts();
 
   // ===== AUTOMATIC IMAGE PLACEHOLDER =====
   function makePlaceholder(product) {
@@ -2175,6 +3806,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
+  function buildProductRating(product) {
+    return `
+      <div
+        class="product-rating"
+        aria-label="${product.ratingIsIllustrative ? "Illustrative sample rating: " : ""}${product.rating} out of 5 stars from ${product.reviews} reviews"
+        ${product.ratingIsIllustrative ? 'title="Illustrative sample rating and review count"' : ""}
+      >
+        ${buildStars(product.rating)}
+
+        <span class="product-rating-count">
+          ${product.rating} (${product.reviews})
+        </span>
+      </div>
+    `;
+  }
+
   // ===== PRODUCT CARD =====
   function buildCard(product) {
     const inStock = product.stock > 0;
@@ -2184,11 +3831,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const savePercent = calculateDiscount(product);
 
-    const badgeClass = inStock
-      ? `product-badge-${product.badge}`
-      : "product-badge-out-of-stock";
-
-    const badgeText = inStock ? product.badgeText : "Out of Stock";
+    const hasBadge = Boolean(product.badge && product.badgeText);
+    const fallbackBadge = savePercent > 0
+      ? {
+          text: `-${savePercent}%`,
+          type: "sale",
+        }
+      : product.stock <= 3
+        ? {
+            text: "Low Stock",
+            type: "low-stock",
+          }
+        : {
+            text: "In Stock",
+            type: "stock",
+          };
+    const badgeText = inStock
+      ? hasBadge
+        ? product.badgeText
+        : fallbackBadge.text
+      : "Out of Stock";
+    const badgeClass = !inStock
+      ? "product-badge-out-of-stock"
+      : `product-badge-${hasBadge ? product.badge : fallbackBadge.type}`;
 
     const conditionIcon =
       product.condition === "refurbished" ? "fa-rotate" : "fa-certificate";
@@ -2200,9 +3865,11 @@ document.addEventListener("DOMContentLoaded", () => {
         data-category="${escapeHTML(product.category)}"
       >
         <div class="product-image-wrapper">
-          <span class="product-badge ${badgeClass}">
-            ${escapeHTML(badgeText)}
-          </span>
+          ${
+            badgeText
+              ? `<span class="product-badge ${badgeClass}"${product.badgeIsIllustrative ? ' title="Illustrative catalogue badge"' : ""}>${escapeHTML(badgeText)}</span>`
+              : ""
+          }
 
           <button
             type="button"
@@ -2264,16 +3931,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ${escapeHTML(product.name)}
           </h2>
 
-          <div
-            class="product-rating"
-            aria-label="${product.rating} out of 5 stars from ${product.reviews} reviews"
-          >
-            ${buildStars(product.rating)}
-
-            <span class="product-rating-count">
-              ${product.rating} (${product.reviews})
-            </span>
-          </div>
+          ${buildProductRating(product)}
 
           <p class="product-description">
             ${escapeHTML(product.summary)}
@@ -2459,7 +4117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildFilterOption(type, value, count) {
-    const setName = `${type}s`;
+    const setName = type === "category" ? "categories" : `${type}s`;
 
     const selected = state[setName]?.has(value) || false;
 
@@ -2783,6 +4441,8 @@ document.addEventListener("DOMContentLoaded", () => {
     renderUseCaseFilters();
 
     renderBrandFilters(el.brandSearch?.value || "");
+
+    applyView(state.view, false);
   }
 
   // ===== COUNTERS =====
@@ -2844,7 +4504,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== RENDER PRODUCTS =====
-  function refresh({ resetPage = false, append = false } = {}) {
+  function refresh({
+    resetPage = false,
+    append = false,
+    urlMode = "replace",
+  } = {}) {
     // One rendering pipeline keeps search, filters, sorting, pagination, counts,
     // and empty states synchronized after every catalogue interaction.
     const previousVisible = state.visible;
@@ -2902,6 +4566,7 @@ document.addEventListener("DOMContentLoaded", () => {
     attachImageFallbacks(el.grid);
     revealCards(newCards);
     syncComparisonState();
+    if (urlMode) syncCatalogueUrl(urlMode);
   }
 
   // ===== CLEAR FILTERS =====
@@ -2927,6 +4592,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
 
     announce("All filters cleared.");
@@ -2973,11 +4639,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   }
 
   // ===== GRID / LIST VIEW =====
-  function applyView(view) {
+  function applyView(view, updateUrl = true) {
     state.view = view === "list" ? "list" : "grid";
 
     localStorage.setItem(VIEW_KEY, state.view);
@@ -2991,24 +4658,98 @@ document.addEventListener("DOMContentLoaded", () => {
     el.gridBtn?.setAttribute("aria-pressed", String(state.view === "grid"));
 
     el.listBtn?.setAttribute("aria-pressed", String(state.view === "list"));
+    if (updateUrl) syncCatalogueUrl("push");
   }
 
   // ===== MOBILE FILTER DRAWER =====
+  const mobileFilterQuery = window.matchMedia("(max-width: 900px)");
+
+  function syncFilterDrawerAccessibility() {
+    if (!el.filters) return;
+
+    const isMobile = mobileFilterQuery.matches;
+    const isOpen = el.filters.classList.contains("open");
+
+    if (isMobile && isOpen) {
+      el.filters.inert = false;
+      el.filters.setAttribute("role", "dialog");
+      el.filters.setAttribute("aria-modal", "true");
+      el.filters.setAttribute("aria-labelledby", "filtersTitle");
+      el.filterToggle?.setAttribute("aria-expanded", "true");
+      return;
+    }
+
+    el.filters.inert = isMobile;
+    el.filters.removeAttribute("role");
+    el.filters.removeAttribute("aria-modal");
+    el.filters.removeAttribute("aria-labelledby");
+    el.filterToggle?.setAttribute("aria-expanded", "false");
+
+    if (!isMobile && isOpen) {
+      el.filters.classList.remove("open");
+      document.body.classList.remove("filters-open");
+    }
+  }
+
   function openFilters() {
+    if (!el.filters) return;
+
     document.body.classList.add("filters-open");
-
-    el.filters?.classList.add("open");
-
-    el.filterToggle?.setAttribute("aria-expanded", "true");
+    el.filters.classList.add("open");
+    syncFilterDrawerAccessibility();
+    el.filtersClose?.focus();
   }
 
   function closeFilters() {
+    const wasOpen = el.filters?.classList.contains("open");
+
     document.body.classList.remove("filters-open");
-
     el.filters?.classList.remove("open");
+    syncFilterDrawerAccessibility();
 
-    el.filterToggle?.setAttribute("aria-expanded", "false");
+    if (wasOpen && mobileFilterQuery.matches) {
+      el.filterToggle?.focus();
+    }
   }
+
+  syncFilterDrawerAccessibility();
+  mobileFilterQuery.addEventListener("change", syncFilterDrawerAccessibility);
+
+  el.filters?.addEventListener("keydown", (event) => {
+    if (
+      event.key !== "Tab" ||
+      !mobileFilterQuery.matches ||
+      !el.filters.classList.contains("open")
+    ) {
+      return;
+    }
+
+    const focusable = Array.from(
+      el.filters.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((element) => element.getClientRects().length > 0);
+
+    if (!focusable.length) {
+      event.preventDefault();
+      el.filters.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (!el.filters.contains(document.activeElement)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   // ===== QUICK VIEW =====
   function openQuickView(productId, { returnToChooser = false } = {}) {
@@ -3065,18 +4806,30 @@ document.addEventListener("DOMContentLoaded", () => {
               ${escapeHTML(product.name)}
             </h2>
 
-            <div class="product-rating">
-              ${buildStars(product.rating)}
-
-              <span class="product-rating-count">
-                ${product.rating}
-                (${product.reviews})
-              </span>
-            </div>
+            ${buildProductRating(product)}
 
             <p class="quick-view-summary">
               ${escapeHTML(product.summary)}
             </p>
+
+            <dl class="quick-view-meta" aria-label="Product information">
+              <div>
+                <dt>SKU</dt>
+                <dd>${escapeHTML(product.sku || "Not provided")}</dd>
+              </div>
+              <div>
+                <dt>Condition</dt>
+                <dd>${escapeHTML(titleCase(product.condition || "Not specified"))}</dd>
+              </div>
+              <div>
+                <dt>Availability</dt>
+                <dd>${
+                  product.stock > 0
+                    ? `${product.stock} ${product.stock === 1 ? "unit" : "units"} in stock`
+                    : "Out of stock"
+                }</dd>
+              </div>
+            </dl>
 
             ${buildProductSpecs(product)}
 
@@ -3334,7 +5087,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (removeButton) {
       toggleComparison(removeButton.dataset.removeComparison);
-      return;
+return;
     }
 
     const addButton = target.closest("[data-add-comparison]");
@@ -3360,6 +5113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchDebounce = setTimeout(() => {
       refresh({
         resetPage: true,
+        urlMode: "push",
       });
     }, 250);
   });
@@ -3370,6 +5124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       refresh({
         resetPage: true,
+        urlMode: "push",
       });
     }
   });
@@ -3381,6 +5136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   });
 
@@ -3401,6 +5157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   }
 
@@ -3420,6 +5177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   });
 
@@ -3462,6 +5220,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   });
 
@@ -3490,6 +5249,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   }
 
@@ -3510,6 +5270,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "replace",
     });
   });
 
@@ -3519,6 +5280,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   });
 
@@ -3528,6 +5290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     refresh({
       resetPage: true,
+      urlMode: "push",
     });
   });
 
@@ -3649,21 +5412,138 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== URL CATEGORY & SEARCH FILTER =====
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryFromURL = urlParams.get("category");
-  const searchFromURL = urlParams.get("search");
+  // ===== SHAREABLE CATALOGUE STATE =====
+  const catalogueUrlKeys = [
+    "search",
+    "category",
+    "useCase",
+    "brand",
+    "condition",
+    "minPrice",
+    "maxPrice",
+    "rating",
+    "inStock",
+    "sort",
+    "view",
+  ];
+  const validSorts = new Set([
+    "featured",
+    "newest",
+    "price-asc",
+    "price-desc",
+    "rating",
+    "reviews",
+    "discount",
+  ]);
+  const validRatings = new Set([0, 3, 4, 4.5]);
 
-  if (
-    categoryFromURL &&
-    PRODUCTS.some((product) => product.category === categoryFromURL)
-  ) {
-    state.categories.add(categoryFromURL);
+  function readCatalogueStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const validValues = {
+      category: new Set(PRODUCTS.map((product) => product.category)),
+      useCase: new Set(PRODUCTS.flatMap((product) => product.suitableFor || [])),
+      brand: new Set(PRODUCTS.map((product) => product.brand)),
+      condition: new Set(PRODUCTS.map((product) => product.condition)),
+    };
+
+    state.search = params.get("search") || "";
+
+    state.categories = new Set(
+      params
+        .getAll("category")
+        .filter((value) => validValues.category.has(value)),
+    );
+    state.useCases = new Set(
+      params
+        .getAll("useCase")
+        .filter((value) => validValues.useCase.has(value)),
+    );
+    state.brands = new Set(
+      params.getAll("brand").filter((value) => validValues.brand.has(value)),
+    );
+    state.conditions = new Set(
+      params
+        .getAll("condition")
+        .filter((value) => validValues.condition.has(value)),
+    );
+
+    const minPriceParam = Number(params.get("minPrice"));
+    const maxPriceParam = Number(params.get("maxPrice"));
+    const minPrice =
+      params.has("minPrice") && Number.isFinite(minPriceParam)
+        ? minPriceParam
+        : catalogueMin;
+    const maxPrice =
+      params.has("maxPrice") && Number.isFinite(maxPriceParam)
+        ? maxPriceParam
+        : catalogueMax;
+
+    state.minPrice = Math.max(catalogueMin, Math.min(minPrice, catalogueMax));
+    state.maxPrice = Math.max(
+      state.minPrice,
+      Math.min(maxPrice, catalogueMax),
+    );
+
+    const rating = Number(params.get("rating"));
+    state.rating = validRatings.has(rating) ? rating : 0;
+    state.inStockOnly = params.get("inStock") === "1";
+
+    const sort = params.get("sort");
+    state.sort = sort && validSorts.has(sort) ? sort : initialSort;
+
+    const view = params.get("view");
+    state.view =
+      view === "grid" || view === "list" ? view : initialView;
   }
 
-  if (searchFromURL) {
-    state.search = searchFromURL;
+  function syncCatalogueUrl(mode = "replace") {
+    const params = new URLSearchParams(window.location.search);
+    catalogueUrlKeys.forEach((key) => params.delete(key));
+
+    if (state.search.trim()) params.set("search", state.search.trim());
+    state.categories.forEach((value) => params.append("category", value));
+    state.useCases.forEach((value) => params.append("useCase", value));
+    state.brands.forEach((value) => params.append("brand", value));
+    state.conditions.forEach((value) => params.append("condition", value));
+
+    if (state.minPrice > catalogueMin) {
+      params.set("minPrice", String(state.minPrice));
+    }
+    if (state.maxPrice < catalogueMax) {
+      params.set("maxPrice", String(state.maxPrice));
+    }
+    if (state.rating > 0) params.set("rating", String(state.rating));
+    if (state.inStockOnly) params.set("inStock", "1");
+    if (state.sort !== "featured") params.set("sort", state.sort);
+    if (state.view !== "grid") params.set("view", state.view);
+
+    const search = params.toString();
+    const nextUrl = `${window.location.pathname}${
+      search ? `?${search}` : ""
+    }${window.location.hash}`;
+
+    if (
+      `${window.location.pathname}${window.location.search}${window.location.hash}` ===
+      nextUrl
+    ) {
+      return;
+    }
+
+    window.history[mode === "push" ? "pushState" : "replaceState"](
+      { catalogue: true },
+      "",
+      nextUrl,
+    );
   }
+
+  readCatalogueStateFromUrl();
+
+  window.addEventListener("popstate", () => {
+    clearTimeout(searchDebounce);
+    readCatalogueStateFromUrl();
+    syncControls();
+    refresh({ resetPage: true, urlMode: null });
+  });
 
   // ===== INITIALIZE PRICE CONTROLS =====
   if (el.minPrice) {
@@ -3679,7 +5559,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== INITIALIZE PAGE =====
   showSkeletons();
   syncControls();
-  applyView(state.view);
+  applyView(state.view, false);
   ggUpdateCartCount();
   initSpotlight();
 

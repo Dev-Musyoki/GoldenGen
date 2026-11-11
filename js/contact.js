@@ -60,15 +60,39 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const message = [
+      "Hello GoldenGen,",
+      "",
+      `Name: ${fields.name.input.value.trim()}`,
+      `Email: ${fields.email.input.value.trim()}`,
+      `Subject: ${fields.subject.input.value.trim()}`,
+      "",
+      fields.message.input.value.trim(),
+    ].join("\n");
+    const whatsappUrl = new URL("https://wa.me/254795044498");
+    whatsappUrl.searchParams.set("text", message);
+    const whatsappHref = whatsappUrl.toString();
+
+    window.open(whatsappHref, "_blank", "noopener,noreferrer");
+
     const validationMessage =
-      "Form validation passed. This preview is not connected, so no message was sent or stored.";
+      "Your enquiry is ready in WhatsApp. Review it there and tap Send. If WhatsApp did not open, use this link: ";
     if (status) {
-      status.textContent = validationMessage;
+      const whatsappLink = document.createElement("a");
+      whatsappLink.href = whatsappHref;
+      whatsappLink.target = "_blank";
+      whatsappLink.rel = "noopener noreferrer";
+      whatsappLink.textContent = "Open WhatsApp to send your enquiry";
+      status.replaceChildren(
+        document.createTextNode(validationMessage),
+        whatsappLink,
+      );
     }
 
     const announcer = document.getElementById("srAnnouncer");
     if (announcer) {
-      announcer.textContent = validationMessage;
+      announcer.textContent =
+        "Your enquiry is ready in WhatsApp. Review it there and tap Send.";
     }
   });
 });

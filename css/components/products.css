@@ -353,6 +353,16 @@
   color: var(--black);
 }
 
+.product-badge-stock {
+  background: #2ecc71;
+  color: #102617;
+}
+
+.product-badge-low-stock {
+  background: #ffb020;
+  color: #2b1d00;
+}
+
 .product-badge-out-of-stock {
   background: var(--gray-dark);
   color: var(--white);
